@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="List of all blog posts from the RSS feed of Ravindra Mishra's GitHub Pages site.">
+    <meta name="description" content="List of all blog posts from the sitemap of Ravindra Mishra's GitHub Pages site.">
     <meta name="robots" content="index,follow">
     <title>Blog Posts</title>
     <link rel="canonical" href="https://ravindra-mishra.github.io/blogs.html">
@@ -63,7 +63,7 @@
     </header>
     <main>
         <section>
-            <p>Welcome to the list of all blog posts from our RSS feed. Click on the links below to read more about each post.</p>
+            <p>Welcome to the list of all blog posts from our sitemap. Click on the links below to read more about each post.</p>
             <ul id="blog-posts"></ul>
         </section>
     </main>
@@ -71,36 +71,42 @@
         <p>&copy; 2024 Ravindra Mishra. All rights reserved.</p>
     </footer>
     <script>
-        // URL to your RSS feed file in the GitHub Pages repository
-        const rssFeedUrl = 'blogs-rss-feed.xml';
+        // URL to your sitemap.xml file in the GitHub Pages repository
+        const sitemapUrl = 'blog-sitemap.xml'; // Update with correct relative path
 
-        async function fetchRSSFeed() {
+        async function fetchSitemap() {
             try {
-                const response = await fetch(rssFeedUrl);
+                const response = await fetch(sitemapUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
                 const text = await response.text();
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(text, 'text/xml');
 
-                const items = xmlDoc.getElementsByTagName('item');
+                // Assuming the sitemap uses a standard format with <url> elements
+                const urls = xmlDoc.getElementsByTagName('url');
                 const postsList = document.getElementById('blog-posts');
 
-                Array.from(items).forEach(item => {
-                    const title = item.getElementsByTagName('title')[0].textContent;
-                    const link = item.getElementsByTagName('link')[0].textContent;
+                Array.from(urls).forEach(url => {
+                    const loc = url.getElementsByTagName('loc')[0].textContent;
+                    const lastmod = url.getElementsByTagName('lastmod')[0]?.textContent || 'No date available';
+
                     const listItem = document.createElement('li');
                     const postLink = document.createElement('a');
-                    postLink.href = link;
-                    postLink.textContent = title;
+                    postLink.href = loc;
+                    postLink.textContent = loc;
                     postLink.target = '_blank';
                     listItem.appendChild(postLink);
+                    listItem.appendChild(document.createTextNode(` - Last Modified: ${lastmod}`));
                     postsList.appendChild(listItem);
                 });
             } catch (error) {
-                console.error('Error fetching the RSS feed:', error);
+                console.error('Error fetching or parsing the sitemap:', error);
             }
         }
 
-        fetchRSSFeed();
+        fetchSitemap();
     </script>
 </body>
 </html>
