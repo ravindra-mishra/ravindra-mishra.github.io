@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="List of all blog posts from the RSS feed of Ravindra Mishra's GitHub Pages site.">
+    <meta name="robots" content="index,follow">
+    <title>Blog Posts</title>
+    <link rel="canonical" href="https://ravindra-mishra.github.io/blogs.html">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+
+            header h1, footer p {
+                margin: 0;
+            }
+
+        main {
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Blog Posts",
+          "url": "https://ravindra-mishra.github.io/blogs.html",
+          "description": "A comprehensive list of all blog posts from Ravindra Mishra's GitHub Pages site."
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Blog Posts</h1>
+    </header>
+    <main>
+        <section>
+            <p>Welcome to the list of all blog posts from our RSS feed. Click on the links below to read more about each post.</p>
+            <ul id="blog-posts"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ravindra Mishra. All rights reserved.</p>
+    </footer>
+    <script>
+        // URL to your RSS feed file in the GitHub Pages repository
+        const rssFeedUrl = 'blogs-rss-feed.xml';
+
+        async function fetchRSSFeed() {
+            try {
+                const response = await fetch(rssFeedUrl);
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, 'text/xml');
+
+                const items = xmlDoc.getElementsByTagName('item');
+                const postsList = document.getElementById('blog-posts');
+
+                Array.from(items).forEach(item => {
+                    const title = item.getElementsByTagName('title')[0].textContent;
+                    const link = item.getElementsByTagName('link')[0].textContent;
+                    const listItem = document.createElement('li');
+                    const postLink = document.createElement('a');
+                    postLink.href = link;
+                    postLink.textContent = title;
+                    postLink.target = '_blank';
+                    listItem.appendChild(postLink);
+                    postsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching the RSS feed:', error);
+            }
+        }
+
+        fetchRSSFeed();
+    </script>
+</body>
+</html>
