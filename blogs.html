@@ -74,6 +74,12 @@
         // URL to your sitemap.xml file in the GitHub Pages repository
         const sitemapUrl = 'blog-sitemap.xml'; // Update with correct relative path
 
+        function formatDate(isoDateString) {
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            const date = new Date(isoDateString);
+            return date.toLocaleDateString('en-GB', options).replace(/ /g, '-');
+        }
+
         async function fetchSitemap() {
             try {
                 const response = await fetch(sitemapUrl);
@@ -92,6 +98,8 @@
                     const loc = url.getElementsByTagName('loc')[0].textContent;
                     const lastmod = url.getElementsByTagName('lastmod')[0]?.textContent || 'No date available';
 
+                    const formattedDate = lastmod !== 'No date available' ? formatDate(lastmod) : 'No date available';
+
                     const listItem = document.createElement('li');
                     const postLink = document.createElement('a');
                     postLink.href = loc;
@@ -99,7 +107,7 @@
                     postLink.target = '_blank';
                     postLink.rel = 'follow'; // Add rel="follow"
                     listItem.appendChild(postLink);
-                    listItem.appendChild(document.createTextNode(` - Last Modified: ${lastmod}`));
+                    listItem.appendChild(document.createTextNode(` - Last Modified: ${formattedDate}`));
                     postsList.appendChild(listItem);
                 });
             } catch (error) {
