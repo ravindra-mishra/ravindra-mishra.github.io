@@ -36,13 +36,6 @@
 
         li {
             margin: 10px 0;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        h2 {
-            margin: 0 0 10px 0;
         }
 
         a {
@@ -53,11 +46,16 @@
             a:hover {
                 text-decoration: underline;
             }
-
-        .description {
-            color: #555;
-        }
     </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Blog Posts",
+          "url": "https://ravindra-mishra.github.io/blogs.html",
+          "description": "A comprehensive list of all blog posts from Ravindra Mishra's GitHub Pages site."
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -73,7 +71,8 @@
         <p>&copy; 2024 Ravindra Mishra. All rights reserved.</p>
     </footer>
     <script>
-        const sitemapUrl = 'sitemap.xml'; // Path to your sitemap.xml file
+        // URL to your sitemap.xml file in the GitHub Pages repository
+        const sitemapUrl = 'blog-sitemap.xml'; // Update with correct relative path
 
         async function fetchSitemap() {
             try {
@@ -85,52 +84,23 @@
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(text, 'text/xml');
 
-                // Extract URLs from sitemap
+                // Assuming the sitemap uses a standard format with <url> elements
                 const urls = xmlDoc.getElementsByTagName('url');
-                const urlArray = Array.from(urls).map(url => url.getElementsByTagName('loc')[0].textContent);
-
                 const postsList = document.getElementById('blog-posts');
 
-                // Fetch titles and descriptions from each URL
-                for (const url of urlArray) {
-                    try {
-                        const postResponse = await fetch(url);
-                        if (!postResponse.ok) {
-                            throw new Error(`HTTP error! Status: ${postResponse.status}`);
-                        }
-                        const postText = await postResponse.text();
-                        const postParser = new DOMParser();
-                        const postDoc = postParser.parseFromString(postText, 'text/html');
+                Array.from(urls).forEach(url => {
+                    const loc = url.getElementsByTagName('loc')[0].textContent;
+                    const lastmod = url.getElementsByTagName('lastmod')[0]?.textContent || 'No date available';
 
-                        // Extract title and description from the blog page
-                        const title = postDoc.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
-                            postDoc.querySelector('title')?.textContent || 'No Title Available';
-                        const description = postDoc.querySelector('meta[name="description"]')?.getAttribute('content') ||
-                            postDoc.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
-                            'No Description Available';
-
-                        const listItem = document.createElement('li');
-
-                        const postTitle = document.createElement('h2');
-                        postTitle.textContent = title;
-
-                        const postLink = document.createElement('a');
-                        postLink.href = url;
-                        postLink.textContent = url;
-                        postLink.target = '_blank';
-
-                        const postDescription = document.createElement('p');
-                        postDescription.className = 'description';
-                        postDescription.textContent = description;
-
-                        listItem.appendChild(postTitle);
-                        listItem.appendChild(postLink);
-                        listItem.appendChild(postDescription);
-                        postsList.appendChild(listItem);
-                    } catch (error) {
-                        console.error('Error fetching or parsing blog post:', error);
-                    }
-                }
+                    const listItem = document.createElement('li');
+                    const postLink = document.createElement('a');
+                    postLink.href = loc;
+                    postLink.textContent = loc;
+                    postLink.target = '_blank';
+                    listItem.appendChild(postLink);
+                    listItem.appendChild(document.createTextNode(` - Last Modified: ${lastmod}`));
+                    postsList.appendChild(listItem);
+                });
             } catch (error) {
                 console.error('Error fetching or parsing the sitemap:', error);
             }
