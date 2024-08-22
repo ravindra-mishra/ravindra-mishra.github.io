@@ -97,6 +97,7 @@
                     postLink.href = loc;
                     postLink.textContent = loc;
                     postLink.target = '_blank';
+                    postLink.rel = 'follow'; // Add rel="follow"
                     listItem.appendChild(postLink);
                     listItem.appendChild(document.createTextNode(` - Last Modified: ${lastmod}`));
                     postsList.appendChild(listItem);
