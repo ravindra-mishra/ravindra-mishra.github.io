@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="List of all blog posts from the sitemap of Ravindra Mishra's GitHub Pages site.">
+    <meta name="robots" content="index,follow">
+    <title>Blog Posts</title>
+    <link rel="canonical" href="https://ravindra-mishra.github.io/blogs.html">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+
+            header h1, footer p {
+                margin: 0;
+            }
+
+        main {
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Blog Posts",
+          "url": "https://ravindra-mishra.github.io/blogs.html",
+          "description": "A comprehensive list of all blog posts from Ravindra Mishra's GitHub Pages site."
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Blog Posts</h1>
+    </header>
+    <main>
+        <section>
+            <p>Welcome to the list of all blog posts from our sitemap. Click on the links below to read more about each post.</p>
+            <ul id="blog-posts"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ravindra Mishra. All rights reserved.</p>
+    </footer>
+    <script>
+        // URL to your sitemap.xml file in the GitHub Pages repository
+        const sitemapUrl = 'blog-sitemap.xml'; // Update with correct relative path
+
+        function formatDate(isoDateString) {
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            const date = new Date(isoDateString);
+            return date.toLocaleDateString('en-GB', options).replace(/ /g, '-');
+        }
+
+        async function fetchSitemap() {
+            try {
+                const response = await fetch(sitemapUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, 'text/xml');
+
+                // Assuming the sitemap uses a standard format with <url> elements
+                const urls = xmlDoc.getElementsByTagName('url');
+                const postsList = document.getElementById('blog-posts');
+
+                Array.from(urls).forEach(url => {
+                    const loc = url.getElementsByTagName('loc')[0].textContent;
+                    const lastmod = url.getElementsByTagName('lastmod')[0]?.textContent || 'No date available';
+
+                    const formattedDate = lastmod !== 'No date available' ? formatDate(lastmod) : 'No date available';
+
+                    const listItem = document.createElement('li');
+                    const postLink = document.createElement('a');
+                    postLink.href = loc;
+                    postLink.textContent = loc;
+                    postLink.target = '_blank';
+                    postLink.rel = 'follow'; // Add rel="follow"
+                    listItem.appendChild(postLink);
+                    listItem.appendChild(document.createTextNode(` - Last Modified: ${formattedDate}`));
+                    postsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching or parsing the sitemap:', error);
+            }
+        }
+
+        fetchSitemap();
+    </script>
+</body>
+</html>

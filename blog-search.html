@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Search</title>
+    <!-- Coveo CSS -->
+    <link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.11135/css/CoveoFullSearch.css">
+    <!-- Custom CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: #0073e6;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog Search</h1>
+    </header>
+    <main>
+        <!-- Coveo Search Interface -->
+        <div class="CoveoSearchInterface" data-enable-history="true">
+            <!-- Search box -->
+            <div class="CoveoSearchbox"></div>
+            <!-- Analytics -->
+            <div class="CoveoAnalytics"></div>
+            <!-- Results per page options -->
+            <div class="CoveoResultsPerPage"></div>
+            <!-- Pager for navigating pages of results -->
+            <div class="CoveoPager"></div>
+            <!-- Container for displaying search results -->
+            <div class="CoveoResults"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Ravindra Mishra. All rights reserved.</p>
+    </footer>
+
+    <!-- Coveo JavaScript Framework -->
+    <script src="https://static.cloud.coveo.com/searchui/v2.11135/js/CoveoJsSearch.js"></script>
+    <!-- Initialization Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Coveo.init(document.querySelector('.CoveoSearchInterface'), {
+                organizationId: 'your-organization-id',
+                accessToken: 'your-access-token'
+            });
+        });
+    </script>
+</body>
+</html>

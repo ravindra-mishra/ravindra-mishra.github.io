@@ -56,3 +56,20 @@ header a {
         .content a:hover {
             text-decoration: underline;
         }
+
+.menu {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+    .menu li {
+        display: inline;
+        margin-right: 15px;
+    }
+
+    .menu a {
+        text-decoration: underline;
+        color: #ffffff; /* LinkedIn blue */
+        font-weight: bold;
+    }
