@@ -1,0 +1,43 @@
+$color_1: #aaa;
+$background-color_1: #fff;
+$background-color_2: #0099ff;
+
+.timeline {
+  // border: 1px solid #ccc;
+  padding: 20px 40px;
+  border-radius: 8px;
+  background-color: $background-color_1;
+  margin: 20px;
+  color: $black;
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    .timeline-marker {
+      width: 12px;
+      height: 12px;
+      background-color: $background-color_2;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: $background-color_2;
+    }
+    .timeline-content {
+      padding-left: 30px;
+      margin: 10px 0;
+      .timeline-date {
+        color: $color_1;
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+  }
+}

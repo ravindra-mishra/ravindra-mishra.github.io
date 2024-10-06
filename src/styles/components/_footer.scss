@@ -1,0 +1,27 @@
+.site-footer {
+  background: $black;
+  color: $white;
+  text-align: center;
+  padding: 20px 50px;
+  .header-title {
+    font-size: 32px;
+    margin: 22px 0;
+    color: gray;
+    cursor: pointer;
+
+    @include respond-to(small) {
+      font-size: 20px;
+    }
+    .header-title-name {
+      color: rgb(52, 52, 52);
+      font-weight: bold;
+    }
+
+    &.dark {
+      color: #7f7f7f;
+      .header-title-name {
+        color: #c6c3c3;
+      }
+    }
+  }
+}

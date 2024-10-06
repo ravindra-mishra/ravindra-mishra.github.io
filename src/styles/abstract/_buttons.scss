@@ -1,0 +1,54 @@
+@import "_vars.scss";
+
+.button {
+  border: 1px solid black;
+  margin: 15px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  width: fit-content;
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: $primary;
+    a {
+      color: $white;
+    }
+  }
+
+  &.button-primary {
+    background: $primary;
+    color: $white;
+    border: 1px solid $white;
+    a {
+      color: $white;
+    }
+    &:hover {
+      background: $white;
+      color: $primary;
+      border: 1px solid $primary;
+      a {
+        color: $primary;
+      }
+    }
+  }
+
+  &.button-primary-alternate {
+    background: $white;
+    color: $primary;
+    border: 1px solid $white;
+    a {
+      color: $primary;
+    }
+    &:hover {
+      color: $white;
+      background: transparent;
+      border: 1px solid $white;
+      a {
+        color: $white;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import "../abstract/_mixins.scss";
+@import "../abstract/_vars.scss";
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: $font-color;
+}
+h1 {
+  font-size: 2.8em;
+  margin: 15px 0;
+}
+
+h2 {
+  font-size: 2.3em;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.center-align-content {
+  display: flex;
+  justify-content: center;
+}
+
+.two-col {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col-6 {
+  width: 50%;
+}
+
+.component-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

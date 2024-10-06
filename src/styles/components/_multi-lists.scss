@@ -1,0 +1,38 @@
+.multi-lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.multi-lists-section {
+  width: 25%;
+  @include respond-to(medium) {
+    width: 50%;
+  }
+
+  @include respond-to(extra-small) {
+    width: 100%;
+  }
+
+  ul {
+    padding: 0 16px;
+    li {
+      margin: 10px 0;
+    }
+  }
+
+  &.card {
+    border-radius: 20px;
+    margin: 20px;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+
+    h4 {
+      text-align: center;
+    }
+    &:hover {
+      color: $primary;
+    }
+  }
+}

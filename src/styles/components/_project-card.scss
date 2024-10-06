@@ -1,0 +1,33 @@
+@import "../abstract/_mixins.scss";
+@import "../abstract/_vars.scss";
+
+.project-card {
+  width: 25%;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+
+  @include respond-to(small) {
+    width: 100%;
+  }
+
+  h3 {
+    margin: 15px 0;
+  }
+
+  .duration {
+    opacity: 90%;
+    margin: 10px 0;
+  }
+
+  .description {
+  }
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
