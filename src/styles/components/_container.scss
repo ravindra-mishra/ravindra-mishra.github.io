@@ -1,6 +1,3 @@
-@import "../abstract/_mixins.scss";
-@import "../abstract/_vars.scss";
-
 // Define your breakpoints
 $breakpoints: (
   "xs": 0,
@@ -15,7 +12,8 @@ $breakpoints: (
 $container-widths: (
   "xs": 100%,
   // Extra small
-  "sm": 540px,
+  // "sm": 540px,
+  "sm": 100%,
   // Small
   "md": 720px,
   // Medium
@@ -23,21 +21,19 @@ $container-widths: (
   // Large
   "xl": 1140px,
   // Extra large
-  "xxl": 1320px // Extra extra large,,,,,,,,,
+  "xxl": 1320px // Extra extra large,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 
 // Mixin to generate container styles
 @mixin container {
   width: 100%;
+  margin: 0 auto;
   @include respond-to(small) {
-    margin: 0;
-    padding: 0 10px;
     width: auto;
   }
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-right: 22px;
+  padding-left: 22px;
+  box-sizing: border-box;
 
   @each $breakpoint, $value in $breakpoints {
     @if map-get($container-widths, $breakpoint) {
@@ -51,4 +47,35 @@ $container-widths: (
 // Apply the container styles
 .container {
   @include container;
+}
+
+.container-fluid {
+  display: flex;
+  margin-bottom: 30px;
+  @include respond-to(large) {
+    flex-direction: column;
+  }
+}
+
+.main-container {
+  width: 70%;
+  box-sizing: border-box;
+  @include respond-to(large) {
+    width: 100%;
+  }
+
+  p,
+  span,
+  li {
+    font-size: 1.1em;
+  }
+}
+
+.side-container {
+  width: 30%;
+  display: flex;
+  box-sizing: border-box;
+  @include respond-to(large) {
+    width: 100%;
+  }
 }

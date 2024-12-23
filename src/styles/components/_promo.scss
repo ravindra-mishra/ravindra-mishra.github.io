@@ -1,5 +1,5 @@
 .promo {
-  padding: 10px 0;
+  padding: 30px 0;
 
   @include respond-to(small) {
     display: flex;
@@ -40,7 +40,6 @@
       .promo-content {
         width: 50%;
         @include respond-to(medium) {
-          margin-top: -10%;
           width: 100%;
         }
       }
@@ -104,6 +103,10 @@
         padding: 15px;
         ul {
           padding-right: 40px;
+          line-height: normal;
+          h4 {
+            margin: 18px 0;
+          }
         }
       }
     }
@@ -137,6 +140,22 @@
           border: 2px solid $black;
         }
       }
+    }
+
+    .title {
+      h4 {
+        margin: 18px 0;
+      }
+    }
+  }
+
+  .experience {
+    h3 {
+      margin: 12px 0;
+    }
+
+    h4 {
+      margin: 8px 0;
     }
   }
 }

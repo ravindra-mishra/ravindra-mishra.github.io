@@ -1,0 +1,16 @@
+{
+  "base_url": "/",
+  "site_title": "Ravindra Mishra",
+  "site_description": "Portfolio of Ravindra Mishra, showcasing projects, skills, and contact information.",
+  "site_keywords": [
+    "Ravindra Mishra",
+    "Portfolio",
+    "Web Developer",
+    "Sitecore Developer",
+    "Projects",
+    "Contact"
+  ],
+  "posts_per_page": 5,
+  "twitter_account": "",
+  "github_account": ""
+}

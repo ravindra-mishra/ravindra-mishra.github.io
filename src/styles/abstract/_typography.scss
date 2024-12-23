@@ -1,25 +1,36 @@
-@import "../abstract/_mixins.scss";
-@import "../abstract/_vars.scss";
-
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: Poppins, system-ui;
   color: $font-color;
+  line-height: 1.75;
 }
+
 h1 {
-  font-size: 2.8em;
-  margin: 15px 0;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 2.3em;
-  margin: 10px 0;
-  text-transform: uppercase;
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.5em;
 }
 
 h4 {
+  font-size: 1.3em;
+}
+
+h5 {
   font-size: 1.2em;
-  margin: 10px 0;
+}
+
+h6 {
+  font-size: 1.1em;
+}
+
+p {
+  word-wrap: break-word;
 }
 
 .center-align {
@@ -43,4 +54,106 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+code {
+  background: $gray;
+  padding: 2px 5px;
+  border-radius: 2px;
+  &:not(:has(pre)) {
+    word-wrap: break-word;
+  }
+}
+
+pre {
+  border: 2px solid #3a69c7;
+  background: #263238;
+  border-radius: 5px;
+  padding: 15px;
+  overflow-x: scroll;
+
+  code {
+    color: #eeffff;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: unset;
+    border-radius: unset;
+    background: unset;
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    border-radius: 50%;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    transition: 0.2s;
+  }
+}
+
+.remove-top-margin {
+  margin-top: 0 !important;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 0.95em !important;
+  &.token {
+    font-size: 0.95em !important;
+  }
 }

@@ -1,18 +1,34 @@
 {
-  "name": "ravindragithubsite",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "blogs",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build-css": "sass src/styles/main.scss dist/styles/styles.css",
-    "watch-css": "sass --watch src/styles/main.scss:dist/styles/styles.css",
-    "build-js": "webpack"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "dependencies": {
+    "@next/third-parties": "^15.1.2",
+    "commentbox.io": "^2.1.0",
+    "date-fns": "^4.1.0",
+    "gray-matter": "^4.0.3",
+    "next": "15.0.4",
+    "prismjs": "^1.29.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^6.0.3",
+    "react-schemaorg": "^2.0.0",
+    "reading-duration": "^1.1.2",
+    "sass": "^1.82.0"
+  },
   "devDependencies": {
-    "globals": "^15.10.0",
-    "sass": "^1.79.4"
+    "@types/node": "^20",
+    "@types/prismjs": "^1.26.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.4",
+    "typescript": "^5"
   }
 }
