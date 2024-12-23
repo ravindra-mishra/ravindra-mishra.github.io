@@ -1,0 +1,15 @@
+.title-banner {
+  box-sizing: border-box;
+  padding: 3rem 0;
+  margin: 0;
+
+  &.blog-page {
+    @include respond-to(large) {
+      padding: 3rem 5%;
+    }
+  }
+
+  h1 {
+    margin: 0;
+  }
+}

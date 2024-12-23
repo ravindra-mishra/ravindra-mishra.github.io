@@ -1,5 +1,22 @@
 $white: #fff;
 $black: #000;
+$site-black: #1f243c;
 $primary: #3f51b5;
 $gray: #d8e0e7;
-$font-color: #343434;
+// $blog-anchor: #3150ff;
+// $font-color: #343434;
+$font-color: $site-black;
+
+$gray-default-light: #c8d0f9;
+$gray-default: gray;
+$gray-default-dark: #5c6592;
+
+$gray-blue-light: #c8d0f9;
+// $gray-blue: #838ec4;
+$gray-blue: #647bea;
+
+$gray-blue-dark: #5c6592;
+
+$logo-gray-light: $gray-default-light;
+$logo-gray: $gray-default;
+$logo-gray-dark: $gray-default-dark;

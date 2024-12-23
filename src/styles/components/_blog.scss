@@ -1,0 +1,45 @@
+.blog-container {
+  width: 70%;
+  padding-right: 10%;
+  box-sizing: border-box;
+  word-break: break-word;
+
+  @include respond-to(large) {
+    width: 100%;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: underline;
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      color: $gray-default-dark;
+    }
+  }
+
+  p:not(pre p),
+  span:not(pre span),
+  li:not(pre li) {
+    font-size: 1.1em;
+  }
+
+  // p {
+  //   text-align: justify;
+  // }
+}
+
+.blog-side-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  @include respond-to(large) {
+    width: 100%;
+  }
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

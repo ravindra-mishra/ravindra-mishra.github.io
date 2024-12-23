@@ -1,0 +1,84 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+  local_backend: true
+
+media_folder: "public/uploads" # Where media files will be stored
+public_folder: "/uploads" # Where the media files can be accessed from the server
+publish_mode: editorial_workflow # For Drafts
+
+collections:
+  - name: "meta"
+    label: "Meta"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "tags"
+        label: "Tags"
+        file: "content/meta/tags.yml"
+        description: "List of tags"
+        fields:
+          - name: "tags"
+            label: "Tags"
+            label_singular: "Tag"
+            widget: "list"
+            fields:
+              - label: "Slug"
+                name: "slug"
+                widget: "string"
+                hint: "The part of a URL identifies the tag"
+              - label: "Display Name"
+                name: "name"
+                widget: "string"
+                hint: "Tag name for displaying on the site"
+
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "content/blogs" # The path to the folder where the documents are stored
+    value_field: content/blogs/.md
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    identifier_field: "slug"
+    summary: "{{title}}"
+    fields: # The fields for each document, usually in front matter
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+      - label: "Keywords"
+        name: "keywords"
+        widget: "string"
+      - label: "Meta Description"
+        name: "metaDescription"
+        widget: "string"
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "DD.MM.YYYY"
+        time_format: "HH:mm"
+        format: "LLL"
+      - label: "Tags"
+        label_singular: "Tag"
+        name: "tags"
+        widget: "list"
+        summary: "{{fields.tag}}"
+        fields:
+          - label: "Tag"
+            name: "tag"
+            widget: "relation"
+            collection: "meta"
+            file: "tags"
+            search_fields:
+              - "tags.*.name"
+            display_fields:
+              - "tags.*.name"
+            value_field: "tags.*.slug"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"

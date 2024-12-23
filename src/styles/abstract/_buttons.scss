@@ -1,9 +1,7 @@
-@import "_vars.scss";
-
 .button {
-  border: 1px solid black;
+  border: 1px solid $primary;
   margin: 15px 0;
-  padding: 10px 20px;
+  padding: 5px 20px;
   text-decoration: none;
   border-radius: 5px;
   width: fit-content;
@@ -13,8 +11,11 @@
 
   &:hover {
     background: $primary;
+    text-decoration: none;
+    color: $white;
     a {
       color: $white;
+      text-decoration: none;
     }
   }
 
@@ -25,13 +26,12 @@
     a {
       color: $white;
     }
+
     &:hover {
       background: $white;
       color: $primary;
       border: 1px solid $primary;
-      a {
-        color: $primary;
-      }
+      text-decoration: none;
     }
   }
 
@@ -42,12 +42,15 @@
     a {
       color: $primary;
     }
+
     &:hover {
-      color: $white;
       background: transparent;
       border: 1px solid $white;
+      color: $white;
+      text-decoration: none;
       a {
         color: $white;
+        text-decoration: none;
       }
     }
   }

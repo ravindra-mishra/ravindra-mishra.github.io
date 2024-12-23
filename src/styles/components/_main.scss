@@ -1,2 +1,27 @@
 .site-main {
 }
+
+body.scroll-lock {
+  overflow: hidden;
+  height: 100%; /* Prevent scrolling on all devices */
+}
+
+.commentbox {
+  margin-top: 20px;
+}
+
+.card-box {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(133 137 160 / 22%);
+  border-radius: 15px;
+  margin: 20px 15px;
+  margin-top: 0;
+  box-sizing: border-box;
+  height: fit-content;
+  @include respond-to(large) {
+    margin: 20px auto;
+  }
+}

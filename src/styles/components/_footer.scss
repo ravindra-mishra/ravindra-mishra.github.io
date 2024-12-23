@@ -1,26 +1,59 @@
+.footer-only {
+  display: none;
+}
+
 .site-footer {
   background: $black;
   color: $white;
   text-align: center;
   padding: 20px 50px;
+
+  .footer-only {
+    display: block;
+  }
+
   .header-title {
-    font-size: 32px;
-    margin: 22px 0;
-    color: gray;
+    font-size: 28px;
+    margin: 14px 0;
+    color: $gray-blue;
     cursor: pointer;
 
     @include respond-to(small) {
       font-size: 20px;
     }
+
+    a {
+      color: inherit;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
     .header-title-name {
       color: rgb(52, 52, 52);
       font-weight: bold;
     }
 
     &.dark {
-      color: #7f7f7f;
+      color: $gray-blue-dark;
       .header-title-name {
-        color: #c6c3c3;
+        color: $gray-blue;
+      }
+    }
+  }
+
+  nav {
+    ul.menu {
+      display: inline-flex;
+      list-style: none;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+      li {
+        a {
+          color: white;
+        }
       }
     }
   }
