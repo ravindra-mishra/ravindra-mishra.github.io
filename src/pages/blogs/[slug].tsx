@@ -61,6 +61,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         title={frontmatter.title}
         description={frontmatter.description}
         keywords={[frontmatter.keywords]}
+        author="Ravindra Mishra"
       />
       <OpenGraphMeta
         url={`/blogs/${slug}`}

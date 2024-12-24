@@ -1,16 +1,17 @@
 {
-  "base_url": "/",
+  "base_url": "https://ravindra-mishra.github.io",
   "site_title": "Ravindra Mishra",
-  "site_description": "Portfolio of Ravindra Mishra, showcasing projects, skills, and contact information.",
+  "site_description": "Explore the portfolio of Ravindra Mishra, a skilled Sitecore and web developer. Discover technical blogs on Sitecore, web development, and cutting-edge projects, showcasing expertise, skills, and contact information.",
   "site_keywords": [
     "Ravindra Mishra",
-    "Portfolio",
-    "Web Developer",
     "Sitecore Developer",
-    "Projects",
-    "Contact"
+    "Web Development",
+    "Technical Blogs",
+    "Portfolio",
+    "Web Developer Projects",
+    "Contact Ravindra Mishra"
   ],
   "posts_per_page": 5,
   "twitter_account": "",
-  "github_account": ""
+  "github_account": "https://github.com/ravindra-mishra"
 }
