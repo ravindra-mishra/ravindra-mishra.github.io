@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ravindra-mishra.github.io
+
+# Sitemaps
+Sitemap: https://ravindra-mishra.github.io/sitemap.xml
