@@ -42,6 +42,8 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         const Prism =
           (await import("prismjs")).default || (await import("prismjs"));
 
+        await import("prismjs/components/prism-sql");
+        await import("prismjs/components/prism-json");
         await import("prismjs/components/prism-csharp");
         Prism.highlightAll();
       })();
