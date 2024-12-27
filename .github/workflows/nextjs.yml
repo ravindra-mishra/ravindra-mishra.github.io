@@ -77,6 +77,8 @@ jobs:
         env:
           NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Debug Environment
+        run: env | grep NEXT_PUBLIC
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
