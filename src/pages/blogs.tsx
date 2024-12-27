@@ -62,7 +62,8 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
                   <Link
                     href={`/blogs/${blog.slug}`}
                     className="button"
-                    aria-label="Read More"
+                    aria-label={blog.title}
+                    title={blog.title}
                   >
                     Read More
                   </Link>
