@@ -45,6 +45,9 @@
     padding: 0;
     list-style: none;
     margin: 0;
+    display: inline-flex;
+    gap: 5px;
+    flex-wrap: wrap;
 
     .button {
       margin: 0;

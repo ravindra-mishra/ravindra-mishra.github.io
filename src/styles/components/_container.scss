@@ -21,7 +21,7 @@ $container-widths: (
   // Large
   "xl": 1140px,
   // Extra large
-  "xxl": 1320px // Extra extra large,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  "xxl": 1320px // Extra extra large,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 
 // Mixin to generate container styles
@@ -67,7 +67,7 @@ $container-widths: (
   p,
   span,
   li {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }
 
