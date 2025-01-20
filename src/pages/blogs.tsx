@@ -7,7 +7,6 @@ import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
 import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
 import { GetStaticProps } from "next";
 import FormattedDate from "@/components/FormattedDate";
-import IntroContent from "@/components/IntroContent";
 import TitleBanner from "@/components/TitleBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 
@@ -29,25 +28,25 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
     <Layout>
       <BasicMeta
         url={"/blogs"}
-        title="Blogs"
+        title="Latest Blog Articles"
         description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
       />
       <OpenGraphMeta
         url={"/blogs"}
-        title="Blogs"
+        title="Latest Blog Articles"
         description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
       />
       <TwitterCardMeta
         url={"/blogs"}
-        title="Blogs"
+        title="Latest Blog Articles"
         description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
       />
-      <TitleBanner title="Blogs" />
+      <TitleBanner title="Latest Blog Articles" />
       <Breadcrumb />
 
       <div className="container">
-        <div className="container-fluid">
-          <div className="main-container">
+        <div className="">
+          <div className="">
             <div className="blog-list">
               {blogs.map((blog) => (
                 <div key={blog.slug} className="blog-post-card">
@@ -70,9 +69,6 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="side-container">
-            <IntroContent className="remove-top-margin" />
           </div>
         </div>
       </div>

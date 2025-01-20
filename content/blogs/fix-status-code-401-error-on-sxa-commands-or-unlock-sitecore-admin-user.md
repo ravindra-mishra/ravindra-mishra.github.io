@@ -14,14 +14,13 @@ tags:
   - tag: sitecore
   - tag: sitecore-sxa
 ---
+![Image: "Status Code: 401" error on sxa r cmd](/uploads/status-code-401-error-on-sxa-r-cmd-due-to-admin-user-locked.png "\\"Status Code: 401\\" error on sxa r cmd")
 
-![Image: "Status Code: 401" error on sxa r cmd](/uploads/status-code-401-error-on-sxa-r-cmd-due-to-admin-user-locked.png '"Status Code: 401" error on sxa r cmd')
-
-In Sitecore SXA, for theme building, JS & CSS magnification we use "**sxa r"** command from theme folder.
+In Sitecore SXA, for theme building, JS & CSS magnification we use "**sxa r"** command from theme folder. 
 
 **Challenge:**
 
-Due to some reasons, I was not able to complete the operation and I was getting **"Status code: 401 Answer"** error continuously on the terminal as shown in above image. I re-verified the credentials but it won't worked. Also I was not able to login to Sitecore.
+Due to some reasons, I was not able to complete the operation and I was getting **"Status code: 401 Answer"** error continuously on the terminal as shown in above image. I re-verified the credentials but it won't worked. Also I was not able to login to Sitecore. 
 
 After doing some research I found it was blocking the theme to deploy into the Sitecore because Sitecore login was failing. It happens when the login get blocked due to multiple failed login attempts (FailedPasswordAttempt). This is Sitecore Locked situation.
 
@@ -37,7 +36,7 @@ Select Core database: Run the below SQL command
 
 ```sql
 UPDATE  [aspnet_Membership]
-SET     IsLockedOut = 0,
+SET     IsLockedOut = 0, 
         FailedPasswordAttemptCount = 0
 WHERE   UserId IN (SELECT UserId FROM [aspnet_Users] WHERE UserName = 'sitecore\Admin')
 ```
@@ -52,7 +51,7 @@ In my case, my Sitecore instance was running on Docker. So I didn't had direct a
 
 In docker instance, the MDF & LDF file of MS SQL database is located in the data/mssql folder.
 
-_eg. YourProjectFolder/docker/data/mssql/_
+*eg. YourProjectFolder/docker/data/mssql/*
 
 Remember to take backup the mdf & ldf before replacing.
 
