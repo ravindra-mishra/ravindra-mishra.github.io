@@ -24,24 +24,23 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
+  NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR: ${{ vars.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
+  NEXT_PUBLIC_GA_TRACKING_ID: ${{ vars.NEXT_PUBLIC_GA_TRACKING_ID }}
+  NODE_ENV: ${{ vars.NODE_ENV }}
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
-      NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR: ${{ vars.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Print environment variable
-        run: echo "Value of NEXT_PUBLIC_COMMENTBOX_PROJECT_ID is $NEXT_PUBLIC_COMMENTBOX_PROJECT_ID , $NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR"
+        run: echo "Value of NEXT_PUBLIC_COMMENTBOX_PROJECT_ID is $NEXT_PUBLIC_COMMENTBOX_PROJECT_ID , $NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR, $NEXT_PUBLIC_GA_TRACKING_ID"
         env:
           NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
           NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR: ${{ vars.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
-      - name: Create .env file
-        run: |
-          echo "NEXT_PUBLIC_COMMENTBOX_PROJECT_ID=${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}" >> .env
       - name: Detect package manager
         id: detect-package-manager
         run: |
