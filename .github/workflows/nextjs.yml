@@ -24,15 +24,16 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
-  NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR: ${{ vars.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
-  NEXT_PUBLIC_GA_TRACKING_ID: ${{ vars.NEXT_PUBLIC_GA_TRACKING_ID }}
-  NODE_ENV: ${{ vars.NODE_ENV }}
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
+    env:
+      NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
+      NEXT_PUBLIC_COMMENTBOX_PROJECT_ID_VAR: ${{ vars.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
+      NEXT_PUBLIC_GA_TRACKING_ID: ${{ vars.NEXT_PUBLIC_GA_TRACKING_ID }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
