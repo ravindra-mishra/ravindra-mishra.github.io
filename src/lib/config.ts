@@ -10,4 +10,10 @@ export interface Config {
   readonly github_account: string;
 }
 
-export default config as Config;
+// Override `base_url` with the environment variable if available
+const updatedConfig: Config = {
+  ...config,
+  base_url: process.env.NEXT_PUBLIC_BASE_URL || config.base_url, // Fallback to JSON value if not set
+};
+
+export default updatedConfig;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://ravindra-mishra.github.io</loc><lastmod>2025-01-20T15:29:06.472Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ravindra-mishra.github.io/about</loc><lastmod>2025-01-20T15:29:06.474Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ravindra-mishra.github.io/blogs</loc><lastmod>2025-01-20T15:29:06.474Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ravindra-mishra.github.io/contact</loc><lastmod>2025-01-20T15:29:06.474Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ravindra-mishra.github.io/privacy</loc><lastmod>2025-01-20T15:29:06.474Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ravindra-mishra.github.io</loc><lastmod>2025-02-26T07:45:08.821Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ravindra-mishra.github.io/about</loc><lastmod>2025-02-26T07:45:08.823Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ravindra-mishra.github.io/blogs</loc><lastmod>2025-02-26T07:45:08.823Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ravindra-mishra.github.io/contact</loc><lastmod>2025-02-26T07:45:08.823Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ravindra-mishra.github.io/privacy</loc><lastmod>2025-02-26T07:45:08.823Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ravindra-mishra.github.io/blogs/custom-switch-link-provider-for-multisite-setup-in-sitecore-9</loc><lastmod>2024-12-13T15:54:20.611Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ravindra-mishra.github.io/blogs/deploy-sxa-themes-azure-devops-sitecore-serialization</loc><lastmod>2024-12-31T14:28:18.505Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ravindra-mishra.github.io/blogs/fix-status-code-401-error-on-sxa-commands-or-unlock-sitecore-admin-user</loc><lastmod>2024-12-27T09:05:41.153Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>

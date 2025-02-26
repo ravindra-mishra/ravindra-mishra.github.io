@@ -2,9 +2,6 @@
 User-agent: *
 Allow: /
 
-# Disallow 404 pages
-Disallow: /404.html
-
 # Host
 Host: https://ravindra-mishra.github.io
 
