@@ -38,8 +38,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     };
   }, [lastScrollY]);
 
-  const GA_TRACKING_ID =
-    process.env.NEXT_PUBLIC_GA_TRACKING_ID || "G-DYJGZKLFR9";
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+  if (!GA_TRACKING_ID) {
+    console.error("NEXT_PUBLIC_GA_TRACKING_ID is not defined");
+    return;
+  }
 
   return (
     <div className="">
