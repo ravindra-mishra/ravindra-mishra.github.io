@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   },
   basePath: "", // Replace with the name of your GitHub repository
   assetPrefix: "", // Same as the basePath
-  trailingSlash: false,
+  trailingSlash: true,
   async redirects() {
     return [
       {
