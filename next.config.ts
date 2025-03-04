@@ -13,7 +13,20 @@ const nextConfig: NextConfig = {
   basePath: "", // Replace with the name of your GitHub repository
   assetPrefix: "", // Same as the basePath
   trailingSlash: false,
-  output: "export",
+  async redirects() {
+    return [
+      {
+        source: "/sitemap.xml/",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/sitemap-0.xml/",
+        destination: "/sitemap-0.xml",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

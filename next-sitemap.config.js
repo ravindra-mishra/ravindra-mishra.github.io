@@ -25,20 +25,6 @@ const config = {
       };
     });
   },
-  async redirects() {
-    return [
-      {
-        source: "/sitemap.xml/",
-        destination: "/sitemap.xml",
-        permanent: true,
-      },
-      {
-        source: "/sitemap-0.xml/",
-        destination: "/sitemap-0.xml",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = config;
