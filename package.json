@@ -21,6 +21,7 @@
     "react-markdown": "^6.0.3",
     "react-schemaorg": "^2.0.0",
     "reading-duration": "^1.1.2",
+    "remove-markdown": "^0.6.0",
     "sass": "^1.82.0"
   },
   "devDependencies": {

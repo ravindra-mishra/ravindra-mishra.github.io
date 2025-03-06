@@ -2,6 +2,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import IntroContent from "@/components/IntroContent";
 import Layout from "@/components/Layout";
 import BasicMeta from "@/components/meta/BasicMeta";
+import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
 import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
 import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
 import TitleBanner from "@/components/TitleBanner";
@@ -29,8 +30,9 @@ const About = () => {
   return (
     <Layout>
       <BasicMeta url={"/about"} title="About" />
-      <OpenGraphMeta url={"/about"} />
-      <TwitterCardMeta url={"/about"} />
+      <OpenGraphMeta url={"/about"} title="About" />
+      <TwitterCardMeta url={"/about"} title="About" />
+      <JsonLdMetaWebsite url={"/about"} title="About" />
       <TitleBanner title="About" />
       <Breadcrumb />
       <div className="container">

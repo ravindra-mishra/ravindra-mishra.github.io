@@ -9,6 +9,8 @@ import { GetStaticProps } from "next";
 import FormattedDate from "@/components/FormattedDate";
 import TitleBanner from "@/components/TitleBanner";
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
+import removeMd from "remove-markdown";
 
 // Define the type for a single blog item
 interface Blog {
@@ -37,6 +39,11 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
         description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
       />
       <TwitterCardMeta
+        url={"/blogs"}
+        title="Latest Blog Articles"
+        description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
+      />
+      <JsonLdMetaWebsite
         url={"/blogs"}
         title="Latest Blog Articles"
         description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
@@ -87,13 +94,13 @@ export const getStaticProps: GetStaticProps = async () => {
   const blogs: Blog[] = filesInBlogs.map((filename) => {
     const file = fs.readFileSync(`./content/blogs/${filename}`, "utf8");
     const matterData = matter(file);
-
+    const plainTextContent = removeMd(matterData.content as string);
     return {
       title: matterData.data.title as string,
       date: matterData.data.date as Date,
       content:
-        (matterData.content as string).slice(0, 150) +
-        (matterData.content.length > 150 ? "..." : ""),
+        plainTextContent.slice(0, 150) +
+        (plainTextContent.length > 150 ? "..." : ""),
       slug: filename.slice(0, filename.indexOf(".")),
     };
   });

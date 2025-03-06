@@ -17,7 +17,6 @@ const BlogHeader: FC<BlogHeaderProps> = ({
   date,
   readingTime,
 }) => {
-  console.log(tags);
   return (
     <div className={`background-primary blog-header ${className || ""}`}>
       <div className="container">

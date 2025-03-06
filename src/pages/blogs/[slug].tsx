@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Layout from "@/components/Layout";
+import removeMd from "remove-markdown";
 
 import IntroContent from "@/components/IntroContent";
 import BasicMeta from "@/components/meta/BasicMeta";
@@ -17,6 +18,7 @@ import BlogHeader from "@/components/BlogHeader";
 import TagList from "@/components/TagList";
 
 import CommentBox from "@/components/CommentBox";
+import JsonLdMetaBlog from "@/components/meta/JsonLdMetaBlog";
 
 // Frontmatter type definition
 interface Frontmatter {
@@ -74,6 +76,15 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         url={`/blogs/${slug}`}
         title={frontmatter.title}
         description={frontmatter.metaDescription}
+      />
+
+      <JsonLdMetaBlog
+        url={`/blogs/${slug}`}
+        title={frontmatter.title}
+        description={frontmatter.metaDescription}
+        date={frontmatter.date}
+        modifiedDate={frontmatter.date}
+        content={removeMd(markdown)}
       />
 
       <BlogHeader

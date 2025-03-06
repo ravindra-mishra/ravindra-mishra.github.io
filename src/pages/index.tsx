@@ -8,6 +8,7 @@ import Projects from "@/components/Portfolio-components/Projects";
 import BasicMeta from "@/components/meta/BasicMeta";
 import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
 import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
+import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
 
 const Portfolio = () => {
   return (
@@ -15,6 +16,7 @@ const Portfolio = () => {
       <BasicMeta url={"/"} title="Portfolio" />
       <OpenGraphMeta url={"/"} title="Portfolio" />
       <TwitterCardMeta url={"/"} title="Portfolio" />
+      <JsonLdMetaWebsite url={"/"} title="Portfolio" />
       <Banner />
       <TechnicalSkills />
       <Experience />
