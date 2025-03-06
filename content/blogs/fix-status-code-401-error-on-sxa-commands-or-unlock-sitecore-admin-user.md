@@ -14,7 +14,7 @@ tags:
   - tag: sitecore
   - tag: sitecore-sxa
 ---
-![Image: "Status Code: 401" error on sxa r cmd](/uploads/status-code-401-error-on-sxa-r-cmd-due-to-admin-user-locked.png "\\"Status Code: 401\\" error on sxa r cmd")
+![Image: "Status Code: 401" error on sxa r cmd](/uploads/status-code-401-error-on-sxa-r-cmd-due-to-admin-user-locked.png "Status Code 401 - Sitecore Admin User Locked")
 
 In Sitecore SXA, for theme building, JS & CSS magnification we use "**sxa r"** command from theme folder. 
 
