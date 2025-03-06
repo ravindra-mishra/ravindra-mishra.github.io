@@ -85,6 +85,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         date={frontmatter.date}
         modifiedDate={frontmatter.date}
         content={removeMd(markdown)}
+        author="Ravindra Mishra"
       />
 
       <BlogHeader
