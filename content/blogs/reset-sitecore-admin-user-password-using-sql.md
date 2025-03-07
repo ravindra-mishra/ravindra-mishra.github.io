@@ -20,8 +20,6 @@ In Sitecore, the admin user password is stored in the `core` database (`<sitecor
 
 This guide provides SQL queries to **reset the "admin" password to "b"** based on the hashing algorithm used in your Sitecore instance.
 
-- - -
-
 ## Identify the Hash Algorithm Used
 
 Before resetting the password, you need to determine which hashing algorithm is being used in your Sitecore instance. The configuration can be found in the following files:
@@ -47,8 +45,6 @@ C:\inetpub\wwwroot\<sitecore_cm_instance>\web.config
 ![Password Hash Algorithm in Web.config file - Identity Server Disabled](/uploads/password-hash-algorithm-in-web-config.png "Password Hash Algorithm in Web.config file - Identity Server Disabled")
 
 Inside these files, search for the `hashAlgorithmType` setting to identify whether SHA1 or SHA512 is used.
-
-- - -
 
 ## SQL Queries to Reset Password
 
@@ -88,9 +84,7 @@ UPDATE [aspnet_Membership]
 
 > **Note:** Make sure you run this SQL query on the `<sitecore_instance>_Core` database.
 
-- - -
-
 Hope you found this article helpful! Feel free to share any feedback or suggestions in the comments section.
 
 If you're only looking to unlock the Sitecore admin user, check out this blog:
-Fix Status Code 401 Error on SXA Commands or Unlock Sitecore Admin User.
+[Fix Status Code 401 Error on SXA Commands or Unlock Sitecore Admin User](https://ravindra-mishra.github.io/blogs/fix-status-code-401-error-on-sxa-commands-or-unlock-sitecore-admin-user).
