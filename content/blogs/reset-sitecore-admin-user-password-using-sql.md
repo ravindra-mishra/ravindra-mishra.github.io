@@ -34,7 +34,7 @@ C:\inetpub\wwwroot\<sitecore_identity_server_instance>\sitecore\Sitecore.Plugin.
 
 ![Password Hash Algorithm in Identity Server XML file - Identity Server Enabled](/uploads/password-hash-algorithm-in-identityserver.xml.png "Password Hash Algorithm in Identity Server XML file - Identity Server Enabled")
 
-### Case 2: Identity Server Disabled (Default)
+### Case 2: Identity Server Disabled
 
 * Look for the following file:
 
@@ -82,7 +82,9 @@ UPDATE [aspnet_Membership]
             );
 ```
 
-> **Note:** Make sure you run this SQL query on the `<sitecore_instance>_Core` database.
+**Note:** Make sure you run this SQL query on the `<sitecore_instance>_Core` database.
+
+
 
 Hope you found this article helpful! Feel free to share any feedback or suggestions in the comments section.
 
