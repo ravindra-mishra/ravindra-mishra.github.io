@@ -34,6 +34,11 @@ const BasicMeta: FC<BasicMetaProps> = ({
       />
       {author ? <meta name="author" content={author} /> : null}
       <link rel="canonical" href={config.base_url + url} />
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8135207289906277"
+        crossOrigin="anonymous"
+      ></script>
     </Head>
   );
 };
