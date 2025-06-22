@@ -59,6 +59,9 @@
       width: fit-content;
       padding: 0 5px;
       color: $site-black;
+      a:hover {
+        color: $primary;
+      }
     }
   }
 }

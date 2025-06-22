@@ -11,14 +11,7 @@ import TitleBanner from "@/components/TitleBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
 import removeMd from "remove-markdown";
-
-// Define the type for a single blog item
-interface Blog {
-  title: string;
-  content: string;
-  date: Date;
-  slug: string; // The filename without the .md extension
-}
+import { Blog } from "@/types/blog";
 
 // Define the props for the Home component
 interface HomeProps {
@@ -62,9 +55,15 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
                       {blog.title}
                     </Link>
                   </h3>
-                  <FormattedDate date={blog.date} />
+                  <FormattedDate
+                    date={
+                      typeof blog.date === "string"
+                        ? new Date(blog.date)
+                        : blog.date
+                    }
+                  />
                   <div className="line" />
-                  <p className="post-snippet">{blog.content}</p>
+                  <p className="post-snippet">{blog.excerpt}</p>
                   <Link
                     href={`/blogs/${blog.slug}`}
                     className="button"
@@ -95,12 +94,29 @@ export const getStaticProps: GetStaticProps = async () => {
     const file = fs.readFileSync(`./content/blogs/${filename}`, "utf8");
     const matterData = matter(file);
     const plainTextContent = removeMd(matterData.content as string);
+
+    // Calculate read time (simple words-per-minute estimate)
+    const words = plainTextContent.split(/\s+/).length;
+    const readTime = Math.ceil(words / 200) + " min read";
+
     return {
       title: matterData.data.title as string,
-      date: matterData.data.date as Date,
-      content:
+      excerpt:
+        matterData.data.excerpt ||
         plainTextContent.slice(0, 150) +
-        (plainTextContent.length > 150 ? "..." : ""),
+          (plainTextContent.length > 150 ? "..." : ""),
+      category:
+        Array.isArray(matterData.data.tags) && matterData.data.tags.length > 0
+          ? matterData.data.tags.map((tag: string | { tag: string }) =>
+              typeof tag === "object" && tag !== null ? tag.tag : tag
+            )
+          : undefined,
+      date: matterData.data.date as string | Date,
+      readTime,
+      iconClass: "",
+      url: `/blogs/${filename.slice(0, filename.indexOf("."))}`,
+      featured: matterData.data.featured || false,
+      content: plainTextContent,
       slug: filename.slice(0, filename.indexOf(".")),
     };
   });
