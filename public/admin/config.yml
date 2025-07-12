@@ -47,6 +47,11 @@ collections:
         widget: "string"
       - label: "Description"
         name: "description"
+      - label: "Featured Image"
+        name: "featuredImage"
+        widget: "image"
+        required: true
+        hint: "Used for blog thumbnail, meta image, and social sharing (og:image)"
         widget: "string"
       - label: "Keywords"
         name: "keywords"
