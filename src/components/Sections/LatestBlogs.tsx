@@ -7,7 +7,6 @@ interface LatestBlogsProps {
 }
 
 const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
-  console.log(blogs);
   if (!blogs || blogs.length === 0) return null;
 
   const [featured, ...rest] = blogs.slice(0, 4);
