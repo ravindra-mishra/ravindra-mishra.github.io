@@ -56,10 +56,10 @@ const SiteFooter: React.FC = () => {
             <h4>Important Pages</h4>
             <ul>
               <li>
-                <Link href="/blog">Blog Home</Link>
+                <Link href="/blogs">Blog Home</Link>
               </li>
               <li>
-                <Link href="/blog/categories">Categories</Link>
+                <Link href="/category">Categories</Link>
               </li>
               <li>
                 <Link href="/about">About</Link>
@@ -73,7 +73,7 @@ const SiteFooter: React.FC = () => {
             <h4>Legal & Info</h4>
             <ul>
               <li>
-                <Link href="/privacy-policy">Privacy Policy</Link>
+                <Link href="/privacy">Privacy Policy</Link>
               </li>
               <li>
                 <Link href="/sitemap.xml">Sitemap</Link>
