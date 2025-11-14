@@ -73,7 +73,13 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                     </span>
                   )}
                 </div>
-                <h3 className="post-title">{featured.title}</h3>
+                {featured.url ? (
+                  <a href={featured.url}>
+                    <h3 className="post-title">{featured.title}</h3>
+                  </a>
+                ) : (
+                  <h3 className="post-title">{featured.title}</h3>
+                )}
                 <p className="post-excerpt">{featured.excerpt}</p>
                 <a href={featured.url} className="read-more">
                   Read Full Article <i className="fas fa-arrow-right"></i>
@@ -133,7 +139,13 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                     </span>
                   )}
                 </div>
-                <h3 className="post-title">{blog.title}</h3>
+                {featured.url ? (
+                  <a href={blog.url}>
+                    <h3 className="post-title">{blog.title}</h3>
+                  </a>
+                ) : (
+                  <h3 className="post-title">{blog.title}</h3>
+                )}
                 <p className="post-excerpt">{blog.excerpt}</p>
                 <Link href={blog.url ?? "#"} className="read-more">
                   Read More <i className="fas fa-arrow-right"></i>

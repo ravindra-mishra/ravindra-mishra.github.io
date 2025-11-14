@@ -24,7 +24,7 @@ const BlogHeader: FC<BlogHeaderProps> = ({
      <div
         className={`background-primary blog-header ${className || ""}`}
         style={{
-          backgroundImage: `linear-gradient(45deg, #3f51b5, #3f51b5a8), url(${featureImage})`,
+          backgroundImage: `linear-gradient(45deg, #2c5282, #2c5282a8), url(${featureImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

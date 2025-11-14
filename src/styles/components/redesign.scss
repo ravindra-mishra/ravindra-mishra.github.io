@@ -1,10 +1,4 @@
-$color_1: #2d3748;
-$color_2: #718096;
-$color_3: white;
-$color_4: #2c5282;
-$color_5: #a0aec0;
-$color_6: #4299e1;
-$border-color_1: #2c5282;
+@import "abstract/_vars.scss";
 
 /* Latest Posts Section */
 /* LinkedIn Integration Section */
@@ -62,6 +56,9 @@ $border-color_1: #2c5282;
   }
   .post-title {
     font-size: 1.8rem;
+    &:hover {
+      color: $primary;
+    }
   }
 }
 .post-card {
@@ -112,6 +109,9 @@ $border-color_1: #2c5282;
   color: $color_1;
   margin-bottom: 0.75rem;
   line-height: 1.3;
+  &:hover {
+    color: $primary;
+  }
 }
 .post-excerpt {
   color: $color_2;
@@ -229,7 +229,7 @@ $border-color_1: #2c5282;
 }
 .footer-section {
   h4 {
-    color: $color_4;
+    color: $gray;
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
