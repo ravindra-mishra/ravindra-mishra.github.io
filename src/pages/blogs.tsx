@@ -6,7 +6,7 @@ import BasicMeta from "@/components/meta/BasicMeta";
 import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
 import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
 import { GetStaticProps } from "next";
-import FormattedDate from "@/components/FormattedDate";
+// import FormattedDate from "@/components/FormattedDate";
 import TitleBanner from "@/components/TitleBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
