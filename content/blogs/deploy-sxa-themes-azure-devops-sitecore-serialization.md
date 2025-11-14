@@ -3,6 +3,7 @@ title: Deploy SXA Themes with Azure DevOps & Sitecore Content Serialization (SCS
 description: Streamline SXA theme deployment with Azure DevOps & Sitecore
   Content Serialization, eliminating pre-optimized file conflicts and
   simplifying team coll
+featuredImage: /uploads/blog-password-reset-banner.jpg
 keywords: Azure DevOps, SCS, Sitecore, Sitecore Content Serialization, SXA, Theme
 metaDescription: Streamline SXA theme deployment with Azure DevOps & Sitecore
   Content Serialization, eliminating pre-optimized file conflicts and

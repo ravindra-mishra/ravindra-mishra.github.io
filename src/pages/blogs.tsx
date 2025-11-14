@@ -49,7 +49,7 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
           <div className="">
             <div className="blog-list">
               {blogs.map((blog) => (
-                <div key={blog.slug} className="blog-post-card">
+                <div key={blog.slug} className="blog-post-card" data-backgroundurl={blog.featuredImage}>
                   <h3 className="blog-heading">
                     <Link href={`/blogs/${blog.slug}`} aria-label={blog.title}>
                       {blog.title}
@@ -114,6 +114,7 @@ export const getStaticProps: GetStaticProps = async () => {
       date: matterData.data.date as string | Date,
       readTime,
       iconClass: "",
+      featuredImage: matterData.data.featuredImage || "",
       url: `/blogs/${filename.slice(0, filename.indexOf("."))}`,
       featured: matterData.data.featured || false,
       content: plainTextContent,

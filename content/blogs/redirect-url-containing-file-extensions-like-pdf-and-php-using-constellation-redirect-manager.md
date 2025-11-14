@@ -2,6 +2,7 @@
 title: Redirect URL with file extensions using Constellation Redirect Manager
 description: Redirect URL containing file extensions like PDF and PHP using
   Constellation Redirect Manager.
+featuredImage: /uploads/blog-password-reset-banner.jpg
 keywords: Allowed extensions, Config, Constellation, DailySitecore, File
   Extensions, Patch, Redirect, Redirect Manager, Sitecore, SXA
 metaDescription: Redirect URL containing file extensions like PDF and PHP using

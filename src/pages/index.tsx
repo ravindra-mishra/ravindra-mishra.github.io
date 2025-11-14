@@ -76,6 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
       readTime,
       iconClass: "",
       url: `/blogs/${filename.slice(0, filename.indexOf("."))}`,
+      featuredImage: matterData.data.featuredImage || "",
       featured: matterData.data.featured || false,
       content: plainTextContent,
       slug: filename.slice(0, filename.indexOf(".")),

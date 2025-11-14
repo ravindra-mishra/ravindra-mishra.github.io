@@ -5,6 +5,7 @@ export interface Blog {
     date: string | Date;
     readTime?: string;
     iconClass?: string;
+    featuredImage?: string;
     url?: string;
     featured?: boolean;
     content: string;

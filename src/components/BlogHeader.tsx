@@ -8,6 +8,7 @@ export interface BlogHeaderProps {
   tags: { tag: string }[];
   date: Date;
   readingTime: string;
+  featureImage: string;
 }
 
 const BlogHeader: FC<BlogHeaderProps> = ({
@@ -16,11 +17,20 @@ const BlogHeader: FC<BlogHeaderProps> = ({
   tags,
   date,
   readingTime,
+  featureImage
 }) => {
   console.log(tags);
   return (
-    <div className={`background-primary blog-header ${className || ""}`}>
-      <div className="container">
+     <div
+        className={`background-primary blog-header ${className || ""}`}
+        style={{
+          backgroundImage: `linear-gradient(45deg, #3f51b5, #3f51b5a8), url(${featureImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+      <div className="container" data-backgroundurl={featureImage}>
         <h1>{title}</h1>
         <div className="blog-header-summary">
           <FormattedDate date={date} emoji={true} />

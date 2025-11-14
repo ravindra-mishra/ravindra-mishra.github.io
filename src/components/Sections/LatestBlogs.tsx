@@ -30,8 +30,23 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                 animation: "0.8s ease-out 0s 1 normal none running fadeInUp",
               }}
             >
-              <div className="post-image">
-                <i className={featured.iconClass}></i>
+            <div
+                className="post-image"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(
+                      45deg,
+                      rgba(44, 82, 130, 0.5),
+                      rgba(66, 153, 225, 0.2)
+                    ),
+                    url(${featured.featuredImage})
+                  `,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <i className={featured.featuredImage}></i>
               </div>
               <div className="post-content">
                 <div className="post-meta">
@@ -75,8 +90,23 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                 animation: "0.8s ease-out 0s 1 normal none running fadeInUp",
               }}
             >
-              <div className="post-image">
-                <i className={blog.iconClass}></i>
+              <div
+                className="post-image"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(
+                      45deg,
+                      rgba(44, 82, 130, 0.5),
+                      rgba(66, 153, 225, 0.2)
+                    ),
+                    url(${blog.featuredImage})
+                  `,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <i className={featured.featuredImage}></i>
               </div>
               <div className="post-content">
                 <div className="post-meta">
