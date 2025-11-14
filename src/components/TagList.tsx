@@ -16,7 +16,7 @@ const TagList: FC<TagListProps> = ({ tags, title, emoji, className }) => {
       <ul>
         {tags.map((tagObj, index) => (
           <li key={index} className="button button-primary">
-            <Link href={`/category/${tagObj.tag}`} className="tag-link">
+            <Link href={`/categories/${tagObj.tag}`} className="tag-link">
               {`#${tagObj.tag}`}
             </Link>
           </li>

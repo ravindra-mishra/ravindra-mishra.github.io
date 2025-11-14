@@ -112,7 +112,7 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                <i className={featured.featuredImage}></i>
+                <i className={blog.featuredImage}></i>
               </div>
               <div className="post-content">
                 <div className="post-meta">
@@ -139,7 +139,7 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                     </span>
                   )}
                 </div>
-                {featured.url ? (
+                {blog.url ? (
                   <a href={blog.url}>
                     <h3 className="post-title">{blog.title}</h3>
                   </a>

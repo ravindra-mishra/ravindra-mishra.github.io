@@ -54,7 +54,7 @@ const CategoryPage: React.FC<PageProps> = ({ tags }) => {
               <ul>
                 {tags.map((tag) => (
                   <li key={tag.slug}>
-                    <Link href={`/category/${tag.slug}`}>{tag.name}</Link>
+                    <Link href={`/categories/${tag.slug}`}>{tag.name}</Link>
                   </li>
                 ))}
               </ul>
