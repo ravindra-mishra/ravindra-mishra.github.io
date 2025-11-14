@@ -3,6 +3,7 @@ title: How to Reset Sitecore Admin User Password Using SQL
 description: Learn how to reset the Sitecore admin user password using SQL by
   updating the aspnet_Membership table in the sitecore_core database. Identify
   the hash algorithm and apply the correct query.
+featuredImage: /uploads/blog-password-reset-banner.jpg
 keywords: Sitecore, Sitecore admin password reset, identity server, Sitecore SQL
   query, reset admin password Sitecore, Sitecore core database, Sitecore
   security, Sitecore membership table, Sitecore hash algorithm, hsa1, sha512
