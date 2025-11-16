@@ -9,7 +9,7 @@ keywords: Sitecore Marketplace, Sitecore XM Cloud, Sitecore SDK, Sitecore
 metaDescription: Discover Sitecore Marketplace apps, their architecture,
   extension points, and why they’re essential for extending XM Cloud without
   altering its core.
-featuredImage: /uploads/blog-deploy-sxa-themes-with-azure-devops-sitecore-content-serialization.jpg
+featuredImage: /uploads/blog-sitecore-marketplace-apps-overview-and-why-they-matter.jpg
 slug: sitecore-marketplace-apps-part1-overview
 date: November 16, 2025 4:51 PM
 tags:
