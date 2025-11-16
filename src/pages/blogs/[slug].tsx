@@ -25,6 +25,7 @@ interface Frontmatter {
   title: string;
   description: string;
   metaDescription: string;
+  featuredImage: string;
   keywords: string;
   date: Date;
   tags: { tag: string }[];
@@ -71,6 +72,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         url={`/blogs/${slug}`}
         title={frontmatter.title}
         description={frontmatter.metaDescription}
+        image={frontmatter.featuredImage}
       />
       <TwitterCardMeta
         url={`/blogs/${slug}`}
@@ -86,6 +88,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         modifiedDate={frontmatter.date}
         content={removeMd(markdown)}
         author="Ravindra Mishra"
+        image={frontmatter.featuredImage}
       />
 
       <BlogHeader
@@ -94,6 +97,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         tags={frontmatter.tags}
         className="blog-page"
         readingTime={readingTime}
+        featureImage={frontmatter.featuredImage}
       />
       <Breadcrumb className="blog-page" />
       <div className="container">

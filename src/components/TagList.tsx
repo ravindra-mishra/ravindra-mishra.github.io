@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC } from "react";
 
 export interface TagListProps {
@@ -14,10 +15,11 @@ const TagList: FC<TagListProps> = ({ tags, title, emoji, className }) => {
       {emoji && <span>🏷️</span>}
       <ul>
         {tags.map((tagObj, index) => (
-          <li
-            key={index}
-            className="button button-primary"
-          >{`#${tagObj.tag}`}</li>
+          <li key={index} className="button button-primary">
+            <Link href={`/categories/${tagObj.tag}`} className="tag-link">
+              {`#${tagObj.tag}`}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

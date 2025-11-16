@@ -31,7 +31,7 @@ const ScrollToTop: React.FC = () => {
             position: "fixed",
             bottom: "15px",
             right: "15px",
-            backgroundColor: "#5069e3",
+            backgroundColor: "#2c5282",
             border: "none",
             borderRadius: "5px",
             width: "40px",

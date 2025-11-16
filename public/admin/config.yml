@@ -59,6 +59,11 @@ collections:
       - label: "Meta Description"
         name: "metaDescription"
         widget: "string"
+      - label: "Featured Image"
+        name: "featuredImage"
+        widget: "image"
+        required: true
+        hint: "Used for blog thumbnail, meta image, and social sharing (og:image)"
       - label: "Slug"
         name: "slug"
         widget: "string"

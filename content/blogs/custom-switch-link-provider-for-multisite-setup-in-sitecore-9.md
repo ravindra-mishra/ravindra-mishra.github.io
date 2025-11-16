@@ -2,6 +2,7 @@
 title: A Custom Switch Link Provider for Multisite setup in Sitecore 9
 description: Custom Switch Link Provider for Multisite setup in Sitecore 9.1.
   Set custom site definition attribute for link provider for all sites.
+featuredImage: /uploads/blog-a-custom-switch-link-provider-for-multisite-setup-in-sitecore-9.jpg
 keywords: Sitecore, Sitecore 9, Custom Switch Link Provider, Link Manager,
   Multisite, Blog
 metaDescription: Custom Switch Link Provider for Multisite setup in Sitecore

@@ -13,7 +13,7 @@ const PromoSection: React.FC = () => {
             Senior Sitecore Developer & Full Stack Web Developer
             <br />
             <br />
-            Having over 5 years of experience in development, specializing in
+            Having over 7 years of experience in development, specializing in
             Sitecore and ASP.NET applications, I have a strong background in
             creating scalable and efficient solutions.
             <br />

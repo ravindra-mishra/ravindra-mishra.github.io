@@ -12,6 +12,21 @@ const Experience: React.FC = () => {
         </div>
         <div className="promo-content">
           <div className="experience">
+            <div className="organization">
+              <div className="timeline">
+                <div className="organization-name">
+                  <h3>Altudo, India</h3>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-marker"></div>
+                  <div className="timeline-content">
+                    <p className="timeline-date">June 2025 to Present</p>
+                    <h4>Senior Associate - Sitecore</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* First Organization: Perficient India */}
             <div className="organization">
               <div className="timeline">
@@ -21,7 +36,7 @@ const Experience: React.FC = () => {
                 <div className="timeline-item">
                   <div className="timeline-marker"></div>
                   <div className="timeline-content">
-                    <p className="timeline-date">August 2023 to Present</p>
+                    <p className="timeline-date">August 2023 to May 2025</p>
                     <h4>Sr. Technical Consultant</h4>
                   </div>
                 </div>

@@ -15,7 +15,7 @@ const IntroContent: FC<IntroContentProps> = ({ className }) => {
         />
       </div>
       <p className="intro-snippet">
-        My name is Ravindra Mishra. I am a Sitecore Consultant with over 5 years
+        My name is Ravindra Mishra. I am a Sitecore Consultant with over 7 years
         of experience as an IT professional, including 3 years of specialized
         experience with Sitecore. I love traveling, exploring new places, and
         capturing natural photos with my mobile phone.
