@@ -47,7 +47,7 @@ const Privacy = () => {
               <a href="https://ravindra-mishra.github.io/">
                 https://ravindra-mishra.github.io
               </a>{" "}
-              (the "Website"), operated by Ravindra Mishra, an individual based
+              (the &quot;Website&quot;), operated by Ravindra Mishra, an individual based
               in India.
             </p>
 
@@ -87,7 +87,7 @@ const Privacy = () => {
             <p>
               The Website complies with major regulations, including the EU
               General Data Protection Regulation (GDPR), California Consumer
-              Privacy Act (CCPA), and India's Digital Personal Data Protection
+              Privacy Act (CCPA), and India&apos;s Digital Personal Data Protection
               Act, 2023 (DPDP Act). Data is processed based on your consent,
               legitimate interests, or legal requirements, as applicable.
             </p>
