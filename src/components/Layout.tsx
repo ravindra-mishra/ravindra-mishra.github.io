@@ -52,6 +52,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
         <meta name="theme-color" content="#fff" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
       </Head>
 
       <GoogleAnalytics gaId={GA_TRACKING_ID} />

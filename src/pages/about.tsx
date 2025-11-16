@@ -1,5 +1,4 @@
 import Breadcrumb from "@/components/Breadcrumb";
-import IntroContent from "@/components/IntroContent";
 import Layout from "@/components/Layout";
 import BasicMeta from "@/components/meta/BasicMeta";
 import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
@@ -70,10 +69,6 @@ const About = () => {
               .
             </p>
             <p>Happy learning!</p>
-          </div>
-
-          <div className="side-container">
-            <IntroContent className="remove-top-margin" />
           </div>
         </div>
       </div>

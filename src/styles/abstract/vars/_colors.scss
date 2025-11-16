@@ -4,22 +4,31 @@ $white: #fff;
 
 $black: #000;
 $site-black: #1f243c;
-$primary: #3f51b5;
+$primary: #2c5282;
 $gray: #d8e0e7;
 // $blog-anchor: #3150ff;
 // $font-color: #343434;
 $font-color: $site-black;
 
-$gray-default-light: #c8d0f9;
-$gray-default: gray;
-$gray-default-dark: #5c6592;
+$gray-default-light: lighten($primary, 35%);  // ~light gray
+$gray-default: lighten($primary, 50%);        // neutral gray
+$gray-default-dark: darken($primary, 20%);    // dark gray
 
-$gray-blue-light: #c8d0f9;
+$gray-blue-light: lighten($primary, 30%);
 // $gray-blue: #838ec4;
-$gray-blue: #647bea;
+$gray-blue: lighten($primary, 15%);
 
-$gray-blue-dark: #5c6592;
+$gray-blue-dark: darken($primary, 15%);
 
 $logo-gray-light: $gray-default-light;
 $logo-gray: $gray-default;
 $logo-gray-dark: $gray-default-dark;
+
+
+$color_1: #2d3748;
+$color_2: #718096;
+$color_3: white;
+$color_4: #2c5282;
+$color_5: #a0aec0;
+$color_6: #4299e1;
+$border-color_1: #2c5282;

@@ -80,7 +80,7 @@ const Navigation: FC<NavigationProps> = ({ className, isFooter }) => {
             </Link>
           </li> */}
 
-          <li className="footer-only">
+          {/* <li className="footer-only">
             <Link
               href="https://github.com/ravindra-mishra"
               target="_blank"
@@ -97,7 +97,7 @@ const Navigation: FC<NavigationProps> = ({ className, isFooter }) => {
             >
               LinkedIn Profile
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

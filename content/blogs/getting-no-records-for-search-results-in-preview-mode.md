@@ -3,6 +3,7 @@ title: Getting no records for search results in preview mode - Sitecore SXA
 description: The search result is blank in Preview Mode of Experience Editor and
   Error messages are showing at top stating 'Object reference not set to an
   instance
+featuredImage: /uploads/blog-getting-no-records-for-search-results-in-preview-mode-sitecore-sxa.jpg
 keywords: preview mode, publishable, search, search api, SXA, unpublishable item
 metaDescription: The search result is blank in Preview Mode of Experience Editor
   and Error messages are showing at top stating 'Object reference not set to an
