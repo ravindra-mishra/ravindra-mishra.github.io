@@ -36,10 +36,11 @@ const Portfolio = ({ blogs }: PortfolioProps) => {
       <Banner />
       <LatestBlogs blogs={blogs} />
       <PC />
-      <Experience />
+          <Award />
+      {/* <Experience /> */}
       <TechnicalSkills />
-      <Award />
-      <Projects />
+  
+      {/* <Projects /> */}
     </Layout>
   );
 };
