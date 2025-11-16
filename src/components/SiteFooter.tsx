@@ -10,7 +10,7 @@ const SiteFooter: React.FC = () => {
           <div className="footer-section">
             <h4>About Ravindra</h4>
             <p>
-              Senior Sitecore Developer with over 5 years of experience in
+              Senior Sitecore Developer with over 7 years of experience in
               creating scalable web solutions. Passionate about sharing
               knowledge through blogging and continuous learning in the
               ever-evolving tech landscape.

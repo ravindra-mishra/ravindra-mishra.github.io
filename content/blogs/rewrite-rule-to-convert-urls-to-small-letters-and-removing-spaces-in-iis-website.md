@@ -3,7 +3,7 @@ title: Rewrite rule to convert URLs to small letters and removing spaces in IIS
   Website
 description: Rewrite rule to convert URLs to small letters and removing spaces.
   Convert uppercase URLs to lowercase URLs
-featuredImage: /uploads/blog-password-reset-banner.jpg
+featuredImage: /uploads/blog-rewrite-rule-to-convert-urls-to-small-letters-and-removing-spaces-in-iis-website.jpg
 keywords: Config, DailySitecore, IIS, Lowercase, Rewrite Url, SEO, Sitecore,
   Slug, Upparcase, URL, XML
 metaDescription: Rewrite rule to convert URLs to small letters and removing

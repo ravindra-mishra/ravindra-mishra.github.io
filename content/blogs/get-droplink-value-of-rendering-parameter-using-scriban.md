@@ -1,7 +1,7 @@
 ---
 title: Get droplink value of rendering parameter using scriban in Sitecore
 description: How to get droplink value of rendering parameter using scriban in Sitecore SXA
-featuredImage: /uploads/blog-password-reset-banner.jpg
+featuredImage: /uploads/blog-get-droplink-value-of-rendering-parameter-using-scriban-in-sitecore.jpg
 keywords: Component, DailySitecore, Droplink, Droplist, OOTB, parameter,
   Rendering Parameter, Scriban, Sitecore, SXA
 metaDescription: How to get droplink value of rendering parameter using scriban in Sitecore SXA

@@ -3,7 +3,7 @@ title: How to Fix Status Code 401 Error on SXA Commands or Unlock Sitecore Admin
 description: "The Sitecore login get blocked due to multiple failed login
   attempts. Unlock the Sitecore login. Getting Status code: 401 Answer error for
   sxa r."
-featuredImage: /uploads/blog-password-reset-banner.jpg
+featuredImage: /uploads/blog-how-to-fix-status-code-401-error-on-sxa-commands-or-unlock-sitecore-admin-user.jpg
 keywords: 401, DailySitecore, Docker, Sitecore, Sitecore Locked, SQL, Status
   Code 401, SXA, SXA R, Theme, Unlock Sitecore, User
 metaDescription: "The Sitecore login get blocked due to multiple failed login
