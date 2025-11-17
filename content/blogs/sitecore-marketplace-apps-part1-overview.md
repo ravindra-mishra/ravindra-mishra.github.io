@@ -57,3 +57,82 @@ This architecture gives you full flexibility:
 ## Who Should Build a Sitecore Marketplace App & When
 
 ### Who it’s for
+
+The Sitecore marketplace app is ideal if you’re looking to extend Sitecore XM Cloud without altering its core. Typical audiences include:
+
+* Developers or partners who want to add new capabilities or UI components inside Sitecore.
+* Organizations that run repetitive tasks (e.g., publishing workflows, QA checks) and want to automate them.
+* Teams planning to integrate external services like DAM, CRM, AI, analytics, etc.
+* Agencies building reusable components that can serve multiple clients.
+
+### When it makes sense to build
+
+Consider building a Marketplace app when you’re facing scenarios such as:
+
+* The need for **custom UI elements** within XM Cloud (for example, a new panel in Page Builder or a dashboard widget).
+* You want to **connect Sitecore to external APIs -** —for translation, personalization, CRM sync, analytics, and so on.
+* You aim to **streamline editorial workflows**, such as bulk publishing, content audits or automation of repetitive tasks.
+* You plan to **share your solution publicly** (or privately with one client or partner) so it can be reused or installed later.
+
+### Example Use Cases (Not Limited To These)
+
+1. **Integration Apps:**
+
+   * Connect Sitecore with Salesforce, HubSpot, or AI services
+2. **Authoring Enhancements**
+
+   * AI-powered content suggestions in Page Builder
+   * Custom field pickers for taxonomy or media
+3. **Monitoring & Analytics**
+
+   * Health check dashboards
+   * Real-time KPI widgets
+4. **Marketing Tools**
+
+   * Campaign management widgets
+   * Personalization rule builders
+5. **Agentic AI Applications**
+
+   * *AI Content Assistant:* Suggest headlines, rewrite text, generate SEO-friendly content
+   * *Autonomous Campaign Manager:* AI monitors analytics and launches campaigns automatically
+   * *Predictive Personalization:* AI adjusts content blocks in real-time based on user intent
+   * *Automated QA & Compliance:* AI checks content for brand compliance or accessibility before publishing
+
+## What’s Next After Deciding to Build a Marketplace App?
+
+Once you’ve decided to build a Sitecore Marketplace app, you have two great starting points:
+
+### The official Sitecore Marketplace Starter Kit
+
+Available on [GitHub](https://github.com/Sitecore/marketplace-starter), this kit is perfect for learning the basics and following Sitecore’s recommended patterns.
+
+**Features:**
+
+* Demonstrates all five extension points: 
+
+  * Custom Field
+  * Dashboard Widget
+  * Fullscreen
+  * Pages Context Panel
+  * Standalone
+* Built using the Sitecore Marketplace SDK.
+* Ideal for quick onboarding and understanding Sitecore’s architecture.
+
+### The shadcn starter kit
+
+If you prefer a full-stack approach, the ShadCN kit provides more preconfigured components and examples.
+
+**Features:**
+
+* Pre-configured **Auth0 integration** for Sitecore Cloud
+* Includes **client-side and server-side examples**
+* Built with Next.js and provides **multiple example approaches**, including server-side implementations
+
+Both options are solid—choose the one that fits your project needs and development style.
+
+## Conclusion
+
+Sitecore Marketplace apps open up endless possibilities for extending XM Cloud without touching its core. Whether you want to integrate external services, streamline workflows, or add AI-powered features, these apps give you the flexibility to innovate.
+
+
+In the next part of this series, we’ll walk through building a full-stack Marketplace app using **Next.js** and **shadcn starter kit**, complete with authentication and extension points. Stay tuned!
