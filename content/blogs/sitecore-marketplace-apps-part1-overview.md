@@ -30,11 +30,13 @@ A Sitecore Marketplace app is a separate web application—typically built with 
 
 **Hosted by you:** The app runs independently by you (on preferred infrastructure).
 **Integrated inside Sitecore Portal (SaaS):** Through [extension points](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html), the app integrates into the Sitecore UI (for example, as a Dashboard Widget or Page Builder Panel). Currently, it supports only Sitecore AI (formerly XM Cloud), but future updates may include other Sitecore SaaS products.
-o	[Standalone](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#standalone): The app appears on the Sitecore Cloud Portal’s home page and opens in a new tab. 
-o	[Full screen](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#full-screen): The app is listed in the SitecoreAI/XM Cloud navigation bar and displays full-screen under the header — ideal for deep workflows.
-o	[Page builder context panel (SitecoreAI/XMC)](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#page-builder-context-panel): The app shows up as a panel next to the canvas in Page Builder, perfect for page-specific tools. 
-o	[Page builder custom field (SitecoreAI/XMC)](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#page-builder-custom-field): The app is triggered by a custom field in Page Builder, popping up in a modal to provide specialized data or controls. 
-o	[Dashboard widget](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#dashboard-widget): The app can be added to an SitecoreAI / XM Cloud dashboard to display metrics or insights across the site. 
+
+* [Standalone](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#standalone): The app appears on the Sitecore Cloud Portal’s home page and opens in a new tab. [](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#full-screen)
+* [Full screen](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#full-screen): The app is listed in the SitecoreAI/XM Cloud navigation bar and displays full-screen under the header — ideal for deep workflows.
+* [Page builder context panel (SitecoreAI/XMC)](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#page-builder-context-panel): The app shows up as a panel next to the canvas in Page Builder, perfect for page-specific tools.
+* [Page builder custom field (SitecoreAI/XMC)](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#page-builder-custom-field): The app is triggered by a custom field in Page Builder, popping up in a modal to provide specialized data or controls.
+* [Dashboard widget](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#dashboard-widget): The app can be added to an SitecoreAI / XM Cloud dashboard to display metrics or insights across the site.
+
 **Custom Implementation:** You can add any backend or frontend logic as per your needs—whether it’s calling external APIs, running workflows, or adding AI features.
 **Sitecore Marketplace SDK support:** Sitecore is officially offering SDK to build custom sitecore marketplace apps. You can refer the [official documentation](https://doc.sitecore.com/mp/en/developers/sdk/latest/sitecore-marketplace-sdk/sitecore-marketplace-sdk-for-javascript.html#development-tasks-with-the-marketplace-sdk), this provides an overview of the SDK, its modules, and how developers can start using it. Here is the [repository link](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/README.md) for the reference.
 
