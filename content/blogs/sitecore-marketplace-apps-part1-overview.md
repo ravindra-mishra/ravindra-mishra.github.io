@@ -53,3 +53,7 @@ This architecture gives you full flexibility:
 
 * Build lightweight client-side apps for quick UI enhancements.
 * Or create full-stack apps with backend integrations for complex workflows.
+
+## Who Should Build a Sitecore Marketplace App & When
+
+### Who it’s for
