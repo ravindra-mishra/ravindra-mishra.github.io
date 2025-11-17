@@ -36,14 +36,16 @@ o	[Page builder context panel (SitecoreAI/XMC)](https://doc.sitecore.com/mp/en/d
 o	[Page builder custom field (SitecoreAI/XMC)](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#page-builder-custom-field): The app is triggered by a custom field in Page Builder, popping up in a modal to provide specialized data or controls. 
 o	[Dashboard widget](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html#dashboard-widget): The app can be added to an SitecoreAI / XM Cloud dashboard to display metrics or insights across the site. 
 **Custom Implementation:** You can add any backend or frontend logic as per your needs—whether it’s calling external APIs, running workflows, or adding AI features.
-**Sitecore Marketplace SDK support:** Sitecore is officially offering SDK to build custom sitecore marketplace apps. You can refer the official documentation \[Sitecore Marketplace SDK for JavaScript | Sitecore Documentation], this provides an overview of the SDK, its modules, and how developers can start using it. The SDK’s repository link is here for the reference \[marketplace-sdk/docs/README.md at main · Sitecore/marketplace-sdk · GitHub].
+**Sitecore Marketplace SDK support:** Sitecore is officially offering SDK to build custom sitecore marketplace apps. You can refer the [official documentation](https://doc.sitecore.com/mp/en/developers/sdk/latest/sitecore-marketplace-sdk/sitecore-marketplace-sdk-for-javascript.html#development-tasks-with-the-marketplace-sdk), this provides an overview of the SDK, its modules, and how developers can start using it. Here is the [repository link](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/README.md) for the reference.
 
 A quick overview of the key modules in the Sitecore Marketplace SDK — what they are and how they work.
-o	@sitecore-marketplace-sdk/core: Provides the foundational APIs and utilities for building Marketplace apps, including core logic and data models. marketplace-sdk/docs/core-sdk/README.md at main · Sitecore/marketplace-sdk · GitHub
-o	@sitecore-marketplace-sdk/client: Enables client-side integration with Marketplace services, handling authentication and communication from the browser or frontend. marketplace-sdk/docs/client/README.md at main · Sitecore/marketplace-sdk · GitHub
-o	@sitecore-marketplace-sdk/xmc: Offers tools to integrate with Sitecore XM Cloud, including APIs for sites, pages, and content management.marketplace-sdk/docs/modules/xmc/README.md at main · Sitecore/marketplace-sdk · GitHub
-o	experimental_XMC - Server-to-Server API Access: Provides server-to-server access to XM Cloud APIs using @sitecore-marketplace-sdk/xmc without iframe or client SDK, ideal for backend integrations. marketplace-sdk/docs/experimental-xmc.md at main · Sitecore/marketplace-sdk · GitHub
+
+* [@sitecore-marketplace-sdk/core](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/core-sdk/README.md): Provides the foundational APIs and utilities for building Marketplace apps, including core logic and data models.
+* [@sitecore-marketplace-sdk/client](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/client/README.md): Enables client-side integration with Marketplace services, handling authentication and communication from the browser or frontend.
+* [@sitecore-marketplace-sdk/xmc](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/modules/xmc/README.md): Offers tools to integrate with Sitecore XM Cloud, including APIs for sites, pages, and content management
+* [experimental_XMC - Server-to-Server API Access](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/experimental-xmc.md): Provides server-to-server access to XM Cloud APIs using @sitecore-marketplace-sdk/xmc without iframe or client SDK, ideal for backend integrations
 
 This architecture gives you full flexibility:
-•	Build lightweight client-side apps for quick UI enhancements.
-•	Or create full-stack apps with backend integrations for complex workflows.
+
+* Build lightweight client-side apps for quick UI enhancements.
+* Or create full-stack apps with backend integrations for complex workflows.
