@@ -10,7 +10,7 @@ metaDescription: Discover Sitecore Marketplace apps, their architecture,
   extension points, and why they’re essential for extending XM Cloud without
   altering its core.
 featuredImage: /uploads/blog-sitecore-marketplace-apps-overview-and-why-they-matter.jpg
-slug: sitecore-marketplace-apps-part1-overview
+slug: sitecore-marketplace-apps-overview-why-they-matter-part-1
 date: November 16, 2025 4:51 PM
 tags:
   - tag: sitecore
