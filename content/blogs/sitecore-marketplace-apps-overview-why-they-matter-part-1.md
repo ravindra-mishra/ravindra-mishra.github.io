@@ -26,9 +26,9 @@ Here’s the full series:
 
 ## Sitecore Marketplace App Architecture Explained
 
-A Sitecore Marketplace app is a separate web application—typically built with Next.js (though other stacks are supported; check Sitecore documentation) and integrated with Sitecore Cloud portal.
+A Sitecore Marketplace app is an independent web application—typically built with Next.js (though other stacks are supported; check Sitecore documentation) and integrated with Sitecore Cloud portal.
 
-**1. Hosted by you:** The app runs independently by you (on preferred infrastructure).
+**1. Hosted and managed by you:** The app runs independently by you (on preferred infrastructure).
 
 **2. Integrated inside Sitecore Portal (SaaS):** Through [extension points](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html), the app integrates into the Sitecore UI (for example, as a Dashboard Widget or Page Builder Panel). Currently, it supports only Sitecore AI (formerly XM Cloud), but future updates may include other Sitecore SaaS products.
 
