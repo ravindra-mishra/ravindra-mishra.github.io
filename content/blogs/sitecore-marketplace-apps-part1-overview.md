@@ -56,7 +56,7 @@ This architecture gives you full flexibility:
 
 ## Who Should Build a Sitecore Marketplace App & When
 
-### Who it’s for
+### 1. Who it’s for
 
 The Sitecore marketplace app is ideal if you’re looking to extend Sitecore XM Cloud without altering its core. Typical audiences include:
 
@@ -65,7 +65,7 @@ The Sitecore marketplace app is ideal if you’re looking to extend Sitecore XM 
 * Teams planning to integrate external services like DAM, CRM, AI, analytics, etc.
 * Agencies building reusable components that can serve multiple clients.
 
-### When it makes sense to build
+### 2. When it makes sense to build
 
 Consider building a Marketplace app when you’re facing scenarios such as:
 
@@ -74,7 +74,7 @@ Consider building a Marketplace app when you’re facing scenarios such as:
 * You aim to **streamline editorial workflows**, such as bulk publishing, content audits or automation of repetitive tasks.
 * You plan to **share your solution publicly** (or privately with one client or partner) so it can be reused or installed later.
 
-### Example Use Cases (Not Limited To These)
+### 3. Example Use Cases (Not Limited To These)
 
 1. **Integration Apps:**
 
@@ -102,7 +102,7 @@ Consider building a Marketplace app when you’re facing scenarios such as:
 
 Once you’ve decided to build a Sitecore Marketplace app, you have two great starting points:
 
-### The official Sitecore Marketplace Starter Kit
+### 1. The official Sitecore Marketplace Starter Kit
 
 Available on [GitHub](https://github.com/Sitecore/marketplace-starter), this kit is perfect for learning the basics and following Sitecore’s recommended patterns.
 
@@ -118,9 +118,9 @@ Available on [GitHub](https://github.com/Sitecore/marketplace-starter), this kit
 * Built using the Sitecore Marketplace SDK.
 * Ideal for quick onboarding and understanding Sitecore’s architecture.
 
-### The shadcn starter kit
+### 2. The shadcn starter kit
 
-If you prefer a full-stack approach, the ShadCN kit provides more preconfigured components and examples.
+If you prefer a full-stack approach and a quick start using the CLI, the ShadCN kit provides more preconfigured components and examples.
 
 **Features:**
 
