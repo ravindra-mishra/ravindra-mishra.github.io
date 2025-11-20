@@ -86,7 +86,7 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 * Go to Sitecore Cloud Portal. Click on “App Studio” from top navigation.
 * Click on “Create App” button at top right corner of the screen.
-* Enter App name you want to give and select Custom or Public based on your need. ([Refer docs](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html#app-types)) 
+* Enter App name you want to give and select Custom or Public based on your need. ([Refer documentation: App types](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html#app-types)) 
 
   ![Create App in App Studio - Configure Marketplace App in Sitecore App Studio](/uploads/image-create-app-in-app-studio.jpg "Create App in App Studio - Configure Marketplace App in Sitecore App Studio")
 * Click on create and then configure the application. (App Studio > Click on the App)
@@ -98,7 +98,7 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 * **API Access**: Select which Sitecore Cloud products your app can use ( currently only XMC / SitecoreAI is present, but more can be added in future)
 
   ![Selecting Sitecore Cloud products for API Access in Marketplace App](/uploads/image-selecting-sitecore-cloud-products-for-api-access-in-marketplace-app.jpg "Selecting Sitecore Cloud products for API Access in Marketplace App")
-* **Deployment URL**: Since we are in the development stage, running our app locally, enter “https:localhost:3000” as input.
+* **Deployment URL**: Since we are in the development stage, running our app locally, enter “https://localhost:3000” as input.
 * **App Icon:** We need to use an image that is 512×512 and has the required file extension. In this example, I’m using a sample image, but you can use any logo you prefer—as long as it’s available via a public URL.
 
   e﻿g. https://fastly.picsum.photos/id/58/512/512.jpg?hmac=jxfe82GanXiWmTfpdeMNdzSvGv4RS_eqipxzUduQUeg
@@ -107,7 +107,7 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 To enable your application to work with Sitecore App Studio, configure credentials for authorization. This involves setting up allowed URLs for callbacks, logout, and origins, then creating credentials to obtain the **Client ID** and **Client Secret** for future use. For now, we are adding localhost URLs to support local development. Multiple URLs can be added later for other environments like dev or staging.
 
-* **Allowed callback URLs:** http://localhost:3000/auth/callback, https://localhost:3000
+* **Allowed callback URLs:** https://localhost:3000/auth/callback, https://localhost:3000
 * **Allowed logout URLs:** https://localhost:3000
 * **Allowed origins URLs:** https://localhost:3000
 * **Allowed web origins URLs:** https://localhost:3000
@@ -168,7 +168,7 @@ Once authorization is complete, you can reopen your app from the Sitecore portal
 
 **Common Issue:**
 
-When you first open the app from inside the Sitecore Cloud portal, you might run into CORS issues with auth.sitecorecloud.io. This happens because the OAuth flow can be blocked when the app is embedded in the portal.
+When you first open the app from inside the Sitecore Cloud portal, you might run into CORS issues with *auth.sitecorecloud.io*. This happens because the OAuth flow can be blocked when the app is embedded in the portal.
 
 To avoid this, open your app URL in a separate browser tab the very first time before using it inside the portal.
 
@@ -186,11 +186,16 @@ On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Fin
 
 **Page builder context panel:** 
 
-Open your XMC or Sitecore AI instance where the app is installed. Navigate to the Page Builder and ensure you’re on the Editor tab (check the top navigation in Page Builder). Look for the Apps icon—it’s the third icon from the top-right corner, after the Publish button. Click the icon and select your application. Your app will now appear inside the Page Builder.
+* Open your XMC or Sitecore AI instance where the app is installed. Navigate to the Page Builder and ensure you’re on the Editor tab (check the top navigation in Page Builder). 
+* Look for the Apps icon—it’s the third icon from the top-right corner, after the Publish button.
+* Click the icon and select your application. 
 
-![Marketplace App Icon in Sitecore Page Builder](/uploads/marketplace-app-icon-in-sitecore-page-builder.png "Marketplace App Icon in Sitecore Page Builder")
+  ![Marketplace App Icon in Sitecore Page Builder](/uploads/marketplace-app-icon-in-sitecore-page-builder.png "Marketplace App Icon in Sitecore Page Builder")
+* Your app will now appear inside the Page Builder.
 
-![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
+  ![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
+
+
 
 ## Conclusion
 
