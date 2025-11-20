@@ -86,7 +86,7 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 * Go to Sitecore Cloud Portal. Click on “App Studio” from top navigation.
 * Click on “Create App” button at top right corner of the screen.
-* Enter App name you want to give and select Custom or Public based on your need. ([Refer docs](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html#app-types)) 
+* Enter App name you want to give and select Custom or Public based on your need. ([Refer documentation: App types](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html#app-types)) 
 
   ![Create App in App Studio - Configure Marketplace App in Sitecore App Studio](/uploads/image-create-app-in-app-studio.jpg "Create App in App Studio - Configure Marketplace App in Sitecore App Studio")
 * Click on create and then configure the application. (App Studio > Click on the App)
