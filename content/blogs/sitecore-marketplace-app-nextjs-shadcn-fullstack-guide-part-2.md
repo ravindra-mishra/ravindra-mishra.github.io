@@ -168,7 +168,7 @@ Once authorization is complete, you can reopen your app from the Sitecore portal
 
 **Common Issue:**
 
-When you first open the app from inside the Sitecore Cloud portal, you might run into CORS issues with auth.sitecorecloud.io. This happens because the OAuth flow can be blocked when the app is embedded in the portal.
+When you first open the app from inside the Sitecore Cloud portal, you might run into CORS issues with *auth.sitecorecloud.io*. This happens because the OAuth flow can be blocked when the app is embedded in the portal.
 
 To avoid this, open your app URL in a separate browser tab the very first time before using it inside the portal.
 
