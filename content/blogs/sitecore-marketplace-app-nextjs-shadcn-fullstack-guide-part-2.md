@@ -31,7 +31,7 @@ Now it’s time to get hands-on. In this guide, we’ll show you how to build a 
 Here’s the series so far:
 
 1. [Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1)
-2. [Building a Full-Stack Sitecore Marketplace App with Next.js and shadcn – Developer Guide (Part 2)](#)
+2. **Building a Full-Stack Sitecore Marketplace App with Next.js and shadcn – Developer Guide (Part 2)**
 
 As a developer working with Sitecore Cloud, I recently explored an alternative way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a Marketplace Starter Kit on GitHub, this approach includes a pre-configured authentication setup and offers both client-side and server-side examples—making it a flexible, developer-friendly option.
 
