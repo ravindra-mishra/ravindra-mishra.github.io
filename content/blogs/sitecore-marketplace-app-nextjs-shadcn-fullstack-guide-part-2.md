@@ -191,11 +191,11 @@ On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Fin
 * Click the icon and select your application. 
 
   ![Marketplace App Icon in Sitecore Page Builder](/uploads/marketplace-app-icon-in-sitecore-page-builder.png "Marketplace App Icon in Sitecore Page Builder")
-
-
 * Your app will now appear inside the Page Builder.
 
-![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
+  ![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
+
+
 
 ## Conclusion
 
