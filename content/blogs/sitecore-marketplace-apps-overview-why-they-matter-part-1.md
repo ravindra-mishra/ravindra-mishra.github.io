@@ -14,6 +14,9 @@ slug: sitecore-marketplace-apps-overview-why-they-matter-part-1
 date: November 16, 2025 4:51 PM
 tags:
   - tag: sitecore
+  - tag: sitecore-xm-cloud
+  - tag: sitecore-marketplace
+  - tag: nextjs-react-development
 ---
 ## Overview
 
