@@ -120,7 +120,7 @@ Available on [GitHub](https://github.com/Sitecore/marketplace-starter), this kit
 
 ### 2. The shadcn starter kit
 
-If you prefer a full-stack approach and a quick start using the CLI, the ShadCN kit provides more preconfigured components and examples.
+If you prefer a full-stack approach and a [quick start using the CLI](https://doc.sitecore.com/mp/en/developers/sdk/latest/sitecore-marketplace-sdk/quick-start--cli-.html#scaffold-an-app), the ShadCN kit provides more preconfigured components and examples.
 
 **Features:**
 
