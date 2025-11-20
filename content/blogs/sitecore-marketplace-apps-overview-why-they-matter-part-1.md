@@ -31,7 +31,7 @@ Here’s the full series:
 
 A Sitecore Marketplace app is an independent web application—typically built with Next.js (though other stacks are supported; check Sitecore documentation) and integrated with Sitecore Cloud portal.
 
-**1. Hosted and managed by you:** The app runs independently by you (on preferred infrastructure).
+**1. Hosted and managed by you:** The app runs independently on infrastructure of your choice
 
 **2. Integrated inside Sitecore Portal (SaaS):** Through [extension points](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html), the app integrates into the Sitecore UI (for example, as a Dashboard Widget or Page Builder Panel). Currently, it supports only Sitecore AI (formerly XM Cloud), but future updates may include other Sitecore SaaS products.
 
@@ -43,7 +43,7 @@ A Sitecore Marketplace app is an independent web application—typically built w
 
 **3. Custom Implementation:** You can add any backend or frontend logic as per your needs—whether it’s calling external APIs, running workflows, or adding AI features.
 
-**4. Sitecore Marketplace SDK support:** Sitecore is officially offering SDK to build custom sitecore marketplace apps. You can refer the [official documentation](https://doc.sitecore.com/mp/en/developers/sdk/latest/sitecore-marketplace-sdk/sitecore-marketplace-sdk-for-javascript.html#development-tasks-with-the-marketplace-sdk), this provides an overview of the SDK, its modules, and how developers can start using it. Here is the [repository link](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/README.md) for the reference.
+**4. Sitecore Marketplace SDK support:** Sitecore is officially offering SDK to build custom sitecore marketplace apps. You can refer the [official documentation](https://doc.sitecore.com/mp/en/developers/sdk/latest/sitecore-marketplace-sdk/sitecore-marketplace-sdk-for-javascript.html#development-tasks-with-the-marketplace-sdk), this provides an overview of the SDK, its modules, and how developers can start using it. Here is the [repository link for reference](https://github.com/Sitecore/marketplace-sdk/blob/main/docs/README.md).
 
 A quick overview of the key modules in the Sitecore Marketplace SDK — what they are and how they work.
 
