@@ -3,9 +3,9 @@ title: "Sitecore Marketplace Apps: Overview and Why They Matter"
 description: Discover Sitecore Marketplace apps, their architecture, extension
   points, and why they’re essential for extending XM Cloud without altering its
   core.
-keywords: Sitecore Marketplace, Sitecore XM Cloud, Sitecore SDK, Sitecore
-  extensions, Sitecore app development, Sitecore integration, Sitecore AI,
-  Next.js Sitecore app
+keywords: Sitecore Marketplace, Sitecore XM Cloud, Sitecore Marketplace SDK,
+  Sitecore extensions, Sitecore app development, Sitecore integration,
+  SitecoreAI, Next.js Sitecore app, Sitecore Cloud portal
 metaDescription: Discover Sitecore Marketplace apps, their architecture,
   extension points, and why they’re essential for extending XM Cloud without
   altering its core.
@@ -14,6 +14,9 @@ slug: sitecore-marketplace-apps-overview-why-they-matter-part-1
 date: November 16, 2025 4:51 PM
 tags:
   - tag: sitecore
+  - tag: sitecore-xm-cloud
+  - tag: sitecore-marketplace
+  - tag: nextjs-react-development
 ---
 ## Overview
 
@@ -26,9 +29,9 @@ Here’s the full series:
 
 ## Sitecore Marketplace App Architecture Explained
 
-A Sitecore Marketplace app is a separate web application—typically built with Next.js (though other stacks are supported; check Sitecore documentation) and integrated with Sitecore Cloud portal.
+A Sitecore Marketplace app is an independent web application—typically built with Next.js (though other stacks are supported; check Sitecore documentation) and integrated with Sitecore Cloud portal.
 
-**1. Hosted by you:** The app runs independently by you (on preferred infrastructure).
+**1. Hosted and managed by you:** The app runs independently by you (on preferred infrastructure).
 
 **2. Integrated inside Sitecore Portal (SaaS):** Through [extension points](https://doc.sitecore.com/mp/en/developers/marketplace/extension-points.html), the app integrates into the Sitecore UI (for example, as a Dashboard Widget or Page Builder Panel). Currently, it supports only Sitecore AI (formerly XM Cloud), but future updates may include other Sitecore SaaS products.
 
