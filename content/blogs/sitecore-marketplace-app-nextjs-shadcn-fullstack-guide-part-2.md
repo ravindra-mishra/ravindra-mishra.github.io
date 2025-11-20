@@ -32,7 +32,7 @@ Here’s the series so far:
 1. [Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1)
 2. Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 2)
 
-As a developer working with Sitecore Cloud, I recently explored an alternative way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a Marketplace Starter Kit on GitHub, this approach includes a pre-configured authentication setup and offers both client-side and server-side examples—making it a flexible, developer-friendly option.
+As a developer working with Sitecore Cloud, I recently explored an alternative way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a Marketplace Starter Kit on GitHub, this approach includes a pre-configured authentication setup and offers both client-side and server-side examples.
 
 ## Developer Setup: Create and Configure Your Marketplace App
 
@@ -52,7 +52,7 @@ npx shadcn@latest add https://blok-shadcn.vercel.app/r/marketplace/next/quicksta
 
 #### 2. Enable Experimental HTTPS in package.json
 
-As mentioned in the last line of the output after running the npx command, you can enable experimental HTTPS by adding the flag to your package.json scripts. This allows you to run your local app over HTTPS, which is often required for secure authentication flows.
+As mentioned in the last line of the output after running the npx command, you can enable experimental HTTPS by adding the flag to your `package.json` scripts. This allows you to run your local app over HTTPS, which is often required for secure authentication flows.
 
 Update your scripts section like this:
 
@@ -67,7 +67,7 @@ Update your scripts section like this:
 
 #### 3. Review the Environment Variables
 
-This process will create a .env or .env.local file containing variables like the ones shown below. You’ll get values for some of these in Step 2.
+This process will create a `.env` or `.env.local` file containing variables like the ones shown below. You’ll get values for some of these in Step 2.
 
 ```
 NEXT_PUBLIC_AUTH0_DOMAIN=https://auth.sitecorecloud.io
@@ -94,8 +94,8 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 #### 2. Configure your application
 
 * Select **Extensions points** which you want to enable for your application, (you can also configure landing page for each extension points)
-  In this example, we select Standalone and Page Context Panel.
-* **API Access**: Select which Sitecore Cloud products your app can use ( currently only XMC / SitecoreAI is present, but more can be added in future)
+  In this example, we are selecting Standalone and Page Context Panel.
+* **API Access**: Select the Sitecore Cloud products where your app can be installed. Currently, only XMC and SitecoreAI are available, but additional options may be added in the future.
 
   ![Selecting Sitecore Cloud products for API Access in Marketplace App](/uploads/image-selecting-sitecore-cloud-products-for-api-access-in-marketplace-app.jpg "Selecting Sitecore Cloud products for API Access in Marketplace App")
 * **Deployment URL**: Since we are in the development stage, running our app locally, enter “https://localhost:3000” as input.
@@ -121,7 +121,7 @@ Finally, click **Create Credentials** to generate the **Client ID** and **Client
 Collect all important id’s from this page, that we will need to put in our frontend app’s .env file. 
 
 * App ID (Marketplace app ID section, available on right side)
-* Organization ID (from URL query, eg. ?organization=org_TLXXXXXXXPf)
+* Organization ID (from URL query, eg. `?organization=org_TLXXXXXXXPf`)
 * Client ID (Generated from client credentials)
 * Tenant ID (we will get after Activating and Installing the app, refer 6 point)
 
@@ -138,7 +138,7 @@ Collect all important id’s from this page, that we will need to put in our fro
 
 **Install the App:**
 
-Install the app to the respective Sitecore AI / XMC instance where you want this integration.
+Go to the “My Apps” section and install the app on the Sitecore AI or XMC instance where you want to enable this integration.
 
 **Retrieve Tenant ID:**
 
@@ -147,9 +147,11 @@ Install the app to the respective Sitecore AI / XMC instance where you want this
 * Locate the app you recently created and click on it. It will open in a new tab.
 * Copy the **tenantId** from the query string in the URL.
 
+**Note:** After installing the app, any changes made in App Studio must be updated again from the My Apps section to ensure they are reflected.
+
 ### Step 3: Update .env and Run the App
 
-We now have all the IDs collected in the previous step that are required for the environment file. Update your .env file with the details you’ve gathered so far:
+We now have all the IDs collected in the previous step that are required for the environment file. Update your `.env` file with the details you’ve gathered so far:
 
 * NEXT_PUBLIC_AUTH0_CLIENT_ID=your-client-id
 * NEXT_PUBLIC_SITECORE_APP_ID=your-marketplace-app-id
@@ -194,8 +196,6 @@ On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Fin
 * Your app will now appear inside the Page Builder.
 
   ![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
-
-
 
 ## Conclusion
 
