@@ -3,9 +3,9 @@ title: "Sitecore Marketplace Apps: Overview and Why They Matter"
 description: Discover Sitecore Marketplace apps, their architecture, extension
   points, and why they’re essential for extending XM Cloud without altering its
   core.
-keywords: Sitecore Marketplace, Sitecore XM Cloud, Sitecore SDK, Sitecore
-  extensions, Sitecore app development, Sitecore integration, Sitecore AI,
-  Next.js Sitecore app
+keywords: Sitecore Marketplace, Sitecore XM Cloud, Sitecore Marketplace SDK,
+  Sitecore extensions, Sitecore app development, Sitecore integration, Sitecore
+  AI, Next.js Sitecore app
 metaDescription: Discover Sitecore Marketplace apps, their architecture,
   extension points, and why they’re essential for extending XM Cloud without
   altering its core.
