@@ -1,9 +1,13 @@
 tags:
   - slug: sitecore-sxa
     name: Sitecore SXA
-  - slug: coveo
-    name: Coveo
   - slug: sitecore
     name: Sitecore
   - slug: azure-devops
     name: Azure DevOps
+  - slug: sitecore-xm-cloud
+    name: Sitecore XM Cloud
+  - slug: sitecore-marketplace
+    name: Sitecore Marketplace
+  - slug: nextjs-react-development
+    name: Next.js / React Development
