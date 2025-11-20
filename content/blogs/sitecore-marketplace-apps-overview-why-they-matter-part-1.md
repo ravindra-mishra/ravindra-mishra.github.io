@@ -13,8 +13,8 @@ featuredImage: /uploads/blog-sitecore-marketplace-apps-overview-and-why-they-mat
 slug: sitecore-marketplace-apps-overview-why-they-matter-part-1
 date: November 16, 2025 4:51 PM
 tags:
-  - tag: sitecore-marketplace
   - tag: sitecore
+  - tag: sitecore-marketplace
   - tag: sitecore-xm-cloud
   - tag: nextjs-react-development
 ---
@@ -24,8 +24,8 @@ Welcome to the first post in our Sitecore Marketplace App series!
 In this article, we’ll cover the basics—what these apps do, how they work, and when it makes sense to build one. This will give you the foundation you need before jumping into the hands-on guide in the next part.
 Here’s the full series:
 
-1. Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)
-2. Building a Full-Stack Sitecore Marketplace App with Next.js and shadcn – Developer Guide (Part 2)
+1. *Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)*
+2. [Building a Full-Stack Sitecore Marketplace App with Next.js and shadcn – Developer Guide (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
 
 ## Sitecore Marketplace App Architecture Explained
 
