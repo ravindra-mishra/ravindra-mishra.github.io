@@ -23,18 +23,19 @@ tags:
   - tag: nextjs-react-development
   - tag: sitecore-xm-cloud
 ---
-In the [first part](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1), we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud.
+In the [previous blog](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1), we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud. 
 
 In this guide, you’ll build a full-stack Sitecore Marketplace app using Next.js and shadcn—from project setup to App Studio configuration and authentication.
 
 Here’s the series so far:
 
-1. [Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1)
-2. Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 2)
+1. [Sitecore Marketplace Apps: Overview and Why They Matter](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1)
+2. Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 1)
+3. Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 2)
 
 Here’s another way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a [Marketplace Starter Kit on GitHub](https://github.com/Sitecore/marketplace-starter), this approach includes preconfigured authentication and examples for both client-side and server-side use.
 
-## Developer Setup: Create and Configure Your Marketplace App
+## Developer Setup (Part 1): Create and Configure Your Marketplace App
 
 ### Step 1: Scaffold Your Marketplace App
 
@@ -158,51 +159,7 @@ Use the IDs collected in the previous steps to update your `.env` file.
 
 Now, run `npm run dev`, then open `https://localhost:3000` in a new tab. 
 
-### Step 4: Authorize Marketplace App on Sitecore Portal
+At this point, your app is fully configured and running locally.
+In the next part, we’ll continue with authorization, testing inside XM Cloud, and validating extension points.
 
-Open “https://localhost:3000” in a new browser tab. This triggers the OAuth flow and lets you authorize the app.
-
-![Authorize Marketplace App on Sitecore Portal](/uploads/authorize-marketplace-app-on-sitecore-portal.jpg "Authorize Marketplace App on Sitecore Portal")
-
-After authorization, reopen the app from the Sitecore portal to verify it. You can now explore its features.
-
-**Common Issue:**
-
-The first time you open the app in the Sitecore Cloud portal, you may see CORS errors with *auth.sitecorecloud.io* because the OAuth flow gets blocked inside the embedded view.
-
-To fix this, open your app URL once in a separate tab, complete OAuth, then return to the portal.
-
-![Issue - Auth Sitecore Cloud Refused to connect](/uploads/issue-auth-sitecore-cloud-refused-to-connect.jpg "Issue - Auth Sitecore Cloud Refused to connect")
-
-### Step 5: Open Your Marketplace App in XM Cloud and Verify
-
-Since we enabled two extension points during configuring the app—**Standalone** and **Page Builder context panel**—let’s try opening the app from both.
-
-**Standalone:**
-
-On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Find your app and click it. This opens the app in *Standalone* mode.
-
-![Standalone - App View in Sitecore Cloud Portal](/uploads/standalone-app-view-in-sitecore-cloud-portal.jpg "Standalone - App View in Sitecore Cloud Portal")
-
-**Page builder context panel:** 
-
-* Open your XMC or SitecoreAI instance where the app is installed. Navigate to the Page Builder and ensure you’re on the Editor tab (check the top navigation in Page Builder). 
-* Look for the Apps icon—it’s the third icon from the top-right corner, after the Publish button.
-* Click the icon and select your application. 
-
-  ![Marketplace App Icon in Sitecore Page Builder](/uploads/marketplace-app-icon-in-sitecore-page-builder.png "Marketplace App Icon in Sitecore Page Builder")
-* Your app should now appear inside the Page Builder panel.
-
-  ![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
-
-## Conclusion
-
-Your app is now up and running. The *home* route loads by default unless you changed the *extension point* settings.
-
-The page includes client-side and server-side Marketplace SDK examples. Test them to confirm everything works.
-
-**Was this guide helpful?** 
-
-If you have questions, feedback, or ran into any setup issues, feel free to share them in the comments - we’d love to hear from you!
-
-Stay tuned for more articles in this series.
+Continue reading: Next Part — Authorize & Test Your Marketplace App
