@@ -23,16 +23,16 @@ tags:
   - tag: nextjs-react-development
   - tag: sitecore-xm-cloud
 ---
-Welcome back! This is the second post in our Sitecore Marketplace App series. In the first part, we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud.
+In the [first part](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1), we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud.
 
-Now it’s time to get hands-on. In this guide, we’ll show you how to build a full-stack Sitecore Marketplace app using Next.js and shadcn. You’ll learn how to set up your project, configure your app in Sitecore App Studio, add authentication, and run it locally.
+In this guide, you’ll build a full-stack Sitecore Marketplace app using Next.js and shadcn—from project setup to App Studio configuration, authentication, and running it locally.
 
 Here’s the series so far:
 
 1. [Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1)
 2. Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 2)
 
-As a developer working with Sitecore Cloud, I recently explored an alternative way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a Marketplace Starter Kit on GitHub, this approach includes a pre-configured authentication setup and offers both client-side and server-side examples.
+I recently explored an alternative way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a [Marketplace Starter Kit on GitHub](https://github.com/Sitecore/marketplace-starter), this approach includes a pre-configured authentication setup and offers both client-side and server-side examples.
 
 ## Developer Setup: Create and Configure Your Marketplace App
 
@@ -40,9 +40,7 @@ As a developer working with Sitecore Cloud, I recently explored an alternative w
 
 #### 1. Scaffold the app using the npx command
 
-Create a folder for your Marketplace app project and open it in VS Code or PowerShell terminal.
-
-Run the following command inside the folder:
+Create a project folder, open it in VS Code or a terminal, and run:
 
 ```
 npx shadcn@latest add https://blok-shadcn.vercel.app/r/marketplace/next/quickstart-with-full-stack-xmc.json
@@ -52,9 +50,9 @@ npx shadcn@latest add https://blok-shadcn.vercel.app/r/marketplace/next/quicksta
 
 #### 2. Enable Experimental HTTPS in package.json
 
-As mentioned in the last line of the output after running the npx command, you can enable experimental HTTPS by adding the flag to your `package.json` scripts. This allows you to run your local app over HTTPS, which is often required for secure authentication flows.
+As the output mentions, you can enable experimental HTTPS by adding a flag to your `package.json` scripts. This lets you run the app locally over HTTPS, which is required for secure authentication.
 
-Update your scripts section like this:
+Update the scripts section like this:
 
 ```
   "scripts": {
@@ -67,7 +65,7 @@ Update your scripts section like this:
 
 #### 3. Review the Environment Variables
 
-This process will create a `.env` or `.env.local` file containing variables like the ones shown below. You’ll get values for some of these in Step 2.
+This process will create a `.env` or `.env.local` file containing variables like the ones shown below. You’ll get values for some of these in the *Step 2*.
 
 ```
 NEXT_PUBLIC_AUTH0_DOMAIN=https://auth.sitecorecloud.io
@@ -93,19 +91,19 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 #### 2. Configure your application
 
-* Select **Extensions points** which you want to enable for your application, (you can also configure landing page for each extension points)
-  In this example, we are selecting Standalone and Page Context Panel.
+* Choose the **Extension Points** you want to enable, and optionally set a landing page for each.
+  Here, we’re using *Standalone* and *Page Context Panel*.
 * **API Access**: Select the Sitecore Cloud products where your app can be installed. Currently, only XMC and SitecoreAI are available, but additional options may be added in the future.
 
   ![Selecting Sitecore Cloud products for API Access in Marketplace App](/uploads/image-selecting-sitecore-cloud-products-for-api-access-in-marketplace-app.jpg "Selecting Sitecore Cloud products for API Access in Marketplace App")
-* **Deployment URL**: Since we are in the development stage, running our app locally, enter “https://localhost:3000” as input.
-* **App Icon:** We need to use an image that is 512×512 and has the required file extension. In this example, I’m using a sample image, but you can use any logo you prefer—as long as it’s available via a public URL.
+* **Deployment URL**: For local development, use https://localhost:3000.
+* **App Icon**: Use a 512×512 image URL with a supported file extension. In this example, I’m using a sample image, but you can use any logo as long as it’s publicly accessible.
 
   e﻿g. https://fastly.picsum.photos/id/58/512/512.jpg?hmac=jxfe82GanXiWmTfpdeMNdzSvGv4RS_eqipxzUduQUeg
 
 #### 3. Create Credentials
 
-To enable your application to work with Sitecore App Studio, configure credentials for authorization. This involves setting up allowed URLs for callbacks, logout, and origins, then creating credentials to obtain the **Client ID** and **Client Secret** for future use. For now, we are adding localhost URLs to support local development. Multiple URLs can be added later for other environments like dev or staging.
+Configure authorization credentials so your app can work with Sitecore App Studio. Add the allowed callback, logout, and origin URLs, then generate the Client ID and Client Secret. For now, include localhost URLs; you can add dev or staging URLs later.
 
 * **Allowed callback URLs:** https://localhost:3000/auth/callback, https://localhost:3000
 * **Allowed logout URLs:** https://localhost:3000
@@ -118,12 +116,12 @@ Finally, click **Create Credentials** to generate the **Client ID** and **Client
 
 #### 4. Collect Important IDs for Frontend Configuration
 
-Collect all important id’s from this page, that we will need to put in our frontend app’s .env file. 
+Collect all important id’s from this page, that we will need to put in our frontend app’s `.env` file. 
 
 * App ID (Marketplace app ID section, available on right side)
 * Organization ID (from URL query, eg. `?organization=org_TLXXXXXXXPf`)
 * Client ID (Generated from client credentials)
-* Tenant ID (we will get after Activating and Installing the app, refer 6 point)
+* Tenant ID (we will get after Activating and Installing the app, refer *6 point*)
 
 ![Configured Final View in App Studio - Sitecore Marketplace App](/uploads/configured-final-view-in-app-studio-sitecore-marketplace-app.jpg "Configured Final View in App Studio - Sitecore Marketplace App")
 
@@ -138,7 +136,7 @@ Collect all important id’s from this page, that we will need to put in our fro
 
 **Install the App:**
 
-Go to the “My Apps” section and install the app on the Sitecore AI or XMC instance where you want to enable this integration.
+Go to the “My Apps” section and install the app on the SitecoreAI or XMC instance where you want to enable this integration.
 
 **Retrieve Tenant ID:**
 
@@ -166,13 +164,13 @@ Open “https://localhost:3000” in a new browser tab. This triggers the proper
 
 ![Authorize Marketplace App on Sitecore Portal](/uploads/authorize-marketplace-app-on-sitecore-portal.jpg "Authorize Marketplace App on Sitecore Portal")
 
-Once authorization is complete, you can reopen your app from the Sitecore portal and verify it in the next step. From here, start exploring the app’s functionality.
+After completing authorization, reopen the app from the Sitecore portal and verify it. You can now explore its features.
 
 **Common Issue:**
 
-When you first open the app from inside the Sitecore Cloud portal, you might run into CORS issues with *auth.sitecorecloud.io*. This happens because the OAuth flow can be blocked when the app is embedded in the portal.
+The first time you open the app in the Sitecore Cloud portal, you may see CORS errors with *auth.sitecorecloud.io* because the OAuth flow gets blocked inside the embedded view.
 
-To avoid this, open your app URL in a separate browser tab the very first time before using it inside the portal.
+To avoid this, open your app URL once in a new browser tab to finish the initial OAuth flow, then return to the portal.
 
 ![Issue - Auth Sitecore Cloud Refused to connect](/uploads/issue-auth-sitecore-cloud-refused-to-connect.jpg "Issue - Auth Sitecore Cloud Refused to connect")
 
@@ -182,13 +180,13 @@ Since we enabled two extension points while configuring the app—**Standalone**
 
 **Standalone:**
 
-On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Find your app and click it. This will open the app in standalone mode.
+On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Find your app and click it. This will open the app in *Standalone* mode.
 
 ![Standalone - App View in Sitecore Cloud Portal](/uploads/standalone-app-view-in-sitecore-cloud-portal.jpg "Standalone - App View in Sitecore Cloud Portal")
 
 **Page builder context panel:** 
 
-* Open your XMC or Sitecore AI instance where the app is installed. Navigate to the Page Builder and ensure you’re on the Editor tab (check the top navigation in Page Builder). 
+* Open your XMC or SitecoreAI instance where the app is installed. Navigate to the Page Builder and ensure you’re on the Editor tab (check the top navigation in Page Builder). 
 * Look for the Apps icon—it’s the third icon from the top-right corner, after the Publish button.
 * Click the icon and select your application. 
 
@@ -199,9 +197,9 @@ On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Fin
 
 ## Conclusion
 
-Your app is up and running! By default, the home route should be serving (unless you changed it in the extension settings).
+Your app is up and running. The *home* route should load by default unless you updated the *extension points* settings.
 
-This page includes examples of fetching data using the Marketplace SDK—both client-side and server-side. Take a moment to test and confirm everything works as expected.
+The page includes client-side and server-side Marketplace SDK examples. Try them out to confirm everything works.
 
 **Was this guide helpful?** 
 
