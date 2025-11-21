@@ -80,7 +80,7 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 ### Step 2: Configure Your App in Sitecore App Studio
 
-1. Create App in App Studio
+#### 1. Create App in App Studio
 
 * Go to Sitecore Cloud Portal. Click on “App Studio” from top navigation.
 * Click on “Create App” button at top right corner of the screen.
@@ -194,8 +194,6 @@ On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Fin
 * Your app should now appear inside the Page Builder panel.
 
   ![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
-
-
 
 ## Conclusion
 
