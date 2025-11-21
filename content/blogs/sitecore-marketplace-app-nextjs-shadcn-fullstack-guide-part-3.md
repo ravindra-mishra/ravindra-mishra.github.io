@@ -1,8 +1,9 @@
 ---
 title: Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 2)
 description: Continue your Sitecore Marketplace app journey with a full-stack
-  build using Next.js and shadcn. This includes verification, testing and
-  conclusion.
+  build using Next.js and shadcn. This part covers authentication,
+  authorization, API verification, testing, and final steps to complete and
+  publish your Marketplace app.
 keywords: Sitecore Marketplace App, Next.js, shadcn, Sitecore App Studio,
   Sitecore XM Cloud, Sitecore Cloud Portal, Marketplace SDK, OAuth
   authentication, full-stack development, extension points, Page Builder context
