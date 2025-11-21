@@ -137,4 +137,4 @@ Both options are solid—choose the one that fits your project needs and develop
 
 Sitecore Marketplace apps open up endless possibilities for extending XM Cloud without touching its core. Whether you want to integrate external services, streamline workflows, or add AI-powered features, these apps give you the flexibility to innovate.
 
-In the next part of this series, we’ll walk through building a full-stack Marketplace app using **Next.js** and **shadcn starter kit**, complete with authentication and extension points. Stay tuned!
+In the next part of this series, we’ll walk through [building a full-stack Marketplace app using **Next.js** and **shadcn starter kit**](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2), complete with authentication and extension points. Stay tuned!
