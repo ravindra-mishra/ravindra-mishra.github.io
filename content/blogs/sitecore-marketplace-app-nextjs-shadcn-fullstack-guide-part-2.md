@@ -25,14 +25,14 @@ tags:
 ---
 In the [first part](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1), we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud.
 
-In this guide, you’ll build a full-stack Sitecore Marketplace app using Next.js and shadcn—from project setup to App Studio configuration, authentication, and running it locally.
+In this guide, you’ll build a full-stack Sitecore Marketplace app using Next.js and shadcn—from project setup to App Studio configuration and authentication.
 
 Here’s the series so far:
 
 1. [Sitecore Marketplace Apps: Overview and Why They Matter (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter-part-1)
 2. Sitecore Marketplace App fullstack development with Next.js & shadcn (Part 2)
 
-I recently explored an alternative way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a [Marketplace Starter Kit on GitHub](https://github.com/Sitecore/marketplace-starter), this approach includes a pre-configured authentication setup and offers both client-side and server-side examples.
+Here’s another way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a [Marketplace Starter Kit on GitHub](https://github.com/Sitecore/marketplace-starter), this approach includes preconfigured authentication and examples for both client-side and server-side use.
 
 ## Developer Setup: Create and Configure Your Marketplace App
 
@@ -50,7 +50,7 @@ npx shadcn@latest add https://blok-shadcn.vercel.app/r/marketplace/next/quicksta
 
 #### 2. Enable Experimental HTTPS in package.json
 
-As the output mentions, you can enable experimental HTTPS by adding a flag to your `package.json` scripts. This lets you run the app locally over HTTPS, which is required for secure authentication.
+Enable experimental HTTPS by adding a flag to your `package.json` scripts. This lets the app run locally over HTTPS, which is required for secure authentication.
 
 Update the scripts section like this:
 
@@ -65,7 +65,7 @@ Update the scripts section like this:
 
 #### 3. Review the Environment Variables
 
-This process will create a `.env` or `.env.local` file containing variables like the ones shown below. You’ll get values for some of these in the *Step 2*.
+This creates a `.env` file with variables like the ones below. You’ll fill some of these in *Step 2*.
 
 ```
 NEXT_PUBLIC_AUTH0_DOMAIN=https://auth.sitecorecloud.io
@@ -84,10 +84,10 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 * Go to Sitecore Cloud Portal. Click on “App Studio” from top navigation.
 * Click on “Create App” button at top right corner of the screen.
-* Enter App name you want to give and select Custom or Public based on your need. ([Refer documentation: App types](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html#app-types)) 
+* Enter an app name and select **Custom** or **Public**, depending on your requirement. ([Refer documentation: App types](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html#app-types)) 
 
   ![Create App in App Studio - Configure Marketplace App in Sitecore App Studio](/uploads/image-create-app-in-app-studio.jpg "Create App in App Studio - Configure Marketplace App in Sitecore App Studio")
-* Click on create and then configure the application. (App Studio > Click on the App)
+* Click **Create**, then configure the application. (App Studio > Click on the App)
 
 #### 2. Configure your application
 
@@ -97,13 +97,13 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
   ![Selecting Sitecore Cloud products for API Access in Marketplace App](/uploads/image-selecting-sitecore-cloud-products-for-api-access-in-marketplace-app.jpg "Selecting Sitecore Cloud products for API Access in Marketplace App")
 * **Deployment URL**: For local development, use https://localhost:3000.
-* **App Icon**: Use a 512×512 image URL with a supported file extension. In this example, I’m using a sample image, but you can use any logo as long as it’s publicly accessible.
+* **App Icon**: Use a 512×512 publicly accessible image URL. Any logo works, as long as the URL is publicly accessible.
 
   e﻿g. https://fastly.picsum.photos/id/58/512/512.jpg?hmac=jxfe82GanXiWmTfpdeMNdzSvGv4RS_eqipxzUduQUeg
 
 #### 3. Create Credentials
 
-Configure authorization credentials so your app can work with Sitecore App Studio. Add the allowed callback, logout, and origin URLs, then generate the Client ID and Client Secret. For now, include localhost URLs; you can add dev or staging URLs later.
+Configure authorization credentials so your app works with Sitecore App Studio. Add the allowed callback, logout, and origin URLs, then generate the Client ID and Client Secret. For now, include localhost URLs; you can add dev or staging URLs later.
 
 * **Allowed callback URLs:** https://localhost:3000/auth/callback, https://localhost:3000
 * **Allowed logout URLs:** https://localhost:3000
@@ -116,7 +116,7 @@ Finally, click **Create Credentials** to generate the **Client ID** and **Client
 
 #### 4. Collect Important IDs for Frontend Configuration
 
-Collect all important id’s from this page, that we will need to put in our frontend app’s `.env` file. 
+Collect the IDs you’ll add to your `.env` file.
 
 * App ID (Marketplace app ID section, available on right side)
 * Organization ID (from URL query, eg. `?organization=org_TLXXXXXXXPf`)
@@ -127,8 +127,8 @@ Collect all important id’s from this page, that we will need to put in our fro
 
 #### 5. Activate the application.
 
-* Activate the application by clicking on CTA top right side.
-* Once, we activate the app, it will start appearing in My apps section from top nav of the sitecore portal.
+* Click Activate in the top-right.
+* After activation, the app appears under **My Apps** (from top nav bar) in the Sitecore portal.
 
 ![Sitecore Marketplace app displayed in the My Apps section after activation](/uploads/marketplace-app-displayed-in-the-my-apps-section-after-activation.jpg "Sitecore Marketplace app displayed in the My Apps section after activation")
 
@@ -136,7 +136,7 @@ Collect all important id’s from this page, that we will need to put in our fro
 
 **Install the App:**
 
-Go to the “My Apps” section and install the app on the SitecoreAI or XMC instance where you want to enable this integration.
+Go to **My Apps** and install the app on the SitecoreAI or XMC instance.
 
 **Retrieve Tenant ID:**
 
@@ -149,38 +149,38 @@ Go to the “My Apps” section and install the app on the SitecoreAI or XMC ins
 
 ### Step 3: Update .env and Run the App
 
-We now have all the IDs collected in the previous step that are required for the environment file. Update your `.env` file with the details you’ve gathered so far:
+Use the IDs collected in the previous steps to update your `.env` file.
 
 * NEXT_PUBLIC_AUTH0_CLIENT_ID=your-client-id
 * NEXT_PUBLIC_SITECORE_APP_ID=your-marketplace-app-id
 * NEXT_PUBLIC_SITECORE_ORGANIZATION_ID=your-org-id
 * NEXT_PUBLIC_SITECORE_TENENT_ID=your-tenant-id
 
-Now, run the application using `npm run dev`, then open your app URL—e.g., https://localhost:3000 - in a new browser tab.
+Now, run `npm run dev`, then open `https://localhost:3000` in a new tab. 
 
 ### Step 4: Authorize Marketplace App on Sitecore Portal
 
-Open “https://localhost:3000” in a new browser tab. This triggers the proper OAuth flow and lets you authorize the app.
+Open “https://localhost:3000” in a new browser tab. This triggers the OAuth flow and lets you authorize the app.
 
 ![Authorize Marketplace App on Sitecore Portal](/uploads/authorize-marketplace-app-on-sitecore-portal.jpg "Authorize Marketplace App on Sitecore Portal")
 
-After completing authorization, reopen the app from the Sitecore portal and verify it. You can now explore its features.
+After authorization, reopen the app from the Sitecore portal to verify it. You can now explore its features.
 
 **Common Issue:**
 
 The first time you open the app in the Sitecore Cloud portal, you may see CORS errors with *auth.sitecorecloud.io* because the OAuth flow gets blocked inside the embedded view.
 
-To avoid this, open your app URL once in a new browser tab to finish the initial OAuth flow, then return to the portal.
+To fix this, open your app URL once in a separate tab, complete OAuth, then return to the portal.
 
 ![Issue - Auth Sitecore Cloud Refused to connect](/uploads/issue-auth-sitecore-cloud-refused-to-connect.jpg "Issue - Auth Sitecore Cloud Refused to connect")
 
 ### Step 5: Open Your Marketplace App in XM Cloud and Verify
 
-Since we enabled two extension points while configuring the app—**Standalone** and **Page Builder context panel**—let’s try opening the app from both.
+Since we enabled two extension points during configuring the app—**Standalone** and **Page Builder context panel**—let’s try opening the app from both.
 
 **Standalone:**
 
-On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Find your app and click it. This will open the app in *Standalone* mode.
+On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Find your app and click it. This opens the app in *Standalone* mode.
 
 ![Standalone - App View in Sitecore Cloud Portal](/uploads/standalone-app-view-in-sitecore-cloud-portal.jpg "Standalone - App View in Sitecore Cloud Portal")
 
@@ -191,15 +191,17 @@ On the Sitecore Cloud portal home page, scroll down to the **Apps** section. Fin
 * Click the icon and select your application. 
 
   ![Marketplace App Icon in Sitecore Page Builder](/uploads/marketplace-app-icon-in-sitecore-page-builder.png "Marketplace App Icon in Sitecore Page Builder")
-* Your app will now appear inside the Page Builder.
+* Your app should now appear inside the Page Builder panel.
 
   ![Page builder context panel - App View in Sitecore Cloud Portal](/uploads/page-builder-context-panel-app-view-in-sitecore-cloud-portal.jpg "Page builder context panel - App View in Sitecore Cloud Portal")
 
+
+
 ## Conclusion
 
-Your app is up and running. The *home* route should load by default unless you updated the *extension points* settings.
+Your app is now up and running. The *home* route loads by default unless you changed the *extension point* settings.
 
-The page includes client-side and server-side Marketplace SDK examples. Try them out to confirm everything works.
+The page includes client-side and server-side Marketplace SDK examples. Test them to confirm everything works.
 
 **Was this guide helpful?** 
 
