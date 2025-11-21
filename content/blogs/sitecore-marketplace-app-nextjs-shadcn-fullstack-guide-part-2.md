@@ -103,7 +103,7 @@ NEXT_PUBLIC_APP_BASE_URL=https://localhost:3000
 
 #### 3. Create Credentials
 
-Configure authorization credentials so your app works with Sitecore App Studio. Add the allowed callback, logout, and origin URLs, then generate the Client ID and Client Secret. For now, include localhost URLs; you can add dev or staging URLs later.
+Configure authorization credentials, as they are required for server-side custom authorization of Sitecore API requests. Add the allowed callback, logout, and origin URLs, then generate the Client ID and Client Secret. For now, include localhost URLs; you can add dev or staging URLs later.
 
 * **Allowed callback URLs:** https://localhost:3000/auth/callback, https://localhost:3000
 * **Allowed logout URLs:** https://localhost:3000
