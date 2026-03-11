@@ -26,7 +26,7 @@ Here’s the full series:
 
 1. [Sitecore Marketplace Apps: Overview and Why They Matter](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter)
 2. [Build Fullstack Sitecore Marketplace App with Next.js & shadcn (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1)
-2. [Sitecore Marketplace App: Authentication, Testing & Conclusion (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
+3. [Sitecore Marketplace App: Authentication, Testing & Conclusion (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
 
 ## Sitecore Marketplace App Architecture Explained
 
@@ -138,4 +138,4 @@ Both options are solid—choose the one that fits your project needs and develop
 
 Sitecore Marketplace apps open up endless possibilities for extending XM Cloud without touching its core. Whether you want to integrate external services, streamline workflows, or add AI-powered features, these apps give you the flexibility to innovate.
 
-In the next part of this series, we’ll walk through [building a full-stack Marketplace app using **Next.js** and **shadcn starter kit**](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2), complete with authentication and extension points. Stay tuned!
+In the next part of this series, we’ll walk through [building a full-stack Marketplace app using **Next.js** and **shadcn starter kit**](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1), complete with authentication and extension points. Stay tuned!
