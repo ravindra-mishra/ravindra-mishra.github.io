@@ -9,7 +9,11 @@ import Link from "next/link";
 const Page404 = () => {
   return (
     <Layout>
-      <BasicMeta url={"/404"} title="Error 404 - Page Not Found" />
+      <BasicMeta
+        url={"/404"}
+        title="Error 404 - Page Not Found"
+        robots="noindex, follow"
+      />
       <OpenGraphMeta url={"/404"} />
       <TwitterCardMeta url={"/404"} />
       <TitleBanner title="Error 404 - Page Not Found" />

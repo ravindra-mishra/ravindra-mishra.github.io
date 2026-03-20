@@ -11,6 +11,13 @@ export interface OpenGraphMetaProps {
   image?: string;
   /** Use `article` for blog posts; `website` for listings and static pages. */
   ogType?: "website" | "article";
+  /** ISO 8601 — include with `ogType="article"` for richer previews. */
+  articlePublishedTime?: string;
+  articleModifiedTime?: string;
+  /** Profile or about URL for `article:author`. */
+  articleAuthor?: string;
+  /** Topic labels rendered as multiple `article:tag` properties. */
+  articleTags?: string[];
 }
 
 const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
@@ -19,6 +26,10 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
   description,
   image,
   ogType = "website",
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
+  articleTags,
 }) => {
   return (
     <Head>
@@ -28,6 +39,21 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
       <meta property="og:description" content={description ? description : config.site_description} />
       <meta property="og:image" content={absoluteFromSiteRoot(image)} />
       <meta property="og:type" content={ogType} />
+      <meta property="og:locale" content="en_US" />
+      {ogType === "article" && articlePublishedTime ? (
+        <meta property="article:published_time" content={articlePublishedTime} />
+      ) : null}
+      {ogType === "article" && articleModifiedTime ? (
+        <meta property="article:modified_time" content={articleModifiedTime} />
+      ) : null}
+      {ogType === "article" && articleAuthor ? (
+        <meta property="article:author" content={articleAuthor} />
+      ) : null}
+      {ogType === "article" && articleTags
+        ? articleTags.map((tag) => (
+            <meta key={tag} property="article:tag" content={tag} />
+          ))
+        : null}
     </Head>
   );
 };

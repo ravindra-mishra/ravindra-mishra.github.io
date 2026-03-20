@@ -17,6 +17,9 @@ export interface JsonLdMetaProps {
   author?: string;
   image?: string;
   description?: string;
+  /** BCP 47 / ISO 639-1 style language tag for the article. */
+  inLanguage?: string;
+  wordCount?: number;
 }
 
 const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
@@ -29,6 +32,8 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
   author,
   image,
   description,
+  inLanguage = "en",
+  wordCount,
 }) => {
   return (
     <Head>
@@ -42,6 +47,8 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
           },
           headline: title,
           keywords: (keywords ?? []).join(","),
+          inLanguage,
+          ...(wordCount != null && wordCount > 0 ? { wordCount } : {}),
           datePublished: formatISO(date),
           dateModified: formatISO(modifiedDate ?? date),
           author: {
@@ -54,10 +61,10 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
             name: "Ravindra Mishra",
             logo: {
               "@type": "ImageObject",
-              url: `${config.base_url}/image/logo.png`,
+              url: `${config.base_url}/images/logo.png`,
             },
           },
-          image: absoluteFromSiteRoot(image ?? "/image/logo.jpg"),
+          image: absoluteFromSiteRoot(image ?? "/images/logo.png"),
           description: description,
           articleBody: content,
         })}

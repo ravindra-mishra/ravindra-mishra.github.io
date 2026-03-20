@@ -30,7 +30,7 @@ const BlogHeader: FC<BlogHeaderProps> = ({
         }}
       >
       <div className="container" data-backgroundurl={featureImage}>
-        <h1>{title}</h1>
+        <h1 id="blog-post-title">{title}</h1>
         <div className="blog-header-summary">
           <FormattedDate date={date} emoji={true} />
           <div>{readingTime}</div>

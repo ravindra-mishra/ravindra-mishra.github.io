@@ -7,9 +7,7 @@ import Layout from "@/components/Layout";
 import removeMd from "remove-markdown";
 
 import IntroContent from "@/components/IntroContent";
-import BasicMeta from "@/components/meta/BasicMeta";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
+import BlogPostMetaBundle from "@/components/meta/BlogPostMetaBundle";
 
 import "prismjs/themes/prism-tomorrow.css"; // Syntax highlighting theme
 import Breadcrumb from "@/components/Breadcrumb";
@@ -18,7 +16,7 @@ import BlogHeader from "@/components/BlogHeader";
 import TagList from "@/components/TagList";
 
 import CommentBox from "@/components/CommentBox";
-import JsonLdMetaBlog from "@/components/meta/JsonLdMetaBlog";
+import MarkdownLink from "@/components/blog/MarkdownLink";
 
 // Frontmatter type definition
 interface Frontmatter {
@@ -28,17 +26,28 @@ interface Frontmatter {
   featuredImage: string;
   keywords: string;
   date: Date;
+  /** Optional; defaults to `date` when building the page. */
+  modifiedDate?: Date | string;
   tags: { tag: string }[];
+}
+
+/** Dates as ISO strings — JSON-serializable for `getStaticProps`. */
+interface BlogFrontmatterResolved extends Omit<Frontmatter, "date" | "modifiedDate"> {
+  date: string;
+  modifiedDate: string;
 }
 
 // Props type definition
 interface BlogProps {
-  frontmatter: Frontmatter;
+  frontmatter: BlogFrontmatterResolved;
   markdown: string;
   slug: string;
 }
 
 const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
+  const postDate = new Date(frontmatter.date);
+  const postModified = new Date(frontmatter.modifiedDate);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       (async () => {
@@ -58,73 +67,70 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
     emoji: "open_book",
   });
 
+  const articlePlainText = removeMd(markdown);
+
   return (
     <Layout>
-      {/* SEO Meta Tags */}
-      <BasicMeta
-        url={`/blogs/${slug}`}
+      <BlogPostMetaBundle
+        slug={slug}
         title={frontmatter.title}
         description={frontmatter.description}
-        keywords={[frontmatter.keywords]}
-        author="Ravindra Mishra"
-      />
-      <OpenGraphMeta
-        url={`/blogs/${slug}`}
-        title={frontmatter.title}
-        description={frontmatter.metaDescription}
-        image={frontmatter.featuredImage}
-        ogType="article"
-      />
-      <TwitterCardMeta
-        url={`/blogs/${slug}`}
-        title={frontmatter.title}
-        description={frontmatter.metaDescription}
-      />
-
-      <JsonLdMetaBlog
-        url={`/blogs/${slug}`}
-        title={frontmatter.title}
-        description={frontmatter.metaDescription}
-        date={frontmatter.date}
-        modifiedDate={frontmatter.date}
-        content={removeMd(markdown)}
-        author="Ravindra Mishra"
-        image={frontmatter.featuredImage}
-      />
-
-      <BlogHeader
-        title={frontmatter.title}
-        date={frontmatter.date}
+        metaDescription={frontmatter.metaDescription}
+        featuredImage={frontmatter.featuredImage}
+        keywords={frontmatter.keywords}
+        date={postDate}
+        modifiedDate={postModified}
+        articlePlainText={articlePlainText}
         tags={frontmatter.tags}
-        className="blog-page"
-        readingTime={readingTime}
-        featureImage={frontmatter.featuredImage}
       />
-      <Breadcrumb className="blog-page" />
-      <div className="container">
-        <div className="container-fluid">
-          <div className="blog-container">
-            <hr />
-            <ReactMarkdown>{markdown}</ReactMarkdown>
-            <hr />
-            <CommentBox />
-          </div>
-          <div className="blog-side-container">
-            <TagList
-              tags={frontmatter.tags}
-              emoji={false}
-              title="Tags: "
-              className="card-box"
-            />
-            <IntroContent />
+
+      <article className="blog-post-page" aria-labelledby="blog-post-title">
+        <BlogHeader
+          title={frontmatter.title}
+          date={postDate}
+          tags={frontmatter.tags}
+          className="blog-page"
+          readingTime={readingTime}
+          featureImage={frontmatter.featuredImage}
+        />
+        <Breadcrumb className="blog-page" />
+        <div className="container">
+          <div className="container-fluid">
+            <div className="blog-container">
+              <hr />
+              <ReactMarkdown
+                components={{
+                  a: MarkdownLink,
+                }}
+              >
+                {markdown}
+              </ReactMarkdown>
+              <hr />
+              <CommentBox />
+            </div>
+            <aside className="blog-side-container">
+              <TagList
+                tags={frontmatter.tags}
+                emoji={false}
+                title="Tags: "
+                className="card-box"
+              />
+              <IntroContent />
+            </aside>
           </div>
         </div>
-      </div>
+      </article>
     </Layout>
   );
 };
 
 export default Blog;
+
+function coerceBlogDate(value: unknown): Date {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  const parsed = new Date(String(value ?? ""));
+  return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+}
 
 // Fetch data for the blog page
 export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
@@ -132,10 +138,18 @@ export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
   const fileContent = matter(
     fs.readFileSync(`./content/blogs/${slug}.md`, "utf8")
   );
+  const raw = fileContent.data as Frontmatter;
+  const date = coerceBlogDate(raw.date);
+  const modifiedDate =
+    raw.modifiedDate != null ? coerceBlogDate(raw.modifiedDate) : date;
 
   return {
     props: {
-      frontmatter: fileContent.data as Frontmatter,
+      frontmatter: {
+        ...raw,
+        date: date.toISOString(),
+        modifiedDate: modifiedDate.toISOString(),
+      },
       markdown: fileContent.content,
       slug,
     },
