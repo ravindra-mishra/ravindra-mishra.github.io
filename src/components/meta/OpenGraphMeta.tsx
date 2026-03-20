@@ -1,3 +1,4 @@
+import { absoluteFromSiteRoot } from "@/lib/absoluteUrl";
 import config from "@/lib/config";
 import Head from "next/head";
 
@@ -17,7 +18,7 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({ url, title, description, image 
       <meta property="og:url" content={config.base_url + url} />
       <meta property="og:title" content={title ? [title, config.site_title].join(" | ") : ""} />
       <meta property="og:description" content={description ? description : config.site_description} />
-      <meta property="og:image" content={image ? image : config.base_url + "/og_image.png"} />
+      <meta property="og:image" content={absoluteFromSiteRoot(image)} />
       <meta property="og:type" content="article" />
     </Head>
   );

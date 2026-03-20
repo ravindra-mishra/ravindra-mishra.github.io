@@ -10,10 +10,22 @@ export interface Config {
   readonly github_account: string;
 }
 
-// Override `base_url` with the environment variable if available
+function resolveBaseUrl(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_BASE_URL;
+  const fallback = config.base_url.replace(/\/$/, "");
+  if (
+    fromEnv &&
+    !/^https?:\/\/localhost\b/i.test(fromEnv) &&
+    !/^https?:\/\/127\./i.test(fromEnv)
+  ) {
+    return fromEnv.replace(/\/$/, "");
+  }
+  return fallback;
+}
+
 const updatedConfig: Config = {
   ...config,
-  base_url: process.env.NEXT_PUBLIC_BASE_URL || config.base_url, // Fallback to JSON value if not set
+  base_url: resolveBaseUrl(),
 };
 
 export default updatedConfig;

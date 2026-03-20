@@ -2,10 +2,22 @@ const fs = require("fs");
 const path = require("path");
 
 /** @type {import('next-sitemap').IConfig} */
+const defaultProdUrl = "https://ravindra-mishra.github.io";
+const rawEnv = process.env.NEXT_PUBLIC_BASE_URL;
+const siteUrl =
+  rawEnv &&
+  !/^https?:\/\/localhost\b/i.test(rawEnv) &&
+  !/^https?:\/\/127\./i.test(rawEnv)
+    ? rawEnv.replace(/\/$/, "")
+    : defaultProdUrl;
+
 const config = {
-  siteUrl: "https://ravindra-mishra.github.io", // Replace with your site's URL
-  generateRobotsTxt: true, // (optional) Generate a robots.txt file
-  exclude: [], // Add paths to exclude from the sitemap if necessary
+  siteUrl,
+  generateRobotsTxt: true,
+  robotsTxtOptions: {
+    policies: [{ userAgent: "*", allow: "/" }],
+  },
+  exclude: [],
   additionalPaths: async () => {
     const blogsDir = "./content/blogs";
     const files = fs.readdirSync(blogsDir);

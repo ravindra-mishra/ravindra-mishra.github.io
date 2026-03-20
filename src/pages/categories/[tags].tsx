@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import fs from "fs";
 import matter from "gray-matter";
 import removeMd from "remove-markdown";
-import { useRouter } from "next/router";
 import TitleBanner from "@/components/TitleBanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
@@ -19,54 +18,52 @@ import { Blog } from "@/types/blog";
 
 interface Props {
   blogs: Blog[];
+  categorySlug: string;
+  categoryLabel: string;
 }
 
-const CategoryDetailsPage: React.FC<Props> = ({ blogs }) => {
-  const router = useRouter();
-  const { tags } = router.query;
-
-  console.log(blogs);
+const CategoryDetailsPage: React.FC<Props> = ({
+  blogs,
+  categorySlug,
+  categoryLabel,
+}) => {
   const filteredBlogs = blogs.filter((blog) => {
     if (!blog.category) return false;
-    console.log(blog.category);
-    if (typeof tags === "string") {
-      const categories: string[] = Array.isArray(blog.category)
-        ? blog.category
-        : typeof blog.category === "string"
+    const categories: string[] = Array.isArray(blog.category)
+      ? blog.category
+      : typeof blog.category === "string"
         ? [blog.category]
         : [];
-      return categories.some(
-        (cat: string) => cat.toLowerCase() === tags.toLowerCase()
-      );
-    }
-    return false;
+    return categories.some(
+      (cat: string) => cat.toLowerCase() === categorySlug.toLowerCase()
+    );
   });
 
-  console.log(filteredBlogs);
+  const canonicalPath = `/categories/${categorySlug}`;
 
   return (
     <Layout>
       <BasicMeta
-        url={router.asPath}
-        title={`Blogs in "${tags}"`}
-        description={`Browse all blogs in the "${tags}" category. Discover articles grouped by this topic and explore related content.`}
+        url={canonicalPath}
+        title={`Blogs in "${categoryLabel}"`}
+        description={`Browse all blogs in the "${categoryLabel}" category. Discover articles grouped by this topic and explore related content.`}
       />
       <OpenGraphMeta
-        url={router.asPath}
-        title={`Blogs in "${tags}"`}
-        description={`Browse all blogs in the "${tags}" category. Discover articles grouped by this topic and explore related content.`}
+        url={canonicalPath}
+        title={`Blogs in "${categoryLabel}"`}
+        description={`Browse all blogs in the "${categoryLabel}" category. Discover articles grouped by this topic and explore related content.`}
       />
       <TwitterCardMeta
-        url={router.asPath}
-        title={`Blogs in "${tags}"`}
-        description={`Browse all blogs in the "${tags}" category. Discover articles grouped by this topic and explore related content.`}
+        url={canonicalPath}
+        title={`Blogs in "${categoryLabel}"`}
+        description={`Browse all blogs in the "${categoryLabel}" category. Discover articles grouped by this topic and explore related content.`}
       />
       <JsonLdMetaWebsite
-        url={router.asPath}
-        title={`Blogs in "${tags}"`}
-        description={`Browse all blogs in the "${tags}" category. Discover articles grouped by this topic and explore related content.`}
+        url={canonicalPath}
+        title={`Blogs in "${categoryLabel}"`}
+        description={`Browse all blogs in the "${categoryLabel}" category. Discover articles grouped by this topic and explore related content.`}
       />
-      <TitleBanner title={`Blogs in "${tags}"`} />
+      <TitleBanner title={`Blogs in "${categoryLabel}"`} />
       <Breadcrumb />
       <div className="container">
         <div className="">
@@ -115,17 +112,23 @@ const CategoryDetailsPage: React.FC<Props> = ({ blogs }) => {
 
 export default CategoryDetailsPage;
 
-export const getStaticProps: GetStaticProps = async () => {
-  // List of files in the blogs folder
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const categorySlug = context.params?.tags as string;
+  const tagsPath = path.resolve(process.cwd(), "./content/meta/tags.yml");
+  const tagsFile = fs.readFileSync(tagsPath, "utf8");
+  const meta = yaml.load(tagsFile) as {
+    tags: { name: string; slug: string }[];
+  };
+  const categoryLabel =
+    meta.tags.find((t) => t.slug === categorySlug)?.name ?? categorySlug;
+
   const filesInBlogs = fs.readdirSync("./content/blogs");
 
-  // Get the front matter and slug (the filename without .md) of all files
   const blogs: Blog[] = filesInBlogs.map((filename) => {
     const file = fs.readFileSync(`./content/blogs/${filename}`, "utf8");
     const matterData = matter(file);
     const plainTextContent = removeMd(matterData.content as string);
 
-    // Calculate read time (simple words-per-minute estimate)
     const words = plainTextContent.split(/\s+/).length;
     const readTime = Math.ceil(words / 200) + " min read";
 
@@ -160,6 +163,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       blogs,
+      categorySlug,
+      categoryLabel,
     },
   };
 };
@@ -168,15 +173,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const tagsPath = path.resolve(process.cwd(), "./content/meta/tags.yml");
   const tagsFile = fs.readFileSync(tagsPath, "utf8");
 
-  const data = yaml.load(tagsFile) as { tags: { tag: string; slug: string }[] };
-  const tags: { tag: string; slug: string }[] = data.tags;
-
-  console.log(tags);
-  const paths = tags.map((tagObj) => ({
+  const data = yaml.load(tagsFile) as { tags: { name: string; slug: string }[] };
+  const paths = data.tags.map((tagObj) => ({
     params: { tags: tagObj.slug },
   }));
 
-  console.log(paths);
   return {
     paths,
     fallback: false,
