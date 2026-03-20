@@ -1,9 +1,6 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import Layout from "@/components/Layout";
-import BasicMeta from "@/components/meta/BasicMeta";
-import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
+import WebsiteMetaBundle from "@/components/meta/WebsiteMetaBundle";
 import TitleBanner from "@/components/TitleBanner";
 import { useEffect } from "react";
 
@@ -28,10 +25,7 @@ const About = () => {
 
   return (
     <Layout>
-      <BasicMeta url={"/about"} title="About" />
-      <OpenGraphMeta url={"/about"} title="About" />
-      <TwitterCardMeta url={"/about"} title="About" />
-      <JsonLdMetaWebsite url={"/about"} title="About" />
+      <WebsiteMetaBundle path="/about" title="About" />
       <TitleBanner title="About" />
       <Breadcrumb />
       <div className="container">

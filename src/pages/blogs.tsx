@@ -1,16 +1,10 @@
-import fs from "fs";
-import matter from "gray-matter";
 import Link from "next/link";
 import Layout from "@/components/Layout";
-import BasicMeta from "@/components/meta/BasicMeta";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
 import { GetStaticProps } from "next";
-// import FormattedDate from "@/components/FormattedDate";
 import TitleBanner from "@/components/TitleBanner";
 import Breadcrumb from "@/components/Breadcrumb";
-import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
-import removeMd from "remove-markdown";
+import WebsiteMetaBundle from "@/components/meta/WebsiteMetaBundle";
+import { getAllBlogsSorted } from "@/lib/loadBlogs";
 import { Blog } from "@/types/blog";
 
 // Define the props for the Home component
@@ -18,28 +12,16 @@ interface HomeProps {
   blogs: Blog[];
 }
 
+const BLOG_INDEX_DESCRIPTION =
+  "Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud.";
+
 const Home: React.FC<HomeProps> = ({ blogs }) => {
   return (
     <Layout>
-      <BasicMeta
-        url={"/blogs"}
+      <WebsiteMetaBundle
+        path="/blogs"
         title="Latest Blog Articles"
-        description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
-      />
-      <OpenGraphMeta
-        url={"/blogs"}
-        title="Latest Blog Articles"
-        description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
-      />
-      <TwitterCardMeta
-        url={"/blogs"}
-        title="Latest Blog Articles"
-        description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
-      />
-      <JsonLdMetaWebsite
-        url={"/blogs"}
-        title="Latest Blog Articles"
-        description="Sitecore CMS. A technical blog about sitecore learning for sitecore developer. Technologies like Sitecore, SXA, Headless, XM Cloud."
+        description={BLOG_INDEX_DESCRIPTION}
       />
       <TitleBanner title="Latest Blog Articles" />
       <Breadcrumb />
@@ -129,9 +111,9 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
                         )}
                       </div>
                       {blog.url ? (
-                        <a href={blog.url}>
+                        <Link href={blog.url}>
                           <h3 className="post-title">{blog.title}</h3>
-                        </a>
+                        </Link>
                       ) : (
                         <h3 className="post-title">{blog.title}</h3>
                       )}
@@ -154,52 +136,8 @@ const Home: React.FC<HomeProps> = ({ blogs }) => {
 export default Home;
 
 // Type for getStaticProps
-export const getStaticProps: GetStaticProps = async () => {
-  // List of files in the blogs folder
-  const filesInBlogs = fs.readdirSync("./content/blogs");
-
-  // Get the front matter and slug (the filename without .md) of all files
-  const blogs: Blog[] = filesInBlogs.map((filename) => {
-    const file = fs.readFileSync(`./content/blogs/${filename}`, "utf8");
-    const matterData = matter(file);
-    const plainTextContent = removeMd(matterData.content as string);
-
-    // Calculate read time (simple words-per-minute estimate)
-    const words = plainTextContent.split(/\s+/).length;
-    const readTime = Math.ceil(words / 200) + " min read";
-
-    return {
-      title: matterData.data.title as string,
-      excerpt:
-        matterData.data.excerpt ||
-        plainTextContent.slice(0, 150) +
-          (plainTextContent.length > 150 ? "..." : ""),
-      category:
-        Array.isArray(matterData.data.tags) && matterData.data.tags.length > 0
-          ? matterData.data.tags.map((tag: string | { tag: string }) =>
-              typeof tag === "object" && tag !== null ? tag.tag : tag
-            )
-          : undefined,
-      date: matterData.data.date as string | Date,
-      readTime,
-      iconClass: "",
-      featuredImage: matterData.data.featuredImage || "",
-      url: `/blogs/${filename.slice(0, filename.indexOf("."))}`,
-      featured: matterData.data.featured || false,
-      content: plainTextContent,
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
-
-  blogs.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return dateB.getTime() - dateA.getTime();
-  });
-
-  return {
-    props: {
-      blogs,
-    },
-  };
-};
+export const getStaticProps: GetStaticProps<HomeProps> = async () => ({
+  props: {
+    blogs: getAllBlogsSorted(),
+  },
+});

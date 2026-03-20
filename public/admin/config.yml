@@ -36,7 +36,6 @@ collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
     folder: "content/blogs" # The path to the folder where the documents are stored
-    value_field: content/blogs/.md
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     identifier_field: "slug"
@@ -45,15 +44,18 @@ collections:
       - label: "Title"
         name: "title"
         widget: "string"
+        required: true
       - label: "Description"
         name: "description"
-        widget: "string"
+        widget: "text"
+        hint: "Short summary for listings and meta (can match meta description)."
       - label: "Keywords"
         name: "keywords"
         widget: "string"
       - label: "Meta Description"
         name: "metaDescription"
-        widget: "string"
+        widget: "text"
+        hint: "Used for search snippets and Open Graph; keep under ~160 characters."
       - label: "Featured Image"
         name: "featuredImage"
         widget: "image"
@@ -62,6 +64,10 @@ collections:
       - label: "Slug"
         name: "slug"
         widget: "string"
+        required: true
+        pattern:
+          - "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          - "Lowercase letters, numbers, and hyphens only (kebab-case URL)."
       - label: "Publish Date"
         name: "date"
         widget: "datetime"

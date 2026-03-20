@@ -9,9 +9,17 @@ export interface OpenGraphMetaProps {
   title?: string;
   description?: string;
   image?: string;
+  /** Use `article` for blog posts; `website` for listings and static pages. */
+  ogType?: "website" | "article";
 }
 
-const OpenGraphMeta: FC<OpenGraphMetaProps> = ({ url, title, description, image }) => {
+const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
+  url,
+  title,
+  description,
+  image,
+  ogType = "website",
+}) => {
   return (
     <Head>
       <meta property="og:site_name" content={config.site_title} />
@@ -19,7 +27,7 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({ url, title, description, image 
       <meta property="og:title" content={title ? [title, config.site_title].join(" | ") : ""} />
       <meta property="og:description" content={description ? description : config.site_description} />
       <meta property="og:image" content={absoluteFromSiteRoot(image)} />
-      <meta property="og:type" content="article" />
+      <meta property="og:type" content={ogType} />
     </Head>
   );
 };

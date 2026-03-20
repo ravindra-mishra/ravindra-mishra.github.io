@@ -6,10 +6,7 @@ import { GetStaticProps } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import IntroContent from "@/components/IntroContent";
 import Layout from "@/components/Layout";
-import BasicMeta from "@/components/meta/BasicMeta";
-import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
+import WebsiteMetaBundle from "@/components/meta/WebsiteMetaBundle";
 import TitleBanner from "@/components/TitleBanner";
 import Link from "next/link";
 
@@ -25,23 +22,8 @@ interface PageProps {
 const CategoryPage: React.FC<PageProps> = ({ tags }) => {
   return (
     <Layout>
-      <BasicMeta
-        url={"/categories"}
-        title="Blog Categories"
-        description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
-      />
-      <OpenGraphMeta
-        url={"/categories"}
-        title="Blog Categories"
-        description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
-      />
-      <TwitterCardMeta
-        url={"/categories"}
-        title="Blog Categories"
-        description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
-      />
-      <JsonLdMetaWebsite
-        url={"/categories"}
+      <WebsiteMetaBundle
+        path="/categories"
         title="Blog Categories"
         description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
       />

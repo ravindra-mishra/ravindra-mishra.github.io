@@ -73,6 +73,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         title={frontmatter.title}
         description={frontmatter.metaDescription}
         image={frontmatter.featuredImage}
+        ogType="article"
       />
       <TwitterCardMeta
         url={`/blogs/${slug}`}

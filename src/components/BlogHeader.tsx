@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import FormattedDate from "@/components/FormattedDate";
-// import TagList from "./TagList";
+import TagList from "./TagList";
 
 export interface BlogHeaderProps {
   className?: string;
@@ -19,7 +19,6 @@ const BlogHeader: FC<BlogHeaderProps> = ({
   readingTime,
   featureImage
 }) => {
-  console.log(tags);
   return (
      <div
         className={`background-primary blog-header ${className || ""}`}
@@ -35,7 +34,7 @@ const BlogHeader: FC<BlogHeaderProps> = ({
         <div className="blog-header-summary">
           <FormattedDate date={date} emoji={true} />
           <div>{readingTime}</div>
-          {/* <TagList tags={tags} emoji={true} className="inline" /> */}
+          <TagList tags={tags} emoji={true} className="inline" />
         </div>
       </div>
     </div>
