@@ -99,8 +99,14 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      # Use `npm run build` / `yarn build` so `next-sitemap` runs after export (not just `next build`).
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: |
+          if [ "${{ steps.detect-package-manager.outputs.manager }}" = "yarn" ]; then
+            yarn build
+          else
+            npm run build
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
