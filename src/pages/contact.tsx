@@ -1,32 +1,14 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import IntroContent from "@/components/IntroContent";
 import Layout from "@/components/Layout";
-import BasicMeta from "@/components/meta/BasicMeta";
-import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
+import WebsiteMetaBundle from "@/components/meta/WebsiteMetaBundle";
 import TitleBanner from "@/components/TitleBanner";
 
 const Contact = () => {
   return (
     <Layout>
-      <BasicMeta
-        url={"/contact"}
-        title="Contact"
-        description="Have a question or want to connect? Visit my contact page to reach out to me directly. Whether you have blog-related inquiries or feedback, I’d love to hear from you!"
-      />
-      <OpenGraphMeta
-        url={"/contact"}
-        title="Contact"
-        description="Have a question or want to connect? Visit my contact page to reach out to me directly. Whether you have blog-related inquiries or feedback, I’d love to hear from you!"
-      />
-      <TwitterCardMeta
-        url={"/contact"}
-        title="Contact"
-        description="Have a question or want to connect? Visit my contact page to reach out to me directly. Whether you have blog-related inquiries or feedback, I’d love to hear from you!"
-      />
-      <JsonLdMetaWebsite
-        url={"/contact"}
+      <WebsiteMetaBundle
+        path="/contact"
         title="Contact"
         description="Have a question or want to connect? Visit my contact page to reach out to me directly. Whether you have blog-related inquiries or feedback, I’d love to hear from you!"
       />

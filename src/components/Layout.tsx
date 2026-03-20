@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Navigation from "@/components/Navigation";
-import { useEffect, useState, type FC } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import Link from "next/link";
-import config from "@/lib/config";
 import ScrollToTop from "@/components/ScrollToTop";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteFooter from "@/components/SiteFooter";
@@ -14,35 +13,29 @@ export interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-  const [isVisible, setIsVisible] = useState(true); // Tracks header visibility
-  const [lastScrollY, setLastScrollY] = useState(0); // Tracks the last scroll position
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        // Scrolling down and beyond threshold
+      if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
         setIsVisible(false);
       } else {
-        // Scrolling up
         setIsVisible(true);
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
 
-  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
-  if (!GA_TRACKING_ID) {
-    console.error("NEXT_PUBLIC_GA_TRACKING_ID is not defined");
-    return;
-  }
+  const gaId = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
   return (
     <div className="">
@@ -58,7 +51,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         />
       </Head>
 
-      <GoogleAnalytics gaId={GA_TRACKING_ID} />
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
 
       <header className={`site-header ${isVisible ? "visible" : "hidden"}`}>
         {/* <div className="container center">
@@ -76,7 +69,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
         <div className="container">
           <div className="header-title">
-            <Link href={config.base_url} aria-label="Ravindra Mishra">
+            <Link href="/" aria-label="Ravindra Mishra - Home">
               <span className="header-title-name">ravindra</span>
               mishra
             </Link>

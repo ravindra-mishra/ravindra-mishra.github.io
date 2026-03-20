@@ -1,32 +1,14 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import IntroContent from "@/components/IntroContent";
 import Layout from "@/components/Layout";
-import BasicMeta from "@/components/meta/BasicMeta";
-import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
+import WebsiteMetaBundle from "@/components/meta/WebsiteMetaBundle";
 import TitleBanner from "@/components/TitleBanner";
 
 const Privacy = () => {
   return (
     <Layout>
-      <BasicMeta
-        url={"/privacy"}
-        title="Privacy Policy"
-        description="Your privacy matters to me. Read my privacy policy to understand how I handle your data when you visit my website and interact with my blog. Learn about the steps I take to protect your privacy."
-      />
-      <OpenGraphMeta
-        url={"/privacy"}
-        title="Privacy Policy"
-        description="Your privacy matters to me. Read my privacy policy to understand how I handle your data when you visit my website and interact with my blog. Learn about the steps I take to protect your privacy."
-      />
-      <TwitterCardMeta
-        url={"/privacy"}
-        title="Privacy Policy"
-        description="Your privacy matters to me. Read my privacy policy to understand how I handle your data when you visit my website and interact with my blog. Learn about the steps I take to protect your privacy."
-      />
-      <JsonLdMetaWebsite
-        url={"/privacy"}
+      <WebsiteMetaBundle
+        path="/privacy"
         title="Privacy Policy"
         description="Your privacy matters to me. Read my privacy policy to understand how I handle your data when you visit my website and interact with my blog. Learn about the steps I take to protect your privacy."
       />

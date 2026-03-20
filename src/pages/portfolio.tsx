@@ -5,18 +5,12 @@ import Experience from "@/components/Portfolio-components/Experience";
 import PC from "@/components/Portfolio-components/PC";
 import Award from "@/components/Portfolio-components/Award";
 import Projects from "@/components/Portfolio-components/Projects";
-import BasicMeta from "@/components/meta/BasicMeta";
-import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
-import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
-import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
+import WebsiteMetaBundle from "@/components/meta/WebsiteMetaBundle";
 
 const Portfolio = () => {
   return (
     <Layout>
-      <BasicMeta url={"/portfolio"} title="Portfolio" />
-      <OpenGraphMeta url={"/portfolio"} title="Portfolio" />
-      <TwitterCardMeta url={"/portfolio"} title="Portfolio" />
-      <JsonLdMetaWebsite url={"/portfolio"} title="Portfolio" />
+      <WebsiteMetaBundle path="/portfolio" title="Portfolio" />
       <Banner />
       <TechnicalSkills />
       <Experience />
