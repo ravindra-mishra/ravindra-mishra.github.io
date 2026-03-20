@@ -1,3 +1,4 @@
+import { absoluteFromSiteRoot } from "@/lib/absoluteUrl";
 import config from "@/lib/config";
 import { formatISO } from "date-fns";
 import Head from "next/head";
@@ -56,7 +57,7 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
               url: `${config.base_url}/image/logo.png`,
             },
           },
-          image: image ? image : `${config.base_url}/image/logo.jpg`,
+          image: absoluteFromSiteRoot(image ?? "/image/logo.jpg"),
           description: description,
           articleBody: content,
         })}

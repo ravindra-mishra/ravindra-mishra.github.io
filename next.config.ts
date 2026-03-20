@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 import path from "path";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   sassOptions: {
@@ -10,8 +12,8 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_COMMENTBOX_PROJECT_ID:
       process.env.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID,
   },
-  basePath: "", // Replace with the name of your GitHub repository
-  assetPrefix: "", // Same as the basePath
+  basePath,
+  assetPrefix: basePath,
   trailingSlash: false,
   output: "export",
 };

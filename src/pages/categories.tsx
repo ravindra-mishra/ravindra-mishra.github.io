@@ -26,22 +26,22 @@ const CategoryPage: React.FC<PageProps> = ({ tags }) => {
   return (
     <Layout>
       <BasicMeta
-        url={"/category"}
+        url={"/categories"}
         title="Blog Categories"
         description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
       />
       <OpenGraphMeta
-        url={"/category"}
+        url={"/categories"}
         title="Blog Categories"
         description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
       />
       <TwitterCardMeta
-        url={"/category"}
+        url={"/categories"}
         title="Blog Categories"
         description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
       />
       <JsonLdMetaWebsite
-        url={"/category"}
+        url={"/categories"}
         title="Blog Categories"
         description="Browse all available blog categories on this website. Discover articles grouped by topics and explore content that interests you."
       />

@@ -23,6 +23,7 @@ const BasicMeta: FC<BasicMetaProps> = ({
       <title>
         {title ? [title, config.site_title].join(" | ") : config.site_title}
       </title>
+      <meta name="robots" content="index, follow" />
       <meta name="algolia-site-verification" content="F4F5F7C97A08F73B" />
       <meta
         name="description"

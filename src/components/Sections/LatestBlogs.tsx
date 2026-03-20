@@ -15,10 +15,9 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
     <section className="latest-posts" id="blog">
       <div className="container">
         <div className="section-header">
-          <h2>Latest Blog Posts</h2>
+          <h1>Latest Sitecore & .NET Development Articles</h1>
           <p>
-            Explore my thoughts on Sitecore development, web technologies, and
-            industry trends
+            Latest tutorials and real-world solutions for Sitecore, .NET, and modern web development.
           </p>
         </div>
 
@@ -74,16 +73,16 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                   )}
                 </div>
                 {featured.url ? (
-                  <a href={featured.url}>
+                  <Link href={featured.url}>
                     <h3 className="post-title">{featured.title}</h3>
-                  </a>
+                  </Link>
                 ) : (
                   <h3 className="post-title">{featured.title}</h3>
                 )}
                 <p className="post-excerpt">{featured.excerpt}</p>
-                <a href={featured.url} className="read-more">
+                <Link href={featured.url ?? "#"} className="read-more">
                   Read Full Article <i className="fas fa-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </article>
           )}
@@ -140,9 +139,9 @@ const LatestBlogs: React.FC<LatestBlogsProps> = ({ blogs }) => {
                   )}
                 </div>
                 {blog.url ? (
-                  <a href={blog.url}>
+                  <Link href={blog.url}>
                     <h3 className="post-title">{blog.title}</h3>
-                  </a>
+                  </Link>
                 ) : (
                   <h3 className="post-title">{blog.title}</h3>
                 )}

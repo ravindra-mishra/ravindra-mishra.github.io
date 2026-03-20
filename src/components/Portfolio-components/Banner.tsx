@@ -7,7 +7,7 @@ const PromoSection: React.FC = () => {
         <div className="promo-content">
           <div className="eyebrow">Hello folks!</div>
           <div className="title">
-            <h1>I am Ravindra Mishra</h1>
+            <h2>I am Ravindra Mishra</h2>
           </div>
           <div className="description">
             Senior Sitecore Developer & Full Stack Web Developer

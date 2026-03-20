@@ -13,10 +13,10 @@ import JsonLdMetaWebsite from "@/components/meta/JsonLdMetaWebsite";
 const Portfolio = () => {
   return (
     <Layout>
-      <BasicMeta url={"/"} title="Portfolio" />
-      <OpenGraphMeta url={"/"} title="Portfolio" />
-      <TwitterCardMeta url={"/"} title="Portfolio" />
-      <JsonLdMetaWebsite url={"/"} title="Portfolio" />
+      <BasicMeta url={"/portfolio"} title="Portfolio" />
+      <OpenGraphMeta url={"/portfolio"} title="Portfolio" />
+      <TwitterCardMeta url={"/portfolio"} title="Portfolio" />
+      <JsonLdMetaWebsite url={"/portfolio"} title="Portfolio" />
       <Banner />
       <TechnicalSkills />
       <Experience />

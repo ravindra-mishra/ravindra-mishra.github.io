@@ -29,14 +29,15 @@ type PortfolioProps = {
 const Portfolio = ({ blogs }: PortfolioProps) => {
   return (
     <Layout>
-      <BasicMeta url={"/"} title="Portfolio" />
-      <OpenGraphMeta url={"/"} title="Portfolio" />
-      <TwitterCardMeta url={"/"} title="Portfolio" />
-      <JsonLdMetaWebsite url={"/"} title="Portfolio" />
-      <Banner />
+      <BasicMeta url={"/"} title="Sitecore & .NET Developer Blog" />
+      <OpenGraphMeta url={"/"} title="Sitecore & .NET Developer Blog" />
+      <TwitterCardMeta url={"/"} title="Sitecore & .NET Developer Blog" />
+      <JsonLdMetaWebsite url={"/"} title="Sitecore & .NET Developer Blog" />
+      
       <LatestBlogs blogs={blogs} />
+      <Banner />
       <PC />
-          <Award />
+      <Award />
       {/* <Experience /> */}
       <TechnicalSkills />
   

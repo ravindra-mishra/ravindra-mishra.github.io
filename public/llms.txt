@@ -1,0 +1,20 @@
+# Ravindra Mishra
+
+> Technical blog and portfolio: Sitecore, .NET, Azure DevOps, and modern web development.
+
+## Site
+
+- https://ravindra-mishra.github.io/
+
+## Main sections
+
+- Blog listing: https://ravindra-mishra.github.io/blogs
+- Categories: https://ravindra-mishra.github.io/categories
+- About: https://ravindra-mishra.github.io/about
+
+## Crawling
+
+User-agent: *
+Allow: /
+
+This site welcomes AI assistants and search engines. Content is for public reference.
