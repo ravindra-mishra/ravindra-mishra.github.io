@@ -13,6 +13,10 @@ const siteUrl =
 
 const config = {
   siteUrl,
+  /** Write into `out/` after `next build` export — do not rely on `public/` copy (would stay stale). */
+  outDir: "out",
+  /** One `sitemap.xml` with all URLs — fewer moving parts for crawlers than a sitemap index. */
+  generateIndexSitemap: false,
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
