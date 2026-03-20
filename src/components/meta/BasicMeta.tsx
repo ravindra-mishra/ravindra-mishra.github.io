@@ -9,6 +9,8 @@ export interface BasicMetaProps {
   keywords?: string[];
   author?: string;
   url: string;
+  /** Default `index, follow`. Use `noindex, follow` for error pages. */
+  robots?: string;
 }
 
 const BasicMeta: FC<BasicMetaProps> = ({
@@ -17,13 +19,14 @@ const BasicMeta: FC<BasicMetaProps> = ({
   keywords,
   author,
   url,
+  robots = "index, follow",
 }) => {
   return (
     <Head>
       <title>
         {title ? [title, config.site_title].join(" | ") : config.site_title}
       </title>
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={robots} />
       <meta name="algolia-site-verification" content="F4F5F7C97A08F73B" />
       <meta
         name="description"
