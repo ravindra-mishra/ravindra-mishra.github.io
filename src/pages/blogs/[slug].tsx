@@ -1,6 +1,7 @@
 import fs from "fs";
 import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Layout from "@/components/Layout";
@@ -104,6 +105,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
             <div className="blog-container">
               <hr />
               <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
                 components={{
                   a: MarkdownLink,
                 }}

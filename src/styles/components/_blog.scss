@@ -24,6 +24,39 @@
     font-size: 1em;
   }
 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.95em;
+    display: block;
+    overflow-x: auto;
+  }
+
+  thead {
+    background: $gray;
+  }
+
+  th,
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: 600;
+  }
+
+  tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  input[type="checkbox"] {
+    margin-right: 0.4rem;
+  }
+
   // p {
   //   text-align: justify;
   // }
