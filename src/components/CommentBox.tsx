@@ -1,34 +1,57 @@
-import { FC, useEffect } from "react";
-// import {commentBox } from "commentbox.io"
+"use client";
+
+import { FC, useEffect, useRef } from "react";
+import { useTheme } from "@/components/ThemeProvider";
 
 export interface CommentBoxProps {
   className?: string;
 }
 
 const CommentBox: FC<CommentBoxProps> = ({ className }) => {
+  const { theme } = useTheme();
+  const hostRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Dynamically import the `commentbox.io` library
-      (async () => {
-        const { default: commentBox } = await import("commentbox.io");
+    if (typeof window === "undefined") return;
 
-        const projectId = process.env.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID;
-        if (!projectId) {
-          console.error("NEXT_PUBLIC_COMMENTBOX_PROJECT_ID is not defined");
-          return;
-        }
+    let removeCommentBox: (() => void) | undefined;
+    let cancelled = false;
 
-        const removeCommentBox = commentBox(projectId);
+    (async () => {
+      const { default: commentBox } = await import("commentbox.io");
+      if (cancelled) return;
 
-        // Cleanup on component unmount
-        return () => {
-          if (removeCommentBox) removeCommentBox();
-        };
-      })();
-    }
-  }, []);
+      const projectId = process.env.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID;
+      if (!projectId) {
+        console.error("NEXT_PUBLIC_COMMENTBOX_PROJECT_ID is not defined");
+        return;
+      }
 
-  return <div className={`commentbox ${className}`}></div>;
+      const isDark = theme === "dark";
+      removeCommentBox = commentBox(projectId, {
+        backgroundColor: isDark ? "#161d27" : "#ffffff",
+        textColor: isDark ? "#e8ecf1" : "#1a2332",
+        subtextColor: isDark ? "#9aa5b5" : "#5a6577",
+      });
+    })();
+
+    return () => {
+      cancelled = true;
+      removeCommentBox?.();
+      if (hostRef.current) {
+        hostRef.current.innerHTML = "";
+      }
+    };
+  }, [theme]);
+
+  return (
+    <div
+      ref={hostRef}
+      key={theme}
+      className={`commentbox ${className ?? ""}`.trim()}
+      data-theme={theme}
+    />
+  );
 };
 
 export default CommentBox;

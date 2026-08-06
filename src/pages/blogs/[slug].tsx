@@ -6,21 +6,25 @@ import matter from "gray-matter";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Layout from "@/components/Layout";
 import removeMd from "remove-markdown";
+import Link from "next/link";
+import { format } from "date-fns";
 
-import IntroContent from "@/components/IntroContent";
 import BlogPostMetaBundle from "@/components/meta/BlogPostMetaBundle";
 import type { FaqItem, HowToData } from "@/components/meta/JsonLdFaqHowTo";
 
-import "prismjs/themes/prism-tomorrow.css"; // Syntax highlighting theme
+import "prismjs/themes/prism-tomorrow.css";
 import Breadcrumb from "@/components/Breadcrumb";
 import readingDuration from "reading-duration";
 import BlogHeader from "@/components/BlogHeader";
-import TagList from "@/components/TagList";
 
 import CommentBox from "@/components/CommentBox";
 import MarkdownLink from "@/components/blog/MarkdownLink";
+import CodeBlock from "@/components/blog/CodeBlock";
+import MarkdownHeading from "@/components/blog/MarkdownHeading";
+import BlogTableOfContents from "@/components/blog/BlogTableOfContents";
+import BlogSideTags from "@/components/blog/BlogSideTags";
+import { extractTocFromMarkdown } from "@/lib/blogToc";
 
-// Frontmatter type definition
 interface Frontmatter {
   title: string;
   description: string;
@@ -28,29 +32,33 @@ interface Frontmatter {
   featuredImage: string;
   keywords: string;
   date: Date;
-  /** Optional; defaults to `date` when building the page. */
   modifiedDate?: Date | string;
   tags: { tag: string }[];
   faq?: FaqItem[];
   howto?: HowToData;
 }
 
-/** Dates as ISO strings — JSON-serializable for `getStaticProps`. */
-interface BlogFrontmatterResolved extends Omit<Frontmatter, "date" | "modifiedDate"> {
+interface BlogFrontmatterResolved
+  extends Omit<Frontmatter, "date" | "modifiedDate"> {
   date: string;
   modifiedDate: string;
 }
 
-// Props type definition
 interface BlogProps {
   frontmatter: BlogFrontmatterResolved;
   markdown: string;
   slug: string;
 }
 
+const AUTHOR_NAME = "Ravindra Mishra";
+
 const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
   const postDate = new Date(frontmatter.date);
   const postModified = new Date(frontmatter.modifiedDate);
+  const tocItems = extractTocFromMarkdown(markdown);
+  const showModified =
+    postModified.getTime() !== postDate.getTime() &&
+    !Number.isNaN(postModified.getTime());
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -64,11 +72,11 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         Prism.highlightAll();
       })();
     }
-  }, []);
+  }, [markdown]);
 
   const readingTime = readingDuration(markdown, {
     wordsPerMinute: 150,
-    emoji: "open_book",
+    emoji: true,
   });
 
   const articlePlainText = removeMd(markdown);
@@ -101,28 +109,43 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         />
         <Breadcrumb className="blog-page" />
         <div className="container">
-          <div className="container-fluid">
+          <div className="container-fluid blog-body-layout">
             <div className="blog-container">
-              <hr />
+              <hr className="blog-rule blog-rule-start" />
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
                   a: MarkdownLink,
+                  pre: ({ children, className }) => (
+                    <CodeBlock className={className}>{children}</CodeBlock>
+                  ),
+                  h2: ({ children }) => (
+                    <MarkdownHeading level={2}>{children}</MarkdownHeading>
+                  ),
+                  h3: ({ children }) => (
+                    <MarkdownHeading level={3}>{children}</MarkdownHeading>
+                  ),
                 }}
               >
                 {markdown}
               </ReactMarkdown>
-              <hr />
+              <hr className="blog-rule blog-rule-end" />
+              <p className="blog-authored-by">
+                Authored by{" "}
+                <Link href="/about">{AUTHOR_NAME}</Link> on{" "}
+                {format(postDate, "MMMM d, yyyy")}
+                {showModified ? (
+                  <>
+                    {" "}
+                    · Modified on {format(postModified, "MMMM d, yyyy")}
+                  </>
+                ) : null}
+              </p>
               <CommentBox />
             </div>
-            <aside className="blog-side-container">
-              <TagList
-                tags={frontmatter.tags}
-                emoji={false}
-                title="Tags: "
-                className="card-box"
-              />
-              <IntroContent />
+            <aside className="blog-side-container" aria-label="Page navigation">
+              <BlogTableOfContents items={tocItems} />
+              <BlogSideTags tags={frontmatter.tags} />
             </aside>
           </div>
         </div>
@@ -139,7 +162,6 @@ function coerceBlogDate(value: unknown): Date {
   return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
 }
 
-// Fetch data for the blog page
 export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
   const slug = params?.slug as string;
   const fileContent = matter(
@@ -163,7 +185,6 @@ export const getStaticProps: GetStaticProps<BlogProps> = async ({ params }) => {
   };
 };
 
-// Generate paths for static generation
 export const getStaticPaths: GetStaticPaths = async () => {
   const files = fs.readdirSync("./content/blogs");
   const paths = files.map((file) => ({

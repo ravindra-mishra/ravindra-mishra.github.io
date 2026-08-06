@@ -1,0 +1,102 @@
+// Brand accent (compile-time SCSS — existing light brand)
+$primary: #2c5282;
+$primary-bright: #4299e1;
+$site-black: #1a2332;
+$white: #ffffff;
+$gray: #d8e0e7;
+$font-color: $site-black;
+
+$gray-default-light: lighten($primary, 35%);
+$gray-default: lighten($primary, 50%);
+$gray-default-dark: darken($primary, 20%);
+$gray-blue-light: lighten($primary, 30%);
+$gray-blue: lighten($primary, 15%);
+$gray-blue-dark: darken($primary, 15%);
+
+$logo-gray-light: $gray-default-light;
+$logo-gray: $gray-default;
+$logo-gray-dark: $gray-default-dark;
+
+// Legacy aliases used in older partials
+$color_1: #1a2332;
+$color_2: #5a6577;
+$color_3: #ffffff;
+$color_4: $primary;
+$color_5: #8b95a8;
+$color_6: $primary-bright;
+$border-color_1: $primary;
+
+/* Light = existing production colors */
+:root,
+[data-theme="light"] {
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7fafc;
+  --color-surface-gray: #d8e0e7;
+  --color-text: #1a2332;
+  --color-text-muted: #5a6577;
+  --color-text-soft: #718096;
+  --color-border: rgba(26, 35, 50, 0.12);
+  --color-border-strong: #e2e8f0;
+  --color-accent: #2c5282;
+  --color-accent-hover: #2a4365;
+  --color-accent-bright: #4299e1;
+  --color-accent-soft: rgba(44, 82, 130, 0.1);
+  --color-banner: #2c5282;
+  --color-code-bg: #263238;
+  --color-code-text: #eeffff;
+  --color-header-bg: #ffffff;
+  --color-header-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08),
+    0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  --color-logo: #4a7ab0;
+  --color-logo-name: rgb(52, 52, 52);
+  --color-footer-bg: #1a202c;
+  --color-footer-text: #a0aec0;
+  --color-footer-heading: #2c5282;
+  --color-footer-muted: #718096;
+  --color-footer-border: #2d3748;
+  --color-social-bg: #2d3748;
+  --color-card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  --color-card-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
+  --color-blog-read-bg: transparent;
+  --shadow-sm: 0 1px 2px rgba(26, 35, 50, 0.06);
+  --shadow-md: 0 4px 16px rgba(26, 35, 50, 0.08);
+  color-scheme: light;
+}
+
+/* Dark — deep slate navy (opinionated, brand-aligned) */
+[data-theme="dark"] {
+  --color-canvas: #0e131a;
+  --color-surface: #161d27;
+  --color-surface-muted: #1c2430;
+  --color-surface-gray: #243044;
+  --color-text: #e8ecf1;
+  --color-text-muted: #9aa5b5;
+  --color-text-soft: #7d8796;
+  --color-border: rgba(232, 236, 241, 0.1);
+  --color-border-strong: rgba(232, 236, 241, 0.14);
+  --color-accent: #6b9bd1;
+  --color-accent-hover: #8bb0db;
+  --color-accent-bright: #7eb0e0;
+  --color-accent-soft: rgba(107, 155, 209, 0.16);
+  --color-banner: #2c5282;
+  --color-code-bg: #0d1117;
+  --color-code-text: #e6edf3;
+  --color-header-bg: #121820;
+  --color-header-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.35),
+    0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  --color-logo: #6b9bd1;
+  --color-logo-name: #e8ecf1;
+  --color-footer-bg: #0a0e12;
+  --color-footer-text: #9aa5b5;
+  --color-footer-heading: #6b9bd1;
+  --color-footer-muted: #7d8796;
+  --color-footer-border: #1c2430;
+  --color-social-bg: #1c2430;
+  --color-card-shadow: 0 5px 24px rgba(0, 0, 0, 0.35);
+  --color-card-shadow-hover: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --color-blog-read-bg: #121820;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}

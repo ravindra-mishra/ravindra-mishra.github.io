@@ -59,7 +59,7 @@ const SiteFooter: React.FC = () => {
                 <Link href="/blogs">Blog Home</Link>
               </li>
               <li>
-                <Link href="/category">Categories</Link>
+                <Link href="/categories">Categories</Link>
               </li>
               <li>
                 <Link href="/about">About</Link>

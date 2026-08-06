@@ -1,27 +1,25 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
+const themeBootScript = `(function(){try{var k="rm-theme";var t=localStorage.getItem(k);if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();`;
+
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" data-theme="light">
         <Head>
-          {/* Netlify Widget */}
+          <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
           <Script
-            strategy="afterInteractive" // Load after the page content is interactive
+            strategy="afterInteractive"
             src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-            async // Load asynchronously to avoid blocking page render
+            async
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-            as="style"
-            type="text/css"
-            crossOrigin="anonymous"
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
           />
-          {/* Non-blocking Font Awesome for CWV; activate stylesheet after load. */}
           <link
             id="fa-stylesheet"
             rel="stylesheet"

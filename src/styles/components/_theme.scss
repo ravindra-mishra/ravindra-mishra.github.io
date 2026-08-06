@@ -1,0 +1,208 @@
+/* Global theme surfaces — light keeps production look; dark uses tokens */
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: var(--color-accent);
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+code:not(pre code) {
+  background: var(--color-surface-gray);
+  color: var(--color-text);
+}
+
+.card-box,
+.intro-content {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.blog-list .blog-post-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+
+  .blog-heading a {
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+}
+
+.multi-lists-section.card {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.project-card {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.timeline,
+.timeline h3,
+.timeline .duration {
+  color: var(--color-text);
+}
+
+.breadcrumb {
+  color: var(--color-text-muted);
+
+  a {
+    color: var(--color-accent);
+  }
+
+  .breadcrumb-item::after {
+    color: var(--color-text-soft);
+  }
+}
+
+/* Homepage / redesign surfaces */
+.latest-posts {
+  background: var(--color-surface-muted);
+}
+
+.section-header {
+  h2 {
+    color: var(--color-text);
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+}
+
+.featured-post,
+.post-card {
+  background: var(--color-surface);
+  box-shadow: var(--color-card-shadow);
+
+  &:hover {
+    box-shadow: var(--color-card-shadow-hover);
+  }
+}
+
+.post-meta {
+  color: var(--color-text-muted);
+}
+
+.post-category {
+  background: var(--color-accent);
+}
+
+.post-title {
+  color: var(--color-text);
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.post-excerpt {
+  color: var(--color-text-muted);
+}
+
+.read-more {
+  color: var(--color-accent);
+}
+
+.linkedin-posts {
+  background: var(--color-surface);
+}
+
+.linkedin-post {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.linkedin-info {
+  h4 {
+    color: var(--color-text);
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+}
+
+.title-banner,
+.blog-header.background-primary,
+.promo.background-primary {
+  background-color: var(--color-banner) !important;
+}
+
+.footer {
+  background: var(--color-footer-bg);
+}
+
+.footer-section {
+  h4 {
+    color: var(--color-footer-heading);
+  }
+
+  p,
+  li,
+  a {
+    color: var(--color-footer-text);
+  }
+
+  a:hover {
+    color: var(--color-accent-bright);
+  }
+}
+
+.social-links a {
+  background: var(--color-social-bg);
+
+  &:hover {
+    background: var(--color-accent);
+  }
+}
+
+.footer-bottom {
+  border-top-color: var(--color-footer-border);
+  color: var(--color-footer-muted);
+}
+
+[data-theme="dark"] {
+  .promo.background-gray {
+    background: var(--color-surface-muted);
+  }
+
+  .component-title,
+  .promo-content h2,
+  .promo-content h3,
+  .promo-content p,
+  .promo-content li {
+    color: var(--color-text);
+  }
+
+  .blog-header .blog-title,
+  .title-banner h1 {
+    color: #fff;
+  }
+}

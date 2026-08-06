@@ -5,6 +5,7 @@ import Link from "next/link";
 import ScrollToTop from "@/components/ScrollToTop";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteFooter from "@/components/SiteFooter";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -56,19 +57,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
 
       <header className={`site-header ${isVisible ? "visible" : "hidden"}`}>
-        {/* <div className="container center">
-          <div className="header-widget">
-            <a className="header-image-wrapper" href="/">
-              <img
-                alt="Daily Sitecore"
-                data-height="170"
-                data-width="762"
-                src="https://blogger.googleusercontent.com/img/a/AVvXsEi2hMLVuYPwck6n5BdKWMRQ7CEjDBcv6pn2gKC0upv78pcDw7TjI3dcYk3ToTun9TkSqNKMt9uyqyw9rwovBE4Ru30gnLACN8e0C4PKozAvomPVTgO5BvJjqRE_KGgfubPilHaqbWH9XNkOGDcNXdy3YMC7AV9HGzXaiDa2vs9OYs0Hte9IbgzCCHUSlZ4=s762"
-              />
-            </a>
-          </div>
-        </div> */}
-
         <div className="container">
           <div className="header-title">
             <Link href="/" aria-label="Ravindra Mishra - Home">
@@ -77,7 +65,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             </Link>
           </div>
 
-          <Navigation className="header-nav" />
+          <div className="header-end">
+            <Navigation className="header-nav" />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

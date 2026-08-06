@@ -1,9 +1,9 @@
 body {
   margin: 0;
   font-family: Poppins, system-ui;
-  color: $font-color;
+  color: var(--color-text, $font-color);
   line-height: 1.75;
-  background: $white;
+  background: var(--color-canvas, $white);
 }
 
 h1 {
@@ -144,7 +144,7 @@ pre {
 }
 
 a {
-  color: $primary;
+  color: var(--color-accent, $primary);
   text-decoration: none;
 
   &:hover {

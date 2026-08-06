@@ -1,21 +1,22 @@
-@import "../vars/colors";
-
-.background-primary {
-  background-color: $primary;
-  color: $white;
-}
-
-.background-gray {
-  background: $gray;
-  color: $site-black;
-}
-
-.background-white {
-  background-color: $white;
-  color: $site-black;
-}
-
-.background-black {
-  background-color: $site-black;
-  color: $white;
-}
+@import "../vars/colors";
+
+.background-primary {
+  background-color: var(--color-banner, $primary);
+  color: $white;
+}
+
+.background-gray {
+  background: var(--color-surface-gray, $gray);
+  color: var(--color-text, $site-black);
+}
+
+.background-white {
+  background-color: var(--color-surface, $white);
+  color: var(--color-text, $site-black);
+}
+
+.background-black {
+  background-color: var(--color-footer-bg, $site-black);
+  color: $white;
+}
+

@@ -1,13 +1,31 @@
 tags:
   - slug: sitecore-sxa
     name: Sitecore SXA
+    description: >-
+      Practical Sitecore Experience Accelerator (SXA) guides—themes, components,
+      Content Serialization, and delivery patterns for Sitecore XP projects.
   - slug: sitecore
     name: Sitecore
+    description: >-
+      Sitecore XP fundamentals and day-to-day solutions: admin tasks, SQL tips,
+      modules, Helix practices, and real project troubleshooting.
   - slug: azure-devops
     name: Azure DevOps
+    description: >-
+      CI/CD for Sitecore and .NET—Azure Pipelines, build/release patterns, and
+      how to ship content and code safely with DevOps boards.
   - slug: sitecore-xm-cloud
     name: Sitecore XM Cloud
+    description: >-
+      Sitecore XM Cloud and headless delivery—App Studio, environments, and
+      modern XM Cloud workflows for cloud-native Sitecore teams.
   - slug: sitecore-marketplace
     name: Sitecore Marketplace
+    description: >-
+      Build and ship Sitecore Marketplace apps with Next.js—auth, App Studio,
+      local testing, and production-ready Marketplace patterns.
   - slug: nextjs-react-development
     name: Next.js / React Development
+    description: >-
+      Next.js and React patterns used with Sitecore headless and full-stack
+      apps—UI, routing, and frontend architecture for developers.
