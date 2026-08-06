@@ -1,0 +1,182 @@
+{
+    "generated_at": "2026-06-24T11:07:53+00:00",
+    "format": "commonmark-yaml-page-bundle",
+    "posts": [
+        {
+            "id": 333907,
+            "title": "Submit Action to Save Contacts in List Manager with Fields Mapping Part 2 Create Submit Action",
+            "slug": "submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2",
+            "link": "https://blogs-archive.perficient.com/2023/06/02/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2/",
+            "markdown_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2/index.md",
+            "images": [
+                {
+                    "source_url": "https://blogs.perficient.com/files/Save-To-Contact-List-Submit-Action-Item-1024x322.png",
+                    "markdown_path": "images/Save-To-Contact-List-Submit-Action-Item-1024x322.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2/images/Save-To-Contact-List-Submit-Action-Item-1024x322.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Create-Empty-Contact-List.gif",
+                    "markdown_path": "images/Create-Empty-Contact-List.gif",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2/images/Create-Empty-Contact-List.gif"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif",
+                    "markdown_path": "images/Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2/images/Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Form-Submission-and-Result-Verification.gif",
+                    "markdown_path": "images/Form-Submission-and-Result-Verification.gif",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2/images/Form-Submission-and-Result-Verification.gif"
+                }
+            ]
+        },
+        {
+            "id": 333377,
+            "title": "Submit Action to Save Contacts in List Manager with Fields Mapping Part 1 Create SPEAK Editor",
+            "slug": "submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1",
+            "link": "https://blogs-archive.perficient.com/2023/06/01/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/",
+            "markdown_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/index.md",
+            "images": [
+                {
+                    "source_url": "https://blogs.perficient.com/files/Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif",
+                    "markdown_path": "images/Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Sitecore-Rocks-connection-500x268.png",
+                    "markdown_path": "images/Sitecore-Rocks-connection-500x268.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Sitecore-Rocks-connection-500x268.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Item-creation-and-layout-configuration-500x189.png",
+                    "markdown_path": "images/Item-creation-and-layout-configuration-500x189.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Item-creation-and-layout-configuration-500x189.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Page-Code-Properties-Window-1024x308.png",
+                    "markdown_path": "images/Page-Code-Properties-Window-1024x308.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Page-Code-Properties-Window-1024x308.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Rendering-and-Placeholders-1024x325.png",
+                    "markdown_path": "images/Rendering-and-Placeholders-1024x325.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Rendering-and-Placeholders-1024x325.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2023-04-26-18_21_51-Book1-Excel-1024x152.png",
+                    "markdown_path": "images/2023-04-26-18_21_51-Book1-Excel-1024x152.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/2023-04-26-18_21_51-Book1-Excel-1024x152.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2023-04-26-18_19_24-Book1-Excel-1024x104.png",
+                    "markdown_path": "images/2023-04-26-18_19_24-Book1-Excel-1024x104.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/2023-04-26-18_19_24-Book1-Excel-1024x104.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Page-Settings-And-Form-Parameters.png",
+                    "markdown_path": "images/Page-Settings-And-Form-Parameters.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Page-Settings-And-Form-Parameters.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Update-form-parameter-folder-Id-in-layout-1024x460.png",
+                    "markdown_path": "images/Update-form-parameter-folder-Id-in-layout-1024x460.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/Update-form-parameter-folder-Id-in-layout-1024x460.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/SaveToContactList-Javascript-in-project-500x445.png",
+                    "markdown_path": "images/SaveToContactList-Javascript-in-project-500x445.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1/images/SaveToContactList-Javascript-in-project-500x445.png"
+                }
+            ]
+        },
+        {
+            "id": 333061,
+            "title": "Submit Action to Save Contacts in List Manager \u2013 Basic Implementation",
+            "slug": "submit-action-to-save-contacts-in-list-manager-basic-implementation",
+            "link": "https://blogs-archive.perficient.com/2023/05/13/submit-action-to-save-contacts-in-list-manager-basic-implementation/",
+            "markdown_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/index.md",
+            "images": [
+                {
+                    "source_url": "https://blogs.perficient.com/files/FormSubmitAction-SaveToContactList-2-1.gif",
+                    "markdown_path": "images/FormSubmitAction-SaveToContactList-2-1.gif",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/images/FormSubmitAction-SaveToContactList-2-1.gif"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Editor-Layout-for-submit-action-1024x336.png",
+                    "markdown_path": "images/Editor-Layout-for-submit-action-1024x336.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/images/Editor-Layout-for-submit-action-1024x336.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/SaveToContactList-EditorLayoutFieldsUpdate-1024x500.png",
+                    "markdown_path": "images/SaveToContactList-EditorLayoutFieldsUpdate-1024x500.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/images/SaveToContactList-EditorLayoutFieldsUpdate-1024x500.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/SaveToContactList-SubmitActionItem-1024x323.png",
+                    "markdown_path": "images/SaveToContactList-SubmitActionItem-1024x323.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/images/SaveToContactList-SubmitActionItem-1024x323.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/Save-To-Contact-List-Submit-Action-Item-1024x322.png",
+                    "markdown_path": "images/Save-To-Contact-List-Submit-Action-Item-1024x322.png",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/images/Save-To-Contact-List-Submit-Action-Item-1024x322.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/SaveToContactList-Conclustion-1.gif",
+                    "markdown_path": "images/SaveToContactList-Conclustion-1.gif",
+                    "package_path": "markdown/submit-action-to-save-contacts-in-list-manager-basic-implementation/images/SaveToContactList-Conclustion-1.gif"
+                }
+            ]
+        },
+        {
+            "id": 319373,
+            "title": "Add PowerShell Script to the Context Menu in Sitecore SXA",
+            "slug": "add-powershell-script-to-the-context-menu-in-sitecore-sxa",
+            "link": "https://blogs-archive.perficient.com/2022/09/30/add-powershell-script-to-the-context-menu-in-sitecore-sxa/",
+            "markdown_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/index.md",
+            "images": [
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_28_55-Clipboard-1024x548.png",
+                    "markdown_path": "images/2022-09-28-19_28_55-Clipboard-1024x548.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_28_55-Clipboard-1024x548.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_37_04-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x302.png",
+                    "markdown_path": "images/2022-09-28-19_37_04-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x302.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_37_04-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x302.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_37_39-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x602.png",
+                    "markdown_path": "images/2022-09-28-19_37_39-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x602.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_37_39-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x602.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_38_10-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x526.png",
+                    "markdown_path": "images/2022-09-28-19_38_10-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x526.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_38_10-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x526.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_39_40-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x583.png",
+                    "markdown_path": "images/2022-09-28-19_39_40-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x583.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_39_40-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x583.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_40_07-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x405.png",
+                    "markdown_path": "images/2022-09-28-19_40_07-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x405.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_40_07-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x405.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_40_58-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x335.png",
+                    "markdown_path": "images/2022-09-28-19_40_58-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x335.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_40_58-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x335.png"
+                },
+                {
+                    "source_url": "https://blogs.perficient.com/files/2022-09-28-19_41_27-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x407.png",
+                    "markdown_path": "images/2022-09-28-19_41_27-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x407.png",
+                    "package_path": "markdown/add-powershell-script-to-the-context-menu-in-sitecore-sxa/images/2022-09-28-19_41_27-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x407.png"
+                }
+            ]
+        }
+    ]
+}

@@ -9,6 +9,10 @@ export interface BlogHeaderProps {
   date: Date;
   readingTime: string;
   featureImage: string;
+  /** Historical publication source label (e.g. Perficient Blogs Archive). */
+  source?: string;
+  /** URL where the post was originally published. */
+  originalUrl?: string;
 }
 
 const BlogHeader: FC<BlogHeaderProps> = ({
@@ -18,7 +22,11 @@ const BlogHeader: FC<BlogHeaderProps> = ({
   date,
   readingTime,
   featureImage,
+  source,
+  originalUrl,
 }) => {
+  const attributionLabel = source || "original publication";
+
   return (
     <div className={`background-primary blog-header ${className || ""}`}>
       <img
@@ -40,6 +48,32 @@ const BlogHeader: FC<BlogHeaderProps> = ({
             <TagList tags={tags} emoji={true} className="inline" />
           ) : null}
         </div>
+        {originalUrl || source ? (
+          <p className="blog-original-attribution">
+            Originally published
+            {source ? (
+              <>
+                {" "}
+                on{" "}
+                {originalUrl ? (
+                  <a href={originalUrl} rel="noopener noreferrer">
+                    {attributionLabel}
+                  </a>
+                ) : (
+                  attributionLabel
+                )}
+              </>
+            ) : originalUrl ? (
+              <>
+                {" "}
+                at{" "}
+                <a href={originalUrl} rel="noopener noreferrer">
+                  {originalUrl}
+                </a>
+              </>
+            ) : null}
+          </p>
+        ) : null}
       </div>
     </div>
   );

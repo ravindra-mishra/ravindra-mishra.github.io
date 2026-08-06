@@ -9,6 +9,8 @@ export interface BasicMetaProps {
   keywords?: string[];
   author?: string;
   url: string;
+  /** Absolute canonical URL override. When omitted, uses `base_url + url`. */
+  canonicalUrl?: string;
   /** Default `index, follow`. Use `noindex, follow` for error pages. */
   robots?: string;
   /** Load AdSense only on content pages (e.g. blog posts), not listings/404. */
@@ -21,9 +23,13 @@ const BasicMeta: FC<BasicMetaProps> = ({
   keywords,
   author,
   url,
+  canonicalUrl,
   robots = "index, follow",
   includeAdsense = false,
 }) => {
+  const canonicalHref =
+    canonicalUrl || `${config.base_url.replace(/\/$/, "")}${url}`;
+
   return (
     <Head>
       <title>
@@ -40,7 +46,7 @@ const BasicMeta: FC<BasicMetaProps> = ({
         content={keywords ? keywords.join(",") : config.site_keywords.join(",")}
       />
       {author ? <meta name="author" content={author} /> : null}
-      <link rel="canonical" href={config.base_url + url} />
+      <link rel="canonical" href={canonicalHref} />
       {includeAdsense ? (
         <script
           async

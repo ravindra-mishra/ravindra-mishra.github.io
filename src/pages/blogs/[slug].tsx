@@ -36,6 +36,10 @@ interface Frontmatter {
   tags: { tag: string }[];
   faq?: FaqItem[];
   howto?: HowToData;
+  author?: string;
+  originalUrl?: string;
+  source?: string;
+  canonicalUrl?: string;
 }
 
 interface BlogFrontmatterResolved
@@ -69,6 +73,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         await import("prismjs/components/prism-sql");
         await import("prismjs/components/prism-json");
         await import("prismjs/components/prism-csharp");
+        await import("prismjs/components/prism-powershell");
         Prism.highlightAll();
       })();
     }
@@ -92,6 +97,8 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         keywords={frontmatter.keywords}
         date={postDate}
         modifiedDate={postModified}
+        author={frontmatter.author || AUTHOR_NAME}
+        canonicalUrl={frontmatter.canonicalUrl}
         articlePlainText={articlePlainText}
         tags={frontmatter.tags}
         faq={frontmatter.faq}
@@ -106,6 +113,8 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
           className="blog-page"
           readingTime={readingTime}
           featureImage={frontmatter.featuredImage}
+          source={frontmatter.source}
+          originalUrl={frontmatter.originalUrl}
         />
         <Breadcrumb className="blog-page" />
         <div className="container">
@@ -132,8 +141,8 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
               <hr className="blog-rule blog-rule-end" />
               <p className="blog-authored-by">
                 Authored by{" "}
-                <Link href="/about">{AUTHOR_NAME}</Link> on{" "}
-                {format(postDate, "MMMM d, yyyy")}
+                <Link href="/about">{frontmatter.author || AUTHOR_NAME}</Link>{" "}
+                on {format(postDate, "MMMM d, yyyy")}
                 {showModified ? (
                   <>
                     {" "}

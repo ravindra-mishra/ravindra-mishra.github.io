@@ -82,6 +82,27 @@ collections:
         time_format: "HH:mm"
         format: "LLL"
         hint: "Update when you substantially revise the post (feeds dateModified in schema and sitemap)."
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        required: false
+        default: "Ravindra Mishra"
+        hint: "Displayed in meta tags and byline. Defaults to Ravindra Mishra when empty."
+      - label: "Original URL"
+        name: "originalUrl"
+        widget: "string"
+        required: false
+        hint: "URL where this post was first published (e.g. Perficient archive). Shown as attribution."
+      - label: "Source"
+        name: "source"
+        widget: "string"
+        required: false
+        hint: "Publication source label, e.g. Perficient Blogs Archive."
+      - label: "Canonical URL override"
+        name: "canonicalUrl"
+        widget: "string"
+        required: false
+        hint: "Optional absolute canonical URL. Leave empty to use this site's post URL (recommended)."
       - label: "FAQ (optional)"
         name: "faq"
         widget: "list"

@@ -34,6 +34,8 @@ export interface BlogPostMetaBundleProps {
   date: Date;
   modifiedDate?: Date;
   author?: string;
+  /** Absolute canonical URL override for `<link rel="canonical">`. */
+  canonicalUrl?: string;
   /** Plain text body for JSON-LD `articleBody` (AEO / rich context). */
   articlePlainText: string;
   tags?: { tag: string }[];
@@ -55,13 +57,14 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
   date,
   modifiedDate,
   author = "Ravindra Mishra",
+  canonicalUrl,
   articlePlainText,
   tags,
   faq,
   howto,
 }) => {
   const path = blogPostPath(slug);
-  const canonicalHref = `${config.base_url.replace(/\/$/, "")}${path}`;
+  const siteHref = `${config.base_url.replace(/\/$/, "")}${path}`;
   const publishedISO = formatISO(date);
   const modifiedISO = formatISO(modifiedDate ?? date);
   const authorProfileUrl = `${config.base_url.replace(/\/$/, "")}/about`;
@@ -73,8 +76,8 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
   return (
     <>
       <Head>
-        <link rel="alternate" hrefLang="en" href={canonicalHref} />
-        <link rel="alternate" hrefLang="x-default" href={canonicalHref} />
+        <link rel="alternate" hrefLang="en" href={siteHref} />
+        <link rel="alternate" hrefLang="x-default" href={siteHref} />
       </Head>
       <BasicMeta
         url={path}
@@ -82,6 +85,7 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
         description={snippet}
         keywords={keywordList.length > 0 ? keywordList : undefined}
         author={author}
+        canonicalUrl={canonicalUrl}
         includeAdsense
       />
       <OpenGraphMeta

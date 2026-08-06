@@ -54,6 +54,23 @@
       margin-left: 10px; /* Adjust spacing between text and dot if needed */
     }
   }
+
+  .blog-original-attribution {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-family: "IBM Plex Sans", Poppins, system-ui, sans-serif;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .tags {
