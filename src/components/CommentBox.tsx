@@ -14,6 +14,7 @@ const CommentBox: FC<CommentBoxProps> = ({ className }) => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    const host = hostRef.current;
     let removeCommentBox: (() => void) | undefined;
     let cancelled = false;
 
@@ -38,8 +39,8 @@ const CommentBox: FC<CommentBoxProps> = ({ className }) => {
     return () => {
       cancelled = true;
       removeCommentBox?.();
-      if (hostRef.current) {
-        hostRef.current.innerHTML = "";
+      if (host) {
+        host.innerHTML = "";
       }
     };
   }, [theme]);
