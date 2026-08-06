@@ -12,6 +12,7 @@ metaDescription: Discover Sitecore Marketplace apps, their architecture,
 featuredImage: /uploads/blog-sitecore-marketplace-apps-overview-and-why-they-matter.jpg
 slug: sitecore-marketplace-apps-overview-why-they-matter
 date: November 16, 2025 4:51 PM
+modifiedDate: August 6, 2026 2:30 PM
 tags:
   - tag: sitecore
   - tag: sitecore-marketplace
@@ -22,11 +23,11 @@ tags:
 
 Welcome to the first post in our Sitecore Marketplace App series! 
 In this article, we’ll cover the basics—what these apps do, how they work, and when it makes sense to build one. This will give you the foundation you need before jumping into the hands-on guide in the next part.
-Here’s the full series:
+Here’s the full series (each part answers a different question—bookmark all three):
 
-1. [Sitecore Marketplace Apps: Overview and Why They Matter](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter)
-2. [Build Fullstack Sitecore Marketplace App with Next.js & shadcn (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1)
-3. [Sitecore Marketplace App: Authentication, Testing & Conclusion (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
+1. [Sitecore Marketplace Apps: Overview and Why They Matter](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter) — architecture & when to build
+2. [Build Fullstack Sitecore Marketplace App with Next.js & shadcn (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1) — scaffold, App Studio, local HTTPS
+3. [Sitecore Marketplace App: Authentication, Testing & Conclusion (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2) — OAuth, CORS fix, Standalone & Page Builder tests
 
 ## Sitecore Marketplace App Architecture Explained
 

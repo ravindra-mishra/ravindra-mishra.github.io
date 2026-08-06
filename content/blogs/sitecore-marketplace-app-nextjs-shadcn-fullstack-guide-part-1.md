@@ -1,39 +1,77 @@
 ---
 title: Build Fullstack Sitecore Marketplace App with Next.js & shadcn (Part 1)
-description: Learn how to build a full-stack Sitecore Marketplace app using
-  Next.js and shadcn. This step-by-step guide covers Quick Start using CLI,
-  authentication, Sitecore App Studio configuration, and running your app
-  locally for XM Cloud integration.
-keywords: Sitecore Marketplace App, Next.js, shadcn, Sitecore App Studio,
-  Sitecore XM Cloud, Sitecore Cloud Portal, Marketplace SDK, OAuth
-  authentication, full-stack development, extension points, Page Builder context
-  panel, standalone app, Sitecore integration, app configuration, environment
-  variables, Auth0 integration, Sitecore AI, custom Sitecore apps, developer
-  guide, Sitecore starter kit, Quick Start using CLI
-metaDescription: Learn how to build a full-stack Sitecore Marketplace app using
-  Next.js and shadcn. This step-by-step guide covers Quick Start using CLI,
-  authentication, Sitecore App Studio configuration, and running your app
-  locally for XM Cloud integration.
+description: Scaffold a Sitecore Marketplace app with the shadcn full-stack
+  quickstart, enable HTTPS for local auth, configure App Studio extension
+  points and credentials, then run the app on localhost for XM Cloud.
+keywords: Sitecore Marketplace App Studio, scaffold Marketplace app npx shadcn,
+  Sitecore Marketplace localhost HTTPS, App Studio Client ID credentials,
+  SitecoreAI tenant ID install app, NEXT_PUBLIC_SITECORE_APP_ID, Page Builder
+  context panel extension point, Standalone Marketplace app setup
+metaDescription: Part 1 hands-on guide—scaffold a Sitecore Marketplace app with
+  shadcn, configure App Studio (extension points, credentials, tenant ID), and
+  run it locally over HTTPS for XM Cloud.
 featuredImage: /uploads/configured-final-view-in-app-studio-sitecore-marketplace-app.jpg
 slug: sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1
 date: November 20, 2025 4:25 PM
+modifiedDate: August 6, 2026 2:30 PM
 tags:
   - tag: sitecore
   - tag: sitecore-marketplace
   - tag: nextjs-react-development
   - tag: sitecore-xm-cloud
+faq:
+  - question: How do I scaffold a Sitecore Marketplace app with Next.js and shadcn?
+    answer: Run npx shadcn@latest add with the blok-shadcn Marketplace full-stack
+      quickstart JSON URL, then enable experimental HTTPS in package.json so local
+      OAuth works.
+  - question: Which IDs do I need in the Marketplace app .env file?
+    answer: Client ID from App Studio credentials, Marketplace App ID,
+      Organization ID from the portal URL, and Tenant ID from the installed app
+      query string after you install the app on SitecoreAI or XM Cloud.
+  - question: What should Deployment URL and callback URLs be for local development?
+    answer: Use https://localhost:3000 as the Deployment URL and allow
+      https://localhost:3000 plus /auth/callback for callbacks, logout, origins,
+      and web origins while you develop locally.
+howto:
+  name: Create and configure a Sitecore Marketplace app locally (Part 1)
+  description: Scaffold with shadcn, configure Sitecore App Studio, collect IDs,
+    and run the app on HTTPS localhost.
+  steps:
+    - name: Scaffold the app
+      text: Create a project folder and run the shadcn Marketplace full-stack
+        quickstart npx command to generate the Next.js app.
+    - name: Enable experimental HTTPS
+      text: Update package.json scripts to use next dev and next start with
+        --experimental-https so Auth0/Sitecore OAuth can run locally.
+    - name: Configure the app in App Studio
+      text: Create a Custom or Public app, choose extension points (Standalone
+        and Page Context Panel), set Deployment URL to https://localhost:3000,
+        and create Client ID/Secret credentials.
+    - name: Install the app and collect Tenant ID
+      text: Activate the app, install it on SitecoreAI or XM Cloud, open it from
+        Apps, and copy tenantId from the URL query string.
+    - name: Update .env and run locally
+      text: Fill NEXT_PUBLIC_AUTH0_CLIENT_ID, SITECORE_APP_ID, ORGANIZATION_ID,
+        and TENENT_ID, then run npm run dev and open https://localhost:3000.
 ---
-In the [previous blog](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter), we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud. 
+In the [previous blog](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter), we explored what Marketplace apps are, why they matter, and how they fit into Sitecore XM Cloud.
 
-In this guide, you’ll build a full-stack Sitecore Marketplace app using Next.js and shadcn—from project setup to App Studio configuration.
+**This post (Part 1)** is the hands-on setup guide: scaffold the project, wire App Studio, collect the right IDs, and get the app running on `https://localhost:3000`. Authorization inside the Sitecore portal and Page Builder testing are covered in [Part 2](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2).
 
-Here’s the series so far:
+### Series navigation
 
 1. [Sitecore Marketplace Apps: Overview and Why They Matter](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-apps-overview-why-they-matter)
-2. [Build Fullstack Sitecore Marketplace App with Next.js & shadcn (Part 1)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1)
-2. [Sitecore Marketplace App - Authentication, Testing & Conclusion (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
+2. **Build Fullstack Sitecore Marketplace App with Next.js & shadcn (Part 1)** — you are here
+3. [Sitecore Marketplace App - Authentication, Testing & Conclusion (Part 2)](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
 
 Here’s another way to build a Marketplace app using Next.js and shadcn. While Sitecore provides a [Marketplace Starter Kit on GitHub](https://github.com/Sitecore/marketplace-starter), this approach includes preconfigured authentication and examples for both client-side and server-side use.
+
+### What you will have after Part 1
+
+- A scaffolded Next.js Marketplace app from the shadcn full-stack quickstart
+- App Studio configuration with Standalone + Page Builder context panel extension points
+- Client credentials and the four IDs required in `.env`
+- The app running locally over HTTPS (ready for OAuth in Part 2)
 
 ## Developer Setup (Part 1): Create and Configure Your Marketplace App
 
@@ -157,9 +195,17 @@ Use the IDs collected in the previous steps to update your `.env` file.
 * NEXT_PUBLIC_SITECORE_ORGANIZATION_ID=your-org-id
 * NEXT_PUBLIC_SITECORE_TENENT_ID=your-tenant-id
 
-Now, run `npm run dev`, then open `https://localhost:3000` in a new tab. 
+Now, run `npm run dev`, then open `https://localhost:3000` in a new tab.
 
 At this point, your app is fully configured and running locally.
+
+### Part 1 checklist before you continue
+
+- [ ] `npm run dev` serves the app at `https://localhost:3000` (not HTTP-only)
+- [ ] App Studio shows your chosen extension points and Deployment URL
+- [ ] Client ID / App ID / Organization ID / Tenant ID are set in `.env`
+- [ ] The app is activated and installed on your SitecoreAI or XM Cloud instance
+
 In [the next part](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2), we’ll continue with authorization, testing inside XM Cloud, and validating extension points.
 
 **Continue reading:** Next Part — [Authorize & Test Your Marketplace App](https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2)
