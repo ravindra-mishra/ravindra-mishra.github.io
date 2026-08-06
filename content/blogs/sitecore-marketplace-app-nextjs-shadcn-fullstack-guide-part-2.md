@@ -15,7 +15,7 @@ metaDescription: Learn how to build a full-stack Sitecore Marketplace app using
   authentication, Sitecore App Studio configuration, and running your app
   locally for XM Cloud integration.
 featuredImage: /uploads/blog-sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2.png
-slug: sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-3
+slug: sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2
 date: November 21, 2025 3:08 PM
 tags:
   - tag: sitecore

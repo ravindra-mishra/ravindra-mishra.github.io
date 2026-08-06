@@ -78,6 +78,9 @@ const SiteFooter: React.FC = () => {
               <li>
                 <Link href="/sitemap.xml">Sitemap</Link>
               </li>
+              <li>
+                <a href="/rss.xml">RSS Feed</a>
+              </li>
             </ul>
           </div>
           <div className="footer-section">

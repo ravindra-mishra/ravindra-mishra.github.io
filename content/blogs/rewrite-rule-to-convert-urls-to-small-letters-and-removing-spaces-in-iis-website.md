@@ -12,6 +12,16 @@ slug: rewrite-rule-to-convert-urls-to-small-letters-and-removing-spaces-in-iis-w
 date: June 7, 2022 8:56 PM
 tags:
   - tag: sitecore
+howto:
+  name: Add IIS rewrite rules for lowercase URLs and space-to-slug redirects
+  description: Make URLs SEO-friendly by lowercasing paths and replacing spaces with hyphens via IIS URL Rewrite.
+  steps:
+    - name: Open rewriterules.config
+      text: Locate the rewrite rules file under App_Config for your Sitecore (or ASP.NET) site.
+    - name: Add a lowercase redirect rule
+      text: Match URLs containing [A-Z], redirect with {ToLower:{URL}}, and exclude Sitecore system paths and POST requests.
+    - name: Add a space-to-hyphen redirect rule
+      text: Detect spaces in the request URL and redirect to a slugified path that replaces spaces with hyphens.
 ---
 This article will cover some of the rules which can be applied in URL Rewrite in IIS or rewriterules.config. The purpose of those rules will be to make the URL more SEO-friendly after the IIS handles the request. In this article, we will discuss two scenarios of URL.
 

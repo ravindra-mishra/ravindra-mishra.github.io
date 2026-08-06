@@ -11,6 +11,8 @@ export interface BasicMetaProps {
   url: string;
   /** Default `index, follow`. Use `noindex, follow` for error pages. */
   robots?: string;
+  /** Load AdSense only on content pages (e.g. blog posts), not listings/404. */
+  includeAdsense?: boolean;
 }
 
 const BasicMeta: FC<BasicMetaProps> = ({
@@ -20,6 +22,7 @@ const BasicMeta: FC<BasicMetaProps> = ({
   author,
   url,
   robots = "index, follow",
+  includeAdsense = false,
 }) => {
   return (
     <Head>
@@ -38,11 +41,13 @@ const BasicMeta: FC<BasicMetaProps> = ({
       />
       {author ? <meta name="author" content={author} /> : null}
       <link rel="canonical" href={config.base_url + url} />
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8135207289906277"
-        crossOrigin="anonymous"
-      ></script>
+      {includeAdsense ? (
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8135207289906277"
+          crossOrigin="anonymous"
+        ></script>
+      ) : null}
     </Head>
   );
 };

@@ -8,6 +8,8 @@ export interface Config {
   readonly posts_per_page: number;
   readonly twitter_account: string;
   readonly github_account: string;
+  readonly linkedin_account?: string;
+  readonly stackexchange_account?: string;
 }
 
 function resolveBaseUrl(): string {

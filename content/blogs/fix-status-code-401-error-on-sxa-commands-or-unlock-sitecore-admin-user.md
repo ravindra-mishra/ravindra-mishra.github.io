@@ -14,6 +14,21 @@ date: August 8, 2022 4:01 PM
 tags:
   - tag: sitecore
   - tag: sitecore-sxa
+faq:
+  - question: Why does the sxa r command return Status code 401?
+    answer: Sitecore login fails because the admin account is locked after multiple failed password attempts, so theme deployment authentication is rejected.
+  - question: How do I unlock the Sitecore admin user?
+    answer: On SQL Server, reset IsLockedOut and FailedPasswordAttemptCount in aspnet_Membership for sitecore\Admin in the Core database. In Docker without SQL access, restore Core database MDF/LDF backups or follow a container password-reset guide.
+howto:
+  name: Unlock Sitecore admin after Status code 401 on sxa r
+  description: Clear the locked-out Sitecore membership state so SXA theme commands can authenticate again.
+  steps:
+    - name: Confirm the account is locked
+      text: Failed Sitecore logins and Status code 401 on sxa r usually mean IsLockedOut is set after FailedPasswordAttemptCount spikes.
+    - name: Unlock via SQL on the Core database
+      text: UPDATE aspnet_Membership SET IsLockedOut = 0, FailedPasswordAttemptCount = 0 WHERE the user is sitecore\Admin.
+    - name: Or restore Core DB files in Docker
+      text: If you lack SQL access, replace Core MDF/LDF under docker/data/mssql from a backup (after backing up current files).
 ---
 ![Image: "Status Code: 401" error on sxa r cmd](/uploads/status-code-401-error-on-sxa-r-cmd-due-to-admin-user-locked.png "Status Code 401 - Sitecore Admin User Locked")
 

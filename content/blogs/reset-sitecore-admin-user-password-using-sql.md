@@ -14,6 +14,19 @@ slug: reset-sitecore-admin-user-password-using-sql
 date: March 7, 2025 2:59 PM
 tags:
   - tag: sitecore
+faq:
+  - question: Where is the Sitecore admin password stored?
+    answer: In the Core database aspnet_Membership table. The value is hashed according to the hashAlgorithmType configured for the instance (SHA1 or SHA512).
+  - question: How do I reset the Sitecore admin password using SQL?
+    answer: Identify hashAlgorithmType in identityServer.xml or web.config, then run the matching UPDATE on aspnet_Membership for UserName sitecore\Admin to set Password, PasswordSalt, IsApproved, and IsLockedOut.
+howto:
+  name: Reset Sitecore admin password with SQL
+  description: Reset the sitecore\Admin password to b by updating aspnet_Membership in the Core database.
+  steps:
+    - name: Identify the hash algorithm
+      text: Check identityServer.xml (Identity Server enabled) or web.config (disabled) for hashAlgorithmType — SHA1 or SHA512.
+    - name: Run the matching SQL update on the Core database
+      text: UPDATE aspnet_Membership SET Password and PasswordSalt to the known values for password b, set IsApproved to 1 and IsLockedOut to 0 for sitecore\Admin.
 ---
 ## Introduction
 

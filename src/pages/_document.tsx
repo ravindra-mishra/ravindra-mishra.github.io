@@ -16,10 +16,28 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&ital,wght@1;0&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             as="style"
             type="text/css"
             crossOrigin="anonymous"
+          />
+          {/* Non-blocking Font Awesome for CWV; activate stylesheet after load. */}
+          <link
+            id="fa-stylesheet"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            media="print"
+          />
+          <noscript>
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            />
+          </noscript>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){var l=document.getElementById("fa-stylesheet");if(!l)return;function a(){l.media="all"}l.addEventListener("load",a);if(l.sheet)a();})();`,
+            }}
           />
         </Head>
         <body>

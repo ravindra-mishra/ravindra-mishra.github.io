@@ -1,5 +1,9 @@
 import BasicMeta from "@/components/meta/BasicMeta";
 import JsonLdBreadcrumbList from "@/components/meta/JsonLdBreadcrumbList";
+import JsonLdFaqHowTo, {
+  type FaqItem,
+  type HowToData,
+} from "@/components/meta/JsonLdFaqHowTo";
 import JsonLdMetaBlog from "@/components/meta/JsonLdMetaBlog";
 import OpenGraphMeta from "@/components/meta/OpenGraphMeta";
 import TwitterCardMeta from "@/components/meta/TwitterCardMeta";
@@ -33,11 +37,13 @@ export interface BlogPostMetaBundleProps {
   /** Plain text body for JSON-LD `articleBody` (AEO / rich context). */
   articlePlainText: string;
   tags?: { tag: string }[];
+  faq?: FaqItem[];
+  howto?: HowToData;
 }
 
 /**
  * Single entry point for blog post head tags: canonical, hreflang, OG article,
- * Twitter, BlogPosting + BreadcrumbList JSON-LD.
+ * Twitter, BlogPosting + BreadcrumbList JSON-LD, optional FAQ/HowTo.
  */
 const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
   slug,
@@ -51,6 +57,8 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
   author = "Ravindra Mishra",
   articlePlainText,
   tags,
+  faq,
+  howto,
 }) => {
   const path = blogPostPath(slug);
   const canonicalHref = `${config.base_url.replace(/\/$/, "")}${path}`;
@@ -74,6 +82,7 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
         description={snippet}
         keywords={keywordList.length > 0 ? keywordList : undefined}
         author={author}
+        includeAdsense
       />
       <OpenGraphMeta
         url={path}
@@ -106,6 +115,7 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
         inLanguage="en"
         wordCount={wordCount}
       />
+      <JsonLdFaqHowTo faq={faq} howto={howto} />
     </>
   );
 };

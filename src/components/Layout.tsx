@@ -46,8 +46,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
         <meta name="theme-color" content="#fff" />
         <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="alternate"
+          type="application/rss+xml"
+          title="Ravindra Mishra Blog RSS"
+          href="/rss.xml"
         />
       </Head>
 

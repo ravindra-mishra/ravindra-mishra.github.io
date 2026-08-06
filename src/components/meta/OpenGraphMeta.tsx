@@ -38,6 +38,9 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
       <meta property="og:title" content={title ? [title, config.site_title].join(" | ") : ""} />
       <meta property="og:description" content={description ? description : config.site_description} />
       <meta property="og:image" content={absoluteFromSiteRoot(image)} />
+      {image ? (
+        <meta property="og:image:alt" content={title ? title : config.site_title} />
+      ) : null}
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content="en_US" />
       {ogType === "article" && articlePublishedTime ? (

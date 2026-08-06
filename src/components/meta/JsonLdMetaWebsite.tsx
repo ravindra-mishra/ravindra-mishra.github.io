@@ -1,3 +1,4 @@
+import { getAuthorPerson } from "@/lib/authorPerson";
 import config from "@/lib/config";
 import Head from "next/head";
 import { jsonLdScriptProps } from "react-schemaorg";
@@ -30,18 +31,10 @@ const JsonLdMetaWebsite: FC<JsonLdMetaProps> = ({
           "@type": "WebSite",
           name: "Ravindra Mishra's Blog",
           url: config.base_url,
-          // potentialAction: {
-          //   "@type": "SearchAction",
-          //   target: `${config.base_url}/search?q={search_term_string}`,
-          //   "query-input": "required name=search_term_string",
-          // },
           mainEntityOfPage: config.base_url + url,
           headline: title,
           keywords: (keywords ?? []).join(","),
-          author: {
-            "@type": "Person",
-            name: author,
-          },
+          author: getAuthorPerson(author),
           publisher: {
             "@type": "Organization",
             name: "Ravindra Mishra",

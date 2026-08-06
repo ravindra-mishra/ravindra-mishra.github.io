@@ -8,6 +8,7 @@ import removeMd from "remove-markdown";
 
 import IntroContent from "@/components/IntroContent";
 import BlogPostMetaBundle from "@/components/meta/BlogPostMetaBundle";
+import type { FaqItem, HowToData } from "@/components/meta/JsonLdFaqHowTo";
 
 import "prismjs/themes/prism-tomorrow.css"; // Syntax highlighting theme
 import Breadcrumb from "@/components/Breadcrumb";
@@ -29,6 +30,8 @@ interface Frontmatter {
   /** Optional; defaults to `date` when building the page. */
   modifiedDate?: Date | string;
   tags: { tag: string }[];
+  faq?: FaqItem[];
+  howto?: HowToData;
 }
 
 /** Dates as ISO strings — JSON-serializable for `getStaticProps`. */
@@ -82,6 +85,8 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         modifiedDate={postModified}
         articlePlainText={articlePlainText}
         tags={frontmatter.tags}
+        faq={frontmatter.faq}
+        howto={frontmatter.howto}
       />
 
       <article className="blog-post-page" aria-labelledby="blog-post-title">

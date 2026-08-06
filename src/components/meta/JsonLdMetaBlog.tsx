@@ -1,4 +1,5 @@
 import { absoluteFromSiteRoot } from "@/lib/absoluteUrl";
+import { getAuthorPerson } from "@/lib/authorPerson";
 import config from "@/lib/config";
 import { formatISO } from "date-fns";
 import Head from "next/head";
@@ -35,6 +36,8 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
   inLanguage = "en",
   wordCount,
 }) => {
+  const imageUrl = absoluteFromSiteRoot(image ?? "/images/logo.png");
+
   return (
     <Head>
       <script
@@ -51,11 +54,7 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
           ...(wordCount != null && wordCount > 0 ? { wordCount } : {}),
           datePublished: formatISO(date),
           dateModified: formatISO(modifiedDate ?? date),
-          author: {
-            "@type": "Person",
-            name: author,
-            url: `${config.base_url}/about`,
-          },
+          author: getAuthorPerson(author),
           publisher: {
             "@type": "Organization",
             name: "Ravindra Mishra",
@@ -64,7 +63,10 @@ const JsonLdMetaBlog: FC<JsonLdMetaProps> = ({
               url: `${config.base_url}/images/logo.png`,
             },
           },
-          image: absoluteFromSiteRoot(image ?? "/images/logo.png"),
+          image: {
+            "@type": "ImageObject",
+            url: imageUrl,
+          },
           description: description,
           articleBody: content,
         })}
