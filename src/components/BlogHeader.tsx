@@ -1,11 +1,9 @@
 import type { FC } from "react";
 import FormattedDate from "@/components/FormattedDate";
-import TagList from "./TagList";
 
 export interface BlogHeaderProps {
   className?: string;
   title: string;
-  tags?: { tag: string }[];
   date: Date;
   readingTime: string;
   featureImage: string;
@@ -18,7 +16,6 @@ export interface BlogHeaderProps {
 const BlogHeader: FC<BlogHeaderProps> = ({
   className,
   title,
-  tags,
   date,
   readingTime,
   featureImage,
@@ -44,9 +41,6 @@ const BlogHeader: FC<BlogHeaderProps> = ({
         <div className="blog-header-summary">
           <FormattedDate date={date} emoji={true} />
           <div>{readingTime}</div>
-          {tags && tags.length > 0 ? (
-            <TagList tags={tags} emoji={true} className="inline" />
-          ) : null}
         </div>
         {originalUrl || source ? (
           <p className="blog-original-attribution">

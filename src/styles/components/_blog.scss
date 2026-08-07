@@ -24,6 +24,10 @@
     padding-right: 0;
   }
 
+  @media (min-width: $screen-lg) {
+    gap: 8rem;
+  }
+
   @include respond-to(medium) {
     flex-direction: column;
     flex-wrap: wrap;
@@ -138,7 +142,7 @@
 }
 
 .blog-side-container {
-  flex: 0 0 14.5rem;
+  flex: 0 0 25rem;
   width: 14.5rem;
   display: flex;
   flex-direction: column;
@@ -149,6 +153,10 @@
   max-height: calc(100vh - 6rem);
   overflow-y: auto;
   order: 2;
+
+  @include respond-to(large) {
+    flex: 0 0 15rem;
+  }
 
   @include respond-to(medium) {
     flex: 1 1 100%;

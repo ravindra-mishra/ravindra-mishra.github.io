@@ -109,7 +109,6 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         <BlogHeader
           title={frontmatter.title}
           date={postDate}
-          tags={frontmatter.tags}
           className="blog-page"
           readingTime={readingTime}
           featureImage={frontmatter.featuredImage}
