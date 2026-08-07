@@ -18,17 +18,15 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Cancel superseded runs so an older deploy cannot block a newer one.
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "github-pages"
+  cancel-in-progress: true
 
 jobs:
-  # Build job
+  # Build job — do not attach the github-pages environment here
   build:
     runs-on: ubuntu-latest
-    environment: github-pages
     env:
       NEXT_PUBLIC_COMMENTBOX_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_COMMENTBOX_PROJECT_ID }}
       NEXT_PUBLIC_GA_TRACKING_ID: ${{ vars.NEXT_PUBLIC_GA_TRACKING_ID }}
@@ -108,7 +106,7 @@ jobs:
             npm run build
           fi
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./out
 
@@ -116,17 +114,10 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      # wretry.action bundles wrapped outputs into a JSON string `outputs`
-      url: ${{ fromJSON(steps.deployment.outputs.outputs).page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
-      # GitHub Pages intermittently stalls at deployment_queued (deploy-pages#406).
-      # Raising timeout alone is capped at ~10m; retrying the deploy step is the fix.
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: Wandalen/wretry.action@v3.8.0
-        with:
-          action: actions/deploy-pages@v4
-          attempt_limit: 3
-          attempt_delay: 20000
+        uses: actions/deploy-pages@v4
