@@ -17,7 +17,7 @@ This blog describes how to make any **PowerShell script appear in the context me
 
 **Context Menu -** When we right-click on any Sitecore item, a menu with multiple options such as Insert, search, duplicate, and so on appears. This menu is known as the Item Context Menu.
 
-**PowerShell Script in Context Menu - **In Sitecore, we can add PowerShell scripts to the scripts area of the item context menu. The goal of adding Powershell scripts to the context menu is to make it possible to run the script from any item. As a result, it becomes more author-friendly.
+**PowerShell Script in Context Menu -** In Sitecore, we can add PowerShell scripts to the scripts area of the item context menu. The goal of adding Powershell scripts to the context menu is to make it possible to run the script from any item. As a result, it becomes more author-friendly.
 
 **Interactive PowerShell Scripts -** We can create an interactive PowerShell script using the Sitecore PowerShell Extension. This improves an author's UI experience by displaying dialog boxes with results, outputs, or dialog boxes for taking any inputs from them.
 
@@ -27,9 +27,9 @@ This blog describes how to make any **PowerShell script appear in the context me
 
 Let's start with a simple business scenario: suppose we have a "Zip Codes" list in a CSV file.
 
-    - We should be able to run the file import on a specific data folder only.
+- We should be able to run the file import on a specific data folder only.
 
-    - We want all Zip Codes items automatically created inside the target folder. (Assumption: we have the template for the zip code item)
+- We want all Zip Codes items automatically created inside the target folder. (Assumption: we have the template for the zip code item)
 
 So, in this section, we will write an interactive PowerShell script. This will prompt the user to upload a CSV file via interactive dialogue. We will add the hand to the context menu. This script option should be available only for Zip Code Folder and hidden for any other Sitecore item.
 
@@ -39,9 +39,9 @@ When we create a Powershell script, we need to save it somewhere. Sitecore Power
 
 The script library is located at "***Sitecore>System>Modules>PowerShell>Script Library***." It organizes the script under modules for easier access.
 
-    - Under the 'SPE' folder, we will create a folder with a module folder template for our project.
+- Under the 'SPE' folder, we will create a folder with a module folder template for our project.
 
-    - Creating a new folder with my project name, "DailySitecore."
+- Creating a new folder with my project name, "DailySitecore."
 
 Now, right-click the project folder and select Insert. There are several insert options available here. As shown in the image below, we will select "**Module Wizard**" to create a new module within our project folder.
 
@@ -49,13 +49,13 @@ Now, right-click the project folder and select Insert. There are several insert 
 
 To begin the process of creating a new PowerShell script module. When you click on the Module Wizard, a dialogue box will appear, asking for input. Because we only need this module for the context menu, I have only provided the inputs I require.
 
-    - Give the module a meaningful name.
+- Give the module a meaningful name.
 
-    - Check the "Enable Module" checkbox
+- Check the "Enable Module" checkbox
 
-    - Choose "Content Editor - Context Menu" from the list
+- Choose "Content Editor - Context Menu" from the list
 
-    - Proceed
+- Proceed
 
 ![](/uploads/ps-sxa-ctx-2022-09-28-19_37_39-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x602.png)
 
@@ -160,11 +160,11 @@ Every Powershell script item has two fields: ShowRule and EnableRule. The show-r
 
 Follow the steps outlined below.
 
-    - Choose the script item.
+- Choose the script item.
 
-    - Navigate to the Interactive Section and then to the "ShowRule" / "EnableRule" Field
+- Navigate to the Interactive Section and then to the "ShowRule" / "EnableRule" Field
 
-    - Edit Rules > Add the necessary rule (as shown below)
+- Edit Rules > Add the necessary rule (as shown below)
 
 ![](/uploads/ps-sxa-ctx-2022-09-28-19_40_07-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x405.png)
 
@@ -180,13 +180,13 @@ We can also change how the script option appears. To give the authors a more des
 
 We will change the script's **icon** and want it to appear in the top second by **order** in the context menu.
 
-    - In our case, select the script item 'Zip Code Import' from the CSV Import module in Script Library.
+- In our case, select the script item 'Zip Code Import' from the CSV Import module in Script Library.
 
-    - Go to the View tab and enable standard fields to view.
+- Go to the View tab and enable standard fields to view.
 
-    - Modify the Icon in the Icon field (select the relevant icon concerning the script's working).
+- Modify the Icon in the Icon field (select the relevant icon concerning the script's working).
 
-    - Modify the sort order (to specify an order of appearance in the menu).
+- Modify the sort order (to specify an order of appearance in the menu).
 
 ![](/uploads/ps-sxa-ctx-2022-09-28-19_41_27-Blog-Insert-Powershell-Script-to-the-Context-Menu-in-Sitecore-SXA-Short.docx-1024x407.png)
 

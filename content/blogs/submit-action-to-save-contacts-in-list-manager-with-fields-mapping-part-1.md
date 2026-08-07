@@ -16,11 +16,11 @@ This article is the second post in the series on creating a submit action to sav
 
 Here are the parts of the series related to the Submit Action to Save Contacts in List Manager:
 
-    - [Submit Action to Save Contacts in List Manager – Basic Implementation](/blogs/submit-action-to-save-contacts-in-list-manager-basic-implementation)
+- [Submit Action to Save Contacts in List Manager – Basic Implementation](/blogs/submit-action-to-save-contacts-in-list-manager-basic-implementation)
 
-    - [Submit Action to Save Contacts in List Manager with Fields Mapping Part 1: Create SPEAK Editor](#create-speak-editor)
+- [Submit Action to Save Contacts in List Manager with Fields Mapping Part 1: Create SPEAK Editor](#create-speak-editor)
 
-    - [Submit Action to Save Contacts in List Manager with Fields Mapping Part 2: Create Submit Action](/blogs/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2)
+- [Submit Action to Save Contacts in List Manager with Fields Mapping Part 2: Create Submit Action](/blogs/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2)
 
 In this article, we will create a submit action that should have the ability to map Form fields to Contact fields. That allows us to assign the first name, last name, and email to any of the form's fields. Additionally, provide users with a tree view list to select the Contact List where they want to store the contact information.
 
@@ -44,15 +44,15 @@ To create the SPEAK editor from scratch, you need the [Sitecore Rocks Visual Stu
 
 #### 1. Item Creation and Layout Configuration
 
-    - Go to core database: */sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions.*
+- Go to core database: */sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions.*
 
-    - Right-click on the Actions item, and Add a New Item.
+- Right-click on the Actions item, and Add a New Item.
 
-    - Search for the *Speak-BasePage *template (*/sitecore/client/Speak/Templates/Pages/Speak-BasePage*). Give the item name as *SaveToContactList *in the “Enter the name of the new item” textbox at the bottom and click OK.
+- Search for the *Speak-BasePage* template (*/sitecore/client/Speak/Templates/Pages/Speak-BasePage*). Give the item name as *SaveToContactList* in the “Enter the name of the new item” textbox at the bottom and click OK.
 
-    - Right-click the newly formed *SaveToContactList *item and select *Tasks*, then *Design Layout*.
+- Right-click the newly formed *SaveToContactList* item and select *Tasks*, then *Design Layout*.
 
-    - Click browse on the Layout field, and search for ***Speak-FlexLayout**** (/sitecore/client/Speak/Layouts/Layouts).* Click OK after selecting it.
+- Click browse on the Layout field, and search for **Speak-FlexLayout** *(/sitecore/client/Speak/Layouts/Layouts).* Click OK after selecting it.
 
 ![](/uploads/forms-list-map1-Item-creation-and-layout-configuration-500x189.png)
 
@@ -60,37 +60,37 @@ To create the SPEAK editor from scratch, you need the [Sitecore Rocks Visual Stu
 
 #### 2. Adding Renderings
 
-    - Click on the *Add Rendering *button in the top-left corner.
+- Click on the *Add Rendering* button in the top-left corner.
 
-    - In the *Select Renderings* window, search for ***PageCode**** (*If you do not see the result, make sure you have selected 'All' in the left pane*).*
+- In the *Select Renderings* window, search for **PageCode** (*If you do not see the result, make sure you have selected 'All' in the left pane*).
 
-    - Select PageCode under */sitecore/client/Speak/Layout/Renderings/Common* and click OK.
+- Select PageCode under */sitecore/client/Speak/Layout/Renderings/Common* and click OK.
 
-    - Select the PageCode rendering. Go to the properties window and update the following values.
+- Select the PageCode rendering. Go to the properties window and update the following values.
 
-    *PageCodeScriptFileName*: /*sitecore/shell/client/Applications/FormsBuilder/Layouts/Actions/SaveToContactList.js (*This will be the JavaScript path that contains the page code script, we will add this JS file in later steps)
+*PageCodeScriptFileName*: */sitecore/shell/client/Applications/FormsBuilder/Layouts/Actions/SaveToContactList.js* (This will be the JavaScript path that contains the page code script, we will add this JS file in later steps)
 
-    - *SpeakCoreVersion: *SPEAK 2-x
+- *SpeakCoreVersion*: SPEAK 2-x
 
 ![](/uploads/forms-list-map1-Page-Code-Properties-Window-1024x308.png)
 
 *Page Code - Properties Window*
 
-    - Add renderings for *HeaderTitle, HeaderSubtitle, and ValueNotInListText.* Search for ***Text*** and then select the "*/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Common/Text"* view rendering.
+- Add renderings for *HeaderTitle, HeaderSubtitle, and ValueNotInListText.* Search for ***Text*** and then select the "*/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Common/Text"* view rendering.
 
-    - For *HeaderTitle, *select the added Text rendering and go to the properties window and set the following fields:
+- For *HeaderTitle*, select the added Text rendering and go to the properties window and set the following fields:
 
-    Id - *HeaderTitle*
+Id - *HeaderTitle*
 
-    - IsVisible - False
+- IsVisible - False
 
-    - PlaceholderKey - Page.Body
+- PlaceholderKey - Page.Body
 
-    - Repeat the same step for *HeaderSubtitle, *and *ValueNotInListText*. Only the *Id* property will change as per the name. *IsVisible* and *PlaceholderKey* will be the same as above.
+- Repeat the same step for *HeaderSubtitle*, and *ValueNotInListText*. Only the *Id* property will change as per the name. *IsVisible* and *PlaceholderKey* will be the same as above.
 
-    - Add ***Border*** view rendering (/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Containers/Border) and set its *Id* property as *MainBorder***.**
+- Add ***Border*** view rendering (/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Containers/Border) and set its *Id* property as *MainBorder*.
 
-    - Add ***Form*** view rendering (/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Forms/Form) and set its *Id* property as *MapContactForm*, select *FieldsLayout *property as *1-1-1-1 *and set the *PlaceholderKey* property to *MainBorder.Content.*
+- Add ***Form*** view rendering (/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Forms/Form) and set its *Id* property as *MapContactForm*, select *FieldsLayout* property as *1-1-1-1* and set the *PlaceholderKey* property to *MainBorder.Content*.
 
 ![](/uploads/forms-list-map1-Rendering-and-Placeholders-1024x325.png)
 
@@ -98,55 +98,53 @@ To create the SPEAK editor from scratch, you need the [Sitecore Rocks Visual Stu
 
 #### 3. Adding Page and Form Parameters
 
-    - Select the *SaveToContactList *item (*/sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/SaveToContactList)*. Right-click > Add > New Item**.**
+- Select the *SaveToContactList* item (*/sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/SaveToContactList*). Right-click > Add > New Item.
 
-    - Search for the *PageSettings *template (/*sitecore/client/Speak/Templates/Pages/PageSettings*). Select and enter the name *PageSettings *and then click OK.
+- Search for the *PageSettings* template (*/sitecore/client/Speak/Templates/Pages/PageSettings*). Select and enter the name *PageSettings* and then click OK.
 
-    - Right-click on the newly created *PageSettings* item.
+- Right-click on the newly created *PageSettings* item.
 
-    - Add new items with name HeaderTitle, HeaderSubtitle and ValueNotInListText using the *Text Parameters *template (*/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Common/Text/Text Parameters)*
+- Add new items with name HeaderTitle, HeaderSubtitle and ValueNotInListText using the *Text Parameters* template (*/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Common/Text/Text Parameters*)
 
-    HeaderTitle – double-click on the item and update the **Text** field as the title of the editor popup. For example, *Map form fields*
+HeaderTitle – double-click on the item and update the **Text** field as the title of the editor popup. For example, *Map form fields*
 
-    - HeaderSubtitle – double-click on the item and update the Text field as the subtitle title of the editor popup.
+- HeaderSubtitle – double-click on the item and update the Text field as the subtitle title of the editor popup.
 
-    - ValueNotInListText – double-click on the item and update the **Text** field. For example, the value is not in the select list.
+- ValueNotInListText – double-click on the item and update the **Text** field. For example, the value is not in the select list.
 
-    - Select the *PageSettings* item again. Right-click > New Folder and add a folder with the name *MapContactForm.*
+- Select the *PageSettings* item again. Right-click > New Folder and add a folder with the name *MapContactForm*.
 
-    - Select the *MapContactForm* folder. Add three new items with the ***FormDropList Parameters*** templates with the following field values *(/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Forms/Form/Templates/FormDropList Parameters)*.
+- Select the *MapContactForm* folder. Add three new items with the ***FormDropList Parameters*** templates with the following field values *(/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Forms/Form/Templates/FormDropList Parameters)*.
 
 ![](/uploads/forms-list-map1-2023-04-26-18_21_51-Book1-Excel-1024x152.png)
 
 *FormDropList Parameters*
 
-    - Click on the *MapContactForm *folder and add an item name *ContactList* with ***FormItemTreeView Parameters*** templates *(/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Forms/Form/Templates/FormItemTreeView Parameters)*. Update the field values as below:
+- Click on the *MapContactForm* folder and add an item name *ContactList* with ***FormItemTreeView Parameters*** templates *(/sitecore/client/Business Component Library/version 2/Layouts/Renderings/Forms/Form/Templates/FormItemTreeView Parameters)*. Update the field values as below:
 
-    *StaticData* - {3C94F086-453B-48FC-9F1B-2B00BC0A55C7}
+*StaticData* - {3C94F086-453B-48FC-9F1B-2B00BC0A55C7}
 
-    - *Database* - master
+- *Database* - master
 
-    - *HelpText* - 'Select the contact list to save contact details'.
+- *HelpText* - 'Select the contact list to save contact details'.
 
-    - *FormLabel* - "Contact List"
+- *FormLabel* - "Contact List"
 
-    - *BindingConfiguration* - contactListId/SelectedItemId
+- *BindingConfiguration* - contactListId/SelectedItemId
 
 ![](/uploads/forms-list-map1-2023-04-26-18_19_24-Book1-Excel-1024x104.png)
 
 *ContactList - Parameter*
 
-```
 Note: For the StaticData field in the ContactList parameter item, update the GUID of the Contact List folder.
-```
 
-    - Move the ContactList item below the LastName item (drag the ContactList item down or update the sort order value).
+- Move the ContactList item below the LastName item (drag the ContactList item down or update the sort order value).
 
-    - Select the *PageSettings* item.
+- Select the *PageSettings* item.
 
-    - Add a new item named *Stylesheet *using the template *Page-Stylesheet-File (/sitecore/client/Speak/Templates/Pages/Page-Stylesheet-File)*
+- Add a new item named *Stylesheet* using the template *Page-Stylesheet-File (/sitecore/client/Speak/Templates/Pages/Page-Stylesheet-File)*
 
-    - Double-click on the new stylesheet item. Assign the value "/sitecore/shell/client/Applications/FormsBuilder/Layouts/Actions/Actions.css" to the Stylesheet field.
+- Double-click on the new stylesheet item. Assign the value "/sitecore/shell/client/Applications/FormsBuilder/Layouts/Actions/Actions.css" to the Stylesheet field.
 
 ![](/uploads/forms-list-map1-Page-Settings-And-Form-Parameters.png)
 
@@ -154,11 +152,11 @@ Note: For the StaticData field in the ContactList parameter item, update the GUI
 
 #### 4. Updating the Form Parameter Folder ID in the Layout
 
-    - Select the *SaveToContactList *item and right-click > Task > Design layout.
+- Select the *SaveToContactList* item and right-click > Task > Design layout.
 
-    - Select the added *Form* rendering.
+- Select the added *Form* rendering.
 
-    - In the properties window, set the *ConfigurationItem* property to the ID of the *MapContactForm* folder.
+- In the properties window, set the *ConfigurationItem* property to the ID of the *MapContactForm* folder.
 
 ![](/uploads/forms-list-map1-Update-form-parameter-folder-Id-in-layout-1024x460.png)
 
@@ -168,7 +166,7 @@ Note: For the StaticData field in the ContactList parameter item, update the GUI
 
 The client script for the editor with field mapping is available [here](https://doc.sitecore.com/xp/en/developers/102/sitecore-experience-manager/walkthrough--creating-a-custom-submit-action-that-updates-contact-details.html#create-the-client-script-for-the-editor_body). We can't use this directly, as it is focused only on the FormDropList field in the MapContactForm. But we also have a FormItemTreeView (for *the contact list*). If we continue with the same script, it will cause a problem with the *setDynamicData* method.
 
-To fix the issue, we can add an if check in the *setDynamicData* function, as shown below*:*
+To fix the issue, we can add an if check in the *setDynamicData* function, as shown below:
 
 ```javascript
 setDynamicData: function (propKey) {

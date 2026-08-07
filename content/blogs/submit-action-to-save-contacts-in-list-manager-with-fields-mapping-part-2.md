@@ -45,8 +45,6 @@ namespace Feature.FormsExtensions.Models
 
 Now we will create a new class and override Execute method. Add a new class file named [SaveToContactList.cs](https://github.com/ravindra-mishra/Forms-SaveContactsToListManager/blob/master/Feature.FormsExtensions/SubmitActions/SaveToContactList.cs) in the SubmitActions folder. The [GitHub repository](https://github.com/ravindra-mishra/Forms-SaveContactsToListManager) contains the entire solution.
 
- 
-
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -232,9 +230,7 @@ Now build and deploy the solution.
 
 Switch to the master database and navigate to the following location.
 
-```
-Master: /sitecore/system/Settings/Forms/Submit Actions
-```
+`Master: /sitecore/system/Settings/Forms/Submit Actions`
 
 - Right-click on the *Submit Actions* item.
 

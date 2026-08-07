@@ -5,6 +5,10 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import {
+  normalizeHtmlEntities,
+  sanitizeArchiveMarkdown,
+} from "./lib/sanitize-archive-markdown.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -35,7 +39,6 @@ const POSTS = [
       "Sitecore, Sitecore SXA, PowerShell, SPE, Context Menu, ShowRule, EnableRule",
     tags: ["sitecore-sxa", "sitecore"],
     featuredBasename: "2022-09-28-19_28_55-Clipboard-1024x548.png",
-    fenceLangs: ["powershell"],
   },
   {
     slug: "submit-action-to-save-contacts-in-list-manager-basic-implementation",
@@ -44,15 +47,6 @@ const POSTS = [
       "Sitecore, Sitecore Forms, List Manager, Submit Action, xConnect, Contact List",
     tags: ["sitecore"],
     featuredBasename: "FormSubmitAction-SaveToContactList-2-1.gif",
-    fenceLangs: [
-      null,
-      null,
-      null,
-      null,
-      "csharp",
-      "csharp",
-      "csharp",
-    ],
   },
   {
     slug: "submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1",
@@ -62,7 +56,6 @@ const POSTS = [
     tags: ["sitecore"],
     featuredBasename:
       "Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif",
-    fenceLangs: [null, "javascript"],
   },
   {
     slug: "submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2",
@@ -72,7 +65,6 @@ const POSTS = [
     tags: ["sitecore"],
     featuredBasename:
       "Form-Submit-Action-Save-To-Contact-List-With-Field-Mapping.gif",
-    fenceLangs: ["csharp", "csharp", null],
   },
 ];
 
@@ -125,7 +117,7 @@ function formatLll(iso) {
 }
 
 function cleanDescription(desc, bodyFallback) {
-  let cleaned = desc.replace(/…\s*$/, "").replace(/\u00a0/g, " ").trim();
+  let cleaned = normalizeHtmlEntities(desc).replace(/…\s*$/, "").trim();
   // Archive excerpts often cut mid-sentence; prefer first body paragraph.
   if (
     cleaned.length < 80 ||
@@ -195,33 +187,6 @@ function rewriteSeriesLinks(body) {
   return out;
 }
 
-function tagUnlabeledFences(body, langs) {
-  const lines = body.split(/\r?\n/);
-  const out = [];
-  let inFence = false;
-  let langIdx = 0;
-  for (const line of lines) {
-    if (/^```/.test(line)) {
-      if (!inFence) {
-        inFence = true;
-        if (line.trim() === "```") {
-          const lang = langs[langIdx++];
-          out.push(lang ? `\`\`\`${lang}` : "```");
-        } else {
-          out.push(line);
-          langIdx++;
-        }
-      } else {
-        inFence = false;
-        out.push(line);
-      }
-    } else {
-      out.push(line);
-    }
-  }
-  return out.join("\n");
-}
-
 function yamlQuote(s) {
   return JSON.stringify(s);
 }
@@ -282,10 +247,7 @@ function importPost(post) {
   body = stripCaptions(body);
   body = rewriteImages(body, imageMap);
   body = rewriteSeriesLinks(body);
-  body = tagUnlabeledFences(body, post.fenceLangs);
-  // Normalize odd spacing artifacts
-  body = body.replace(/\u00a0/g, " ");
-  body = body.replace(/\n{3,}/g, "\n\n");
+  body = sanitizeArchiveMarkdown(body, post.fenceLangs || []);
 
   meta.body = body;
   const out = buildMarkdown(meta, post, featuredPath);

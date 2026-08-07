@@ -82,11 +82,23 @@
     font-family: "IBM Plex Mono", ui-monospace, monospace;
   }
 
+  /* Long path-like tokens have no spaces; wrap instead of overflowing the column */
+  :not(pre) > code {
+    display: inline;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: break-spaces;
+    max-width: 100%;
+  }
+
   pre {
     overflow-x: auto;
 
     code {
       font-family: "IBM Plex Mono", ui-monospace, monospace;
+      overflow-wrap: normal;
+      word-break: normal;
+      white-space: inherit;
     }
   }
 
@@ -300,6 +312,9 @@
 .code-block {
   position: relative;
   margin: 1.25rem 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   .code-block-copy {
     position: absolute;
@@ -330,5 +345,9 @@
 
   pre {
     margin: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
   }
 }

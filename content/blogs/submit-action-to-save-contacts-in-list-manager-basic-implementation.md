@@ -16,11 +16,11 @@ A custom submit action for Sitecore forms that will **save contact information t
 
 The series includes the following parts:
 
-    - [Submit Action to Save Contacts in List Manager – Basic Implementation](#basicImplementation)
+- [Submit Action to Save Contacts in List Manager – Basic Implementation](#basicImplementation)
 
-    - [Submit Action to Save Contacts in List Manager with Fields Mapping Part 1: Create SPEAK Editor](/blogs/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1)
+- [Submit Action to Save Contacts in List Manager with Fields Mapping Part 1: Create SPEAK Editor](/blogs/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-1)
 
-    - [Submit Action to Save Contacts in List Manager with Fields Mapping Part 2: Create Submit Action](/blogs/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2)
+- [Submit Action to Save Contacts in List Manager with Fields Mapping Part 2: Create Submit Action](/blogs/submit-action-to-save-contacts-in-list-manager-with-fields-mapping-part-2)
 
 ![](/uploads/forms-list-basic-FormSubmitAction-SaveToContactList-2-1.gif)
 
@@ -40,43 +40,35 @@ First, we will create an editor for custom submit action in the Core database.
 
 The editor layouts for form actions are in the path given below. First, navigate to this path.
 
-```
-Core: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions
-```
+`Core: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions`
 
 Now, follow the steps mentioned below:
 
-    - Make a duplicate item for the "Redirect to Page" item.
+- Make a duplicate item for the "Redirect to Page" item.
 
-    - Change the item name to "*SaveToContactList.*"
+- Change the item name to "*SaveToContactList.*"
 
-    - Update the browser title and display name fields.
+- Update the browser title and display name fields.
 
-    - Expand the child items of the PageSettings item.
+- Expand the child items of the PageSettings item.
 
-```
-Core:/sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/SaveToContactList/PageSettings
-```
+`Core:/sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/SaveToContactList/PageSettings`
 
-    - Select *HeaderTitle* and change the "*Text - Specifies the caption for the button fields"* field value.
+- Select *HeaderTitle* and change the "*Text - Specifies the caption for the button fields"* field value.
 
-```
 Example: "Select Contact list"
-```
 
-    - Select *HeaderSubtitle *and change the "*Text - Specifies the caption for the button fields"* field value.
+- Select *HeaderSubtitle* and change the "*Text - Specifies the caption for the button fields"* field value.
 
-```
 For instance, Select the desired contact list for storing the contact details.
-```
 
-    - Select *ItemTreeView* and make changes in the following fields:
+- Select *ItemTreeView* and make changes in the following fields:
 
-    *IsCheckModeEnabled* - Make sure to keep it unchecked.
+*IsCheckModeEnabled* - Make sure to keep it unchecked.
 
-    - *Database* – Update the database from "$context_contentdatabase" to "master."
+- *Database* – Update the database from "$context_contentdatabase" to "master."
 
-    - *Static Data* – Update Guid of *Contact List* folder located at "master: */sitecore/system/Marketing Control Panel/Contact Lists"* and its guid is "*{3C94F086-453B-48FC-9F1B-2B00BC0A55C7}.*"
+- *Static Data* – Update Guid of *Contact List* folder located at "master: */sitecore/system/Marketing Control Panel/Contact Lists"* and its guid is "*{3C94F086-453B-48FC-9F1B-2B00BC0A55C7}.*"
 
 **Note:** The current context database is core. We can't directly choose the contact list folder (which is in the master) from the item tree. We must update the field with the item's guid. Enable the display of field values as raw values, then change the field values.
 
@@ -90,19 +82,17 @@ Now, the editor layout for the SaveToContactList Submit Action is ready. After t
 
 Switch to the master database and navigate to the following location.
 
-```csharp
-Master: /sitecore/system/Settings/Forms/Submit Actions
-```
+`Master: /sitecore/system/Settings/Forms/Submit Actions`
 
-    - Make a duplicate item for the "Redirect to Page" item.
+- Make a duplicate item for the "Redirect to Page" item.
 
-    - Rename it to "Save To Contact List."
+- Rename it to "Save To Contact List."
 
-    - Update the field value of *Error Message*, Example: "Failed to save contact details!!"
+- Update the field value of *Error Message*, Example: "Failed to save contact details!!"
 
-    - Select the "Save To Contact List" option for the *Editor* field
+- Select the "Save To Contact List" option for the *Editor* field
 
-    - Change the icon from the Appearance section
+- Change the icon from the Appearance section
 
 Our custom submit action is almost ready but still refers to the *RedirectToPage* code. We must create a new class to save the form data into the contact list. The *SaveToContactList* also uses the same parameter key (used in *RedirectToPage*) named "referenceid". This parameter key stores the selected value of ItemTreeValue fields shown in the image below.
 
@@ -128,7 +118,7 @@ namespace Feature.FormsExtensions.Models
 
 Now we will create a new class and override Execute method. Add a new class file named SaveToContactList.cs in the SubmitActions folder.
 
-**Note:** We use [xConnect Client API](https://doc.sitecore.com/xp/en/developers/93/sitecore-experience-platform/xconnect-client-api-overview.html) instead of [List Manager API](https://doc.sitecore.com/xp/en/developers/92/sitecore-experience-manager/the-list-manager-api.html) for this implementation. Contact lists are stored in Sitecore as marketing definitions. You can only access contact lists programmatically via the List Manager API on the CM instance; the List Manager API will not work ***on CD instances*** because ***the List Manager application is disabled***.
+**Note:** We use [xConnect Client API](https://doc.sitecore.com/xp/en/developers/93/sitecore-experience-platform/xconnect-client-api-overview.html) instead of [List Manager API](https://doc.sitecore.com/xp/en/developers/92/sitecore-experience-manager/the-list-manager-api.html) for this implementation. Contact lists are stored in Sitecore as marketing definitions. You can only access contact lists programmatically via the List Manager API on the CM instance; the List Manager API will not work **on CD instances** because **the List Manager application is disabled**.
 
 ```csharp
 using System;
@@ -306,7 +296,7 @@ namespace Feature.FormsExtensions.SubmitActions
 
 **Note:** The current code uses hardcoded values to take field references. Thus, the form must have FirstName, LastName, and Email fields.
 
-```
+```csharp
 var firstNameField = formSubmitContext.Fields.FirstOrDefault(field => field.Name.Equals("FirstName"));
 var lastNameField = formSubmitContext.Fields.FirstOrDefault(field => field.Name.Equals("LastName")); ;
 var emailField = formSubmitContext.Fields.FirstOrDefault(field => field.Name.Equals("Email"));
@@ -322,19 +312,19 @@ Now the Save To Contact List custom submit action is ready.
 
 ### Let's Add this Submit Action and Test its Functionality
 
-    - Create an empty contact list in Launchpad> List Manager > Create > Empty Contact List and name it "Customer Contact List."
+- Create an empty contact list in Launchpad> List Manager > Create > Empty Contact List and name it "Customer Contact List."
 
-    - Create a Sitecore form and add FirstName, LastName, and Email fields.
+- Create a Sitecore form and add FirstName, LastName, and Email fields.
 
-    - Add Submit button and assign "Save To Contact List" Submit Action to it.
+- Add Submit button and assign "Save To Contact List" Submit Action to it.
 
-    - Select the newly created Contact list and save the form.
+- Select the newly created Contact list and save the form.
 
-    - Insert that Sitecore form in a page and save it.
+- Insert that Sitecore form in a page and save it.
 
-    - Browse the page and submit the form with provided fields.
+- Browse the page and submit the form with provided fields.
 
-    - Verify the submitted data in Launchpad > List Manager > Contact List > "Customer Contact List."
+- Verify the submitted data in Launchpad > List Manager > Contact List > "Customer Contact List."
 
 ![](/uploads/forms-list-basic-SaveToContactList-Conclustion-1.gif)
 
