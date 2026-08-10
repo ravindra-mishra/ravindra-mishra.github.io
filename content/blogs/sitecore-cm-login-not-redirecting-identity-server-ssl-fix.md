@@ -89,8 +89,6 @@ If your Sitecore CM and Identity Server configuration is already correct, check 
    Personal
    └── Certificates
    ```
-
-
 5. Find the SSL certificate used by: `https://sc104identityserver.dev.local/`
 
 - - -
@@ -212,10 +210,7 @@ Before changing configuration, check these areas:
 | Certificate SAN   | Identity Server hostname is covered                          |
 | IIS               | Correct certificate is bound to the Identity Server hostname |
 | Hosts file        | Identity Server hostname resolves correctly                  |
-| Private key       | Required application pool permissions are available          |
-| Logs              | Look for errors such as `IDX20803`                           |
-
-
+| Private key       | Required application pool permissions are availabl           |
 
 If the basic Sitecore configuration is already correct, focus on the **certificate, certificate chain, hostname, and IIS binding**.
 
