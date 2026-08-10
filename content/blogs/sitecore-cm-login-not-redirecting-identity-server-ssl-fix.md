@@ -56,16 +56,16 @@ This guide gives you the fix first, followed by the troubleshooting checks and t
 
 Before starting, I am assuming that:
 
-Sitecore CM is already installed and accessible.
-Sitecore Identity Server is already installed and configured.
-The Identity Server SSL certificate has already been created and is being used by Identity Server.
-The required Sitecore CM and Identity Server configuration is already in place.
-The Identity Server hostname is configured consistently across Sitecore, IIS, the certificate SAN/DNS name, and the Windows hosts file.
+* Sitecore CM is already installed and accessible.
+* Sitecore Identity Server is already installed and configured.
+* The Identity Server SSL certificate has already been created and is being used by Identity Server.
+* The required Sitecore CM and Identity Server configuration is already in place.
+* The Identity Server hostname is configured consistently across Sitecore, IIS, the certificate SAN/DNS name, and the Windows hosts file.
 
 For the examples in this article, I am using:
 
-- Sitecore CM: `https://sc104cm.dev.local`
-- Sitecore Identity Server: `https://sc104identityserver.dev.local/`
+* Sitecore CM: `https://sc104cm.dev.local`
+* Sitecore Identity Server: `https://sc104identityserver.dev.local/`
 
 Your URLs will be different, but use the same Identity Server hostname consistently throughout your local setup.
 
@@ -77,69 +77,82 @@ If your Sitecore CM and Identity Server configurations are already correct, you 
 
 ### 1. Open the Local Machine certificate store
 
-Press **Win + R** enter `certlm.msc`, and press **Enter**.
-
-Go to **Personal → Certificates** and find the SSL certificate used by `https://sc104identityserver.dev.local/`.
+1. Press **Win + R** enter `certlm.msc`, and press **Enter**.
+2. Go to **Personal → Certificates** and find the SSL certificate used by the identity server `https://sc104identityserver.dev.local/`
 
 ### 2. Check the certificate chain
 
-Open the Identity Server certificate and select **Certification Path**.
-
-Select the **root CA certificate** at the top of the chain and click **View Certificate**.
-
-Go to **Details → Copy to File...** and export it as a `.cer` file.
-
-You only need the public certificate for this step.
-
-**Do not export the private key.**
+1. Open the Identity Server certificate and select **Certification Path**.
+2. Select the **root CA certificate** at the top of the chain and click **View Certificate**.
+3. Go to **Details → Copy to File...** and export it as a `.cer` file.
+4. You only need the public certificate for this step. **Do not export the private key.**
 
 ### 3. Trust the root certificate
 
-Open the exported `.cer` file and select **Install Certificate**.
+1. Open the exported `.cer` file and select **Install Certificate**.
+2. In the certificate import wizard, select the following options:
 
-Choose:
-
-1. **Local Machine**
-2. **Place all certificates in the following store**
-3. **Trusted Root Certification Authorities**
-4. Complete the import.
-
-The certificate should be installed under:
-
-`Local Computer → Trusted Root Certification Authorities`
+   1. Select **Local Machine** as the certificate store location.
+   2. Choose **Place all certificates in the following store**.
+   3. Select **Trusted Root Certification Authorities** as the certificate store.
+   4. Complete the certificate import.
+3. The certificate should be installed under: `Local Computer` > `Trusted Root Certification Authorities`
 
 ### 4. Verify the Identity Server IIS binding
 
-Open **IIS Manager**, find the Identity Server website, and open **Bindings...**.
-
-Next, verify the **HTTPS binding** for the Identity Server site in IIS. Make sure the binding is using HTTPS on port **443**, the hostname matches your Identity Server URL, and the correct SSL certificate is selected.
-
-
-For example:
-
-
-```text
-Type:        https
-Port:        443
-Hostname:    sc104identityserver.dev.local
-Certificate: Identity Server SSL Certificate
-```
-
-The hostname and certificate should match the Identity Server configuration you are using.
+1. Open **IIS Manager**, find the Identity Server website, and open **Bindings...**.
+2. Next, verify the **HTTPS binding** for the Identity Server site in IIS. Make sure the binding is using HTTPS on port **443**, the hostname matches your Identity Server URL, and the correct SSL certificate is selected.
+3. The hostname and certificate should match the Identity Server configuration you are using.
 
 ### 5. Verify the hostname
 
 Make sure `sc104identityserver.dev.local` is used consistently in:
 
-* Sitecore CM configuration
-* Identity Server configuration
-* IIS HTTPS binding
-* Certificate SAN/DNS name
-* Windows hosts file
+Before troubleshooting further, verify the following configuration on your Sitecore CM and Identity Server instances.
+
+#### Sitecore CM configuration
+
+Check the following files on the Sitecore CM instance:
+
+1. `C:\inetpub\wwwroot\sc104sc.dev.local\App_Config\ConnectionString.config`
+
+   * Verify the `sitecoreidentity.secret` connection string.
+2. `C:\inetpub\wwwroot\sc1040cm.dev.local\App_Config\Sitecore\Owin.Authentication.IdentityServer\Sitecore.Owin.Authentication.IdentityServer.config`
+
+   * Verify that `identityServerAuthority` points to the correct Identity Server URL:
+
+```xml
+<sc.variable name="identityServerAuthority" value="https://sc1040identityserver.dev.local" />
+```
+
+#### Identity Server configuration
+
+1. Check the Identity Server configuration file:
+
+   `C:\inetpub\wwwroot\sc1040identityserver.dev.local\Config\production\Sitecore.IdentityServer.Host.xml`
+2. Make sure the certificate and other Identity Server settings are configured correctly.
+
+#### IIS HTTPS binding
+
+1. Check the IIS binding for the Identity Server website. It should use **HTTPS** with the correct hostname and the same certificate you configured in the previous steps.
+
+#### Certificate SAN/DNS name
+
+1. Make sure the Identity Server domain name is included in the certificate's **Subject Alternative Name (SAN)**.
+2. You can check this from **Certificate Manager → Certificate → Details → Subject Alternative Name**.
+3. The hostname should match the Identity Server URL you are using.
+
+#### Windows hosts file
+
+1. Finally, check the Windows hosts file:
+
+   `C:\Windows\System32\drivers\etc\hosts`
+2. Make sure there is an entry for the Identity Server hostname and that it resolves to the correct IP address for your local setup.
 
 ### 6. Restart IIS
 
-Run `iisreset` in the terminal to restart IIS and apply the changes. Then open `https://sc104cm.dev.local/sitecore` in your browser and try logging in again.
+1. Run `iisreset` in the terminal to restart IIS and apply the changes. 
+2. Then open `https://sc104cm.dev.local/sitecore` in your browser and try logging in again.
 
 - - -
 
