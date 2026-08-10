@@ -7,9 +7,9 @@ keywords: Sitecore CM login not redirecting to Identity Server, Sitecore
   Identity Server troubleshooting, Sitecore Identity Server certificate trust,
   Sitecore Identity Server SSL, Sitecore WDP installation, Sitecore certificate
   SAN mismatch
-metaDescription: Sitecore CM login not redirecting to Identity Server? Check
-  certificate trust, IIS binding, hostname, SAN/DNS, authentication
-  configuration, and logs with this practical troubleshooting guide.
+metaDescription: Troubleshoot Sitecore CM login redirect issues by checking
+  certificate trust, IIS binding, hostname, SAN/DNS, and authentication
+  configuration.
 featuredImage: /uploads/2026-08-10-19_42_58-certlm-certificates-local-computer_personal_certificates-.png
 slug: sitecore-cm-login-not-redirecting-to-identity-server
 date: August 10, 2026 6:58 PM
@@ -42,15 +42,15 @@ howto:
 tags:
   - tag: sitecore
 ---
-If your **Sitecore CM login is not redirecting to Identity Server**, even though Identity Server itself opens correctly, the cause can be Sitecore configuration, authentication settings, SSL certificates, certificate trust, IIS bindings, or hostname configuration.
+If your **Sitecore CM login is not redirecting to Identity Server**, even though Identity Server opens correctly, the issue may be related to certificate trust, hostname configuration, IIS bindings, or Sitecore authentication settings.
 
-I ran into this issue while manually configuring Sitecore using **WDP packages without SIF or SIA**. The CM and Identity Server configuration looked correct, and Identity Server was accessible directly, but the Sitecore login page still did not redirect to Identity Server.
+I ran into this issue while manually configuring Sitecore using **WDP packages without SIF or SIA**. The CM and Identity Server configuration appeared to be correct, and Identity Server was accessible directly, but the Sitecore login page would not redirect.
 
-In my case, the problem was **certificate-chain trust**. The root CA certificate used by the Identity Server certificate was not trusted correctly in the Local Machine certificate store.
+In my case, the issue was a **certificate-chain trust problem**. The root CA certificate used by the Identity Server certificate was not trusted by the local machine.
 
-This guide gives you the fix first, followed by the troubleshooting checks and the details of what happened in my WDP installation.
+This guide starts with the fix that worked in my environment, followed by additional checks for similar Sitecore CM > Identity Server issues.
 
-## Assumptions
+## Prerequisites
 
 Before starting, I am assuming that:
 
@@ -71,7 +71,7 @@ Your URLs will be different, but use the same Identity Server hostname consisten
 
 ## Quick Fix
 
-If your Sitecore CM and Identity Server configurations are already correct, you can also try the fixes below.
+If Identity Server is already installed and accessible, start with the following checks. In my environment, the certificate-chain trust issue was the main problem.
 
 ### 1. Open the Local Machine certificate store
 
@@ -102,7 +102,7 @@ If your Sitecore CM and Identity Server configurations are already correct, you 
 2. Next, verify the **HTTPS binding** for the Identity Server site in IIS. Make sure the binding is using HTTPS on port **443**, the hostname matches your Identity Server URL, and the correct SSL certificate is selected.
 3. The hostname and certificate should match the Identity Server configuration you are using.
 
-### 5. Verify the hostname
+### 5. Verify the Identity Server Hostname and Configuration
 
 Make sure `sc104identityserver.dev.local` is used consistently across your Sitecore CM and Identity Server configuration. Check the following settings and files:
 
@@ -110,35 +110,31 @@ Make sure `sc104identityserver.dev.local` is used consistently across your Sitec
 
 Check the following files on the Sitecore CM instance:
 
-1. `C:\inetpub\wwwroot\sc104sc.dev.local\App_Config\ConnectionString.config`
+1. `C:\inetpub\wwwroot\sc104cm.dev.local\App_Config\ConnectionString.config`
 
    * Verify the `sitecoreidentity.secret` connection string.
-2. `C:\inetpub\wwwroot\sc1040cm.dev.local\App_Config\Sitecore\Owin.Authentication.IdentityServer\Sitecore.Owin.Authentication.IdentityServer.config`
+2. `C:\inetpub\wwwroot\sc104cm.dev.local\App_Config\Sitecore\Owin.Authentication.IdentityServer\Sitecore.Owin.Authentication.IdentityServer.config`
 
    * Verify that `identityServerAuthority` points to the correct Identity Server URL:
 
 ```xml
-<sc.variable name="identityServerAuthority" value="https://sc1040identityserver.dev.local" />
+<sc.variable name="identityServerAuthority" value="https://sc104identityserver.dev.local" />
 ```
 
 #### B) Identity Server configuration
 
 1. Check the Identity Server configuration file:
 
-   `C:\inetpub\wwwroot\sc1040identityserver.dev.local\Config\production\Sitecore.IdentityServer.Host.xml`
+   `C:\inetpub\wwwroot\sc104identityserver.dev.local\Config\production\Sitecore.IdentityServer.Host.xml`
 2. Make sure the certificate and other Identity Server settings are configured correctly.
 
-#### C) IIS HTTPS binding
-
-1. Check the IIS binding for the Identity Server website. It should use **HTTPS** with the correct hostname and the same certificate you configured in the previous steps.
-
-#### D) Certificate SAN/DNS name
+#### C) Certificate SAN/DNS name
 
 1. Make sure the Identity Server domain name is included in the certificate's **Subject Alternative Name (SAN)**.
-2. You can check this from **Certificate Manager → Certificate → Details → Subject Alternative Name**.
+2. You can check this from **Certificate Manager > Certificate > Details > Subject Alternative Name**.
 3. The hostname should match the Identity Server URL you are using.
 
-#### E) Windows hosts file
+#### D) Windows hosts file
 
 1. Finally, check the Windows hosts file:
 
@@ -186,4 +182,4 @@ If you are troubleshooting Sitecore Identity Server or setting up a local Siteco
 
 * [How to Create SSL Certificates for Sitecore Locally](https://sitecorehelphouse.wordpress.com/2025/07/29/how-to-create-ssl-certificates-for-sitecore-locally)
 * [Sitecore CM Login Not Redirecting to Identity Server – Stack Exchange](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server)
-* [My Stack Exchange Answer – Certificate Trust Fix](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server)
+* [My Stack Exchange Answer – Certificate Trust Fix](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server/40471#40471)
