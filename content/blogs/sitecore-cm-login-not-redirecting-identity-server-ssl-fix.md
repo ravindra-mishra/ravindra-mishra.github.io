@@ -138,27 +138,6 @@ In my environment, this restored the expected **CM → Identity Server** redirec
 
 - - -
 
-# Troubleshooting Checklist
-
-Before changing configuration, check these areas:
-
-| Area              | What to check                                                |
-| ----------------- | ------------------------------------------------------------ |
-| CM configuration  | `identityServerAuthority` uses the correct HTTPS URL         |
-| Identity Server   | Certificate and client configuration are correct             |
-| Authentication    | Identity Server/OWIN authentication is not disabled          |
-| Certificate       | Correct certificate exists in `LocalMachine\My`              |
-| Certificate chain | Root CA certificate is trusted                               |
-| Certificate SAN   | Identity Server hostname is covered                          |
-| IIS               | Correct certificate is bound to the Identity Server hostname |
-| Hosts file        | Identity Server hostname resolves correctly                  |
-| Private key       | Required application pool permissions are available          |
-| Logs              | Look for any error details and scan them using an AI tool. Make sure to remove any credentials or sensitive information before exposing them to AI chats.
-                           |
-
-
-- - -
-
 # Frequently Asked Questions
 
 ## Why is Sitecore CM not redirecting to Identity Server?
