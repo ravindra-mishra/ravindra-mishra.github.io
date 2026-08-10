@@ -150,15 +150,15 @@ Check the following files on the Sitecore CM instance:
 
 ## Frequently Asked Questions
 
-### Why does Identity Server work directly but CM does not redirect?
+### 1. Why does Identity Server work directly but CM does not redirect?
 
 Direct browser access does not necessarily mean that Sitecore CM can establish a trusted HTTPS connection to Identity Server. The CM authentication flow can still fail because of certificate trust, hostname, SAN/DNS, IIS binding, or Sitecore configuration.
 
-### Where should the Identity Server root certificate be installed?
+### 2. Where should the Identity Server root certificate be installed?
 
 For the local Windows setup described in this article, install the root CA certificate under **Local Machine > Trusted Root Certification Authorities**.
 
-### Do I need to export the Identity Server private key?
+### 3. Do I need to export the Identity Server private key?
 
 No. For the certificate-trust fix described here, export only the public root CA certificate as a `.cer` file.
 
