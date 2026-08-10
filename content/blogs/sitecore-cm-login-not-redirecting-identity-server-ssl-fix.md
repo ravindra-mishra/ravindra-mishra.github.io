@@ -55,26 +55,8 @@ This guide gives you the fix first, followed by the troubleshooting checks and t
 ## My Sitecore URLs
 
 For the examples in this article, I am using:
-
-| Purpose                  | URL                                      |
-| ------------------------ | ---------------------------------------- |
-| Sitecore CM              | `https://sc104cm.dev.local`              |
-| Sitecore CM login        | `https://sc104cm.dev.local/sitecore`     |
-| Sitecore Identity Server | `https://sc104identityserver.dev.local/` |
-
-The expected authentication flow is:
-
-```text
-https://sc104cm.dev.local/sitecore
-                |
-                | Login
-                v
-https://sc104identityserver.dev.local/
-                |
-                | Authentication
-                v
-https://sc104cm.dev.local
-```
+ ﻿- Sitecore CM: `https://sc104cm.dev.local` 
+ ﻿- Sitecore Identity Server: https://sc104identityserver.dev.local/
 
 Your URLs will be different, but the important part is to use the **same Identity Server hostname consistently** across Sitecore configuration, IIS, the certificate SAN/DNS name, and the Windows hosts file.
 
