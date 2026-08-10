@@ -106,7 +106,7 @@ If Identity Server is already installed and accessible, start with the following
 
 Make sure `sc104identityserver.dev.local` is used consistently across your Sitecore CM and Identity Server configuration. Check the following settings and files:
 
-#### A) Sitecore CM configuration
+#### 5.1) Sitecore CM configuration
 
 Check the following files on the Sitecore CM instance:
 
@@ -121,20 +121,20 @@ Check the following files on the Sitecore CM instance:
 <sc.variable name="identityServerAuthority" value="https://sc104identityserver.dev.local" />
 ```
 
-#### B) Identity Server configuration
+#### 5.2) Identity Server configuration
 
 1. Check the Identity Server configuration file:
 
    `C:\inetpub\wwwroot\sc104identityserver.dev.local\Config\production\Sitecore.IdentityServer.Host.xml`
 2. Make sure the certificate and other Identity Server settings are configured correctly.
 
-#### C) Certificate SAN/DNS name
+#### 5.3) Certificate SAN/DNS name
 
 1. Make sure the Identity Server domain name is included in the certificate's **Subject Alternative Name (SAN)**.
 2. You can check this from **Certificate Manager > Certificate > Details > Subject Alternative Name**.
 3. The hostname should match the Identity Server URL you are using.
 
-#### D) Windows hosts file
+#### 5.4) Windows hosts file
 
 1. Check the Windows hosts file:
 
