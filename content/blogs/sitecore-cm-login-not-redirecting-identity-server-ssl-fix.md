@@ -185,13 +185,7 @@ Check the CM configuration, Identity Server configuration, authentication settin
 
 # Conclusion
 
-When **Sitecore CM login is not redirecting to Identity Server**, start with the configuration and connectivity basics before changing Sitecore settings randomly.
-
-Check the Identity Server URL, CM and Identity Server configuration, authentication settings, certificate chain, SAN/DNS, IIS binding, hosts file, private-key permissions, and CM logs.
-
-For my manually configured **Sitecore WDP installation**, the missing piece was **certificate-chain trust**. Installing the root CA certificate into **Local Machine → Trusted Root Certification Authorities**, then verifying the IIS binding and hostname, resolved the CM → Identity Server redirect problem.
-
-If you're experiencing the same issue, **start with the Quick Fix at the top**. If that doesn't work, use the troubleshooting checklist to identify which part of the CM → Identity Server communication is failing.
+In this troubleshooting guide, we identified and fixed one specific issue: a certificate-chain trust problem between Sitecore CM and Identity Server. Installing the root CA certificate in the Local Machine → Trusted Root Certification Authorities store, along with verifying the IIS binding and hostname, resolved the redirect issue in our setup.
 
 ## Related Links & Discussions
 
