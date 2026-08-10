@@ -173,36 +173,9 @@ Before changing configuration, check these areas:
 | IIS               | Correct certificate is bound to the Identity Server hostname |
 | Hosts file        | Identity Server hostname resolves correctly                  |
 | Private key       | Required application pool permissions are available          |
-| Logs              | Look for errors such as `IDX20803`                           |
+| Logs              | Look for any error details and scan them using an AI tool. Make sure to remove any credentials or sensitive information before exposing them to AI chats.
+                           |
 
-
-
-- - -
-
-# Why This Happened in My WDP Installation
-
-My environment was installed manually using **WDP packages**, without SIF or SIA.
-
-The basic setup was already working:
-
-* Sitecore CM was installed.
-* Identity Server was installed.
-* HTTPS was configured.
-* `https://sc104identityserver.dev.local/` opened successfully.
-* CM had the Identity Server authority configured.
-* Identity Server had the expected CM/client configuration.
-
-But `https://sc104cm.dev.local/sitecore` was not redirecting to Identity Server.
-
-I checked the normal Sitecore configuration and the certificate private-key permissions first.
-
-The issue turned out to be the **certificate chain**.
-
-The root CA certificate used by the Identity Server certificate was not trusted correctly by the Local Machine certificate store.
-
-After installing the root certificate under **Local Machine → Trusted Root Certification Authorities**, and verifying the IIS binding and hostname, the CM → Identity Server redirect started working.
-
-That was the main reason I wanted to document this issue: **Identity Server worked directly in the browser, which made the certificate-trust problem easy to overlook.**
 
 - - -
 
