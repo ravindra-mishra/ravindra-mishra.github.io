@@ -52,13 +52,22 @@ In my case, the problem was **certificate-chain trust**. The root CA certificate
 
 This guide gives you the fix first, followed by the troubleshooting checks and the details of what happened in my WDP installation.
 
-## My Sitecore URLs
+## Assumptions
+
+Before starting, I am assuming that:
+
+Sitecore CM is already installed and accessible.
+Sitecore Identity Server is already installed and configured.
+The Identity Server SSL certificate has already been created and is being used by Identity Server.
+The required Sitecore CM and Identity Server configuration is already in place.
+The Identity Server hostname is configured consistently across Sitecore, IIS, the certificate SAN/DNS name, and the Windows hosts file.
 
 For the examples in this article, I am using:
- ﻿- Sitecore CM: `https://sc104cm.dev.local` 
- ﻿- Sitecore Identity Server: https://sc104identityserver.dev.local/
 
-Your URLs will be different, but the important part is to use the **same Identity Server hostname consistently** across Sitecore configuration, IIS, the certificate SAN/DNS name, and the Windows hosts file.
+- Sitecore CM: `https://sc104cm.dev.local`
+- Sitecore Identity Server: `https://sc104identityserver.dev.local/`
+
+Your URLs will be different, but use the same Identity Server hostname consistently throughout your local setup.
 
 - - -
 
@@ -103,7 +112,11 @@ The certificate should be installed under:
 
 Open **IIS Manager**, find the Identity Server website, and open **Bindings...**.
 
-Verify the HTTPS binding:
+Next, verify the **HTTPS binding** for the Identity Server site in IIS. Make sure the binding is using HTTPS on port **443**, the hostname matches your Identity Server URL, and the correct SSL certificate is selected.
+
+
+For example:
+
 
 ```text
 Type:        https
@@ -112,7 +125,7 @@ Hostname:    sc104identityserver.dev.local
 Certificate: Identity Server SSL Certificate
 ```
 
-Make sure the certificate selected in IIS is the certificate being used by Identity Server.
+The hostname and certificate should match the Identity Server configuration you are using.
 
 ### 5. Verify the hostname
 
