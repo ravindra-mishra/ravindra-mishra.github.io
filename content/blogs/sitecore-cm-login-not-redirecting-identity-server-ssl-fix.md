@@ -76,13 +76,13 @@ If your Sitecore CM and Identity Server configurations are already correct, you 
 ### 1. Open the Local Machine certificate store
 
 1. Press **Win + R** enter `certlm.msc`, and press **Enter**.
-2. Go to **Personal → Certificates** and find the SSL certificate used by the identity server `https://sc104identityserver.dev.local/`
+2. Go to **Personal > Certificates** and find the SSL certificate used by the identity server `https://sc104identityserver.dev.local/`
 
 ### 2. Check the certificate chain
 
 1. Open the Identity Server certificate and select **Certification Path**.
 2. Select the **root CA certificate** at the top of the chain and click **View Certificate**.
-3. Go to **Details → Copy to File...** and export it as a `.cer` file.
+3. Go to **Details > Copy to File...** and export it as a `.cer` file.
 4. You only need the public certificate for this step. **Do not export the private key.**
 
 ### 3. Trust the root certificate
@@ -104,11 +104,9 @@ If your Sitecore CM and Identity Server configurations are already correct, you 
 
 ### 5. Verify the hostname
 
-Make sure `sc104identityserver.dev.local` is used consistently in:
+Make sure `sc104identityserver.dev.local` is used consistently across your Sitecore CM and Identity Server configuration. Check the following settings and files:
 
-Before troubleshooting further, verify the following configuration on your Sitecore CM and Identity Server instances.
-
-#### Sitecore CM configuration
+#### A) Sitecore CM configuration
 
 Check the following files on the Sitecore CM instance:
 
@@ -123,24 +121,24 @@ Check the following files on the Sitecore CM instance:
 <sc.variable name="identityServerAuthority" value="https://sc1040identityserver.dev.local" />
 ```
 
-#### Identity Server configuration
+#### B) Identity Server configuration
 
 1. Check the Identity Server configuration file:
 
    `C:\inetpub\wwwroot\sc1040identityserver.dev.local\Config\production\Sitecore.IdentityServer.Host.xml`
 2. Make sure the certificate and other Identity Server settings are configured correctly.
 
-#### IIS HTTPS binding
+#### C) IIS HTTPS binding
 
 1. Check the IIS binding for the Identity Server website. It should use **HTTPS** with the correct hostname and the same certificate you configured in the previous steps.
 
-#### Certificate SAN/DNS name
+#### D) Certificate SAN/DNS name
 
 1. Make sure the Identity Server domain name is included in the certificate's **Subject Alternative Name (SAN)**.
 2. You can check this from **Certificate Manager → Certificate → Details → Subject Alternative Name**.
 3. The hostname should match the Identity Server URL you are using.
 
-#### Windows hosts file
+#### E) Windows hosts file
 
 1. Finally, check the Windows hosts file:
 
@@ -158,7 +156,7 @@ Check the following files on the Sitecore CM instance:
 
 ### Why is Sitecore CM not redirecting to Identity Server?
 
-The cause can be Sitecore configuration, disabled authentication, certificate trust, certificate SAN/DNS mismatch, IIS binding, hostname resolution, or certificate permissions. In my environment, the issue was an untrusted root CA certificate.
+There can be several reasons, including Sitecore configuration, authentication settings, certificate trust, certificate SAN/DNS mismatch, IIS bindings, or hostname resolution. In my case, the issue was a **certificate-chain trust problem**. The root CA certificate used by the Identity Server certificate was not trusted by the local machine. Installing the root CA certificate under **Local Machine > Trusted Root Certification Authorities** resolved the CM > Identity Server redirect issue.
 
 ### Why does Identity Server work directly but CM does not redirect?
 
@@ -166,7 +164,7 @@ Direct browser access does not guarantee that the CM-to-Identity Server authenti
 
 ### Where should the Identity Server root certificate be installed?
 
-For the local Windows setup described in this article, install the root CA certificate under **Local Machine → Trusted Root Certification Authorities**.
+For the local Windows setup described in this article, install the root CA certificate under **Local Machine > Trusted Root Certification Authorities**.
 
 ### Do I need to export the Identity Server private key?
 
@@ -180,7 +178,7 @@ Check the CM configuration, Identity Server configuration, authentication settin
 
 ## Conclusion
 
-In this troubleshooting guide, we identified and fixed one specific issue: a certificate-chain trust problem between Sitecore CM and Identity Server. Installing the root CA certificate in the Local Machine → Trusted Root Certification Authorities store, along with verifying the IIS binding and hostname, resolved the redirect issue in our setup.
+In this troubleshooting guide, we identified and fixed one specific issue: a certificate-chain trust problem between Sitecore CM and Identity Server. Installing the root CA certificate in the Local Machine > Trusted Root Certification Authorities store, along with verifying the IIS binding and hostname, resolved the redirect issue in our setup.
 
 ### Related Links & Discussions
 
