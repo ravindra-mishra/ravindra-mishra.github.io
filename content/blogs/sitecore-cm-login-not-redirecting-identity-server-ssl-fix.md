@@ -512,10 +512,10 @@ If you're experiencing the same issue, **start with the Quick Fix at the top**. 
 If you are troubleshooting Sitecore Identity Server or setting up a local Sitecore environment, these resources may also be useful:
 
 * **Creating SSL Certificates for Sitecore Locally** — A practical guide covering local SSL certificate creation, certificate stores, IIS bindings, and Sitecore certificate configuration.
-  [How to Create SSL Certificates for Sitecore Locally](https://sitecorehelphouse.wordpress.com/2025/07/29/how-to-create-ssl-certificates-for-sitecore-locally/?utm_source=chatgpt.com)
+  [How to Create SSL Certificates for Sitecore Locally](https://sitecorehelphouse.wordpress.com/2025/07/29/how-to-create-ssl-certificates-for-sitecore-locally)
 
 * **Original Sitecore Stack Exchange Question** — Community discussion covering different causes of Sitecore CM login not redirecting to Identity Server, including authentication configuration, certificate permissions, and SSL/hostname-related issues.
-  [Sitecore CM Login Not Redirecting to Identity Server – Stack Exchange](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server?utm_source=chatgpt.com)
+  [Sitecore CM Login Not Redirecting to Identity Server – Stack Exchange](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server)
 
 * **My Stack Exchange Answer** — The answer where I documented the certificate-chain trust fix described in this article: exporting the root/issuer certificate and installing it under the Local Machine Trusted Root Certification Authorities store.
-  [My Stack Exchange Answer – Certificate Trust Fix](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server?utm_source=chatgpt.com)
+  [My Stack Exchange Answer – Certificate Trust Fix](https://sitecore.stackexchange.com/questions/32025/sitecore-cm-login-not-redirecting-to-identity-server)
