@@ -42,8 +42,6 @@ howto:
 tags:
   - tag: sitecore
 ---
-# Sitecore CM Login Not Redirecting to Identity Server? Troubleshooting Guide
-
 If your **Sitecore CM login is not redirecting to Identity Server**, even though Identity Server itself opens correctly, the cause can be Sitecore configuration, authentication settings, SSL certificates, certificate trust, IIS bindings, or hostname configuration.
 
 I ran into this issue while manually configuring Sitecore using **WDP packages without SIF or SIA**. The CM and Identity Server configuration looked correct, and Identity Server was accessible directly, but the Sitecore login page still did not redirect to Identity Server.
