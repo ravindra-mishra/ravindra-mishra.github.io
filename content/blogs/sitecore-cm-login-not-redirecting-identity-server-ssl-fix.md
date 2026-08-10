@@ -64,13 +64,11 @@ Your URLs will be different, but the important part is to use the **same Identit
 
 # Quick Fix
 
-If your Sitecore CM and Identity Server configuration is already correct, check the Identity Server certificate trust first.
-
-If you only have a few minutes, start here.
+If your Sitecore CM and Identity Server configurations are already correct, you can also try the fixes below.
 
 ### 1. Open the Local Machine certificate store
 
-Press **Win + R**, enter `certlm.msc`, and press **Enter**.
+Press **Win + R** enter `certlm.msc`, and press **Enter**.
 
 Go to **Personal → Certificates** and find the SSL certificate used by `https://sc104identityserver.dev.local/`.
 
