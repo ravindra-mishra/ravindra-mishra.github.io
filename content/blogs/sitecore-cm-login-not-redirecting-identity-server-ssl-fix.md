@@ -139,15 +139,7 @@ Make sure `sc104identityserver.dev.local` is used consistently in:
 
 ### 6. Restart IIS
 
-Run:
-
-`iisreset`
-
-Then open `https://sc104cm.dev.local/sitecore` and try the login again.
-
-In my environment, this restored the expected **CM → Identity Server** redirect.
-
-> **Note:** Certificate trust was the cause in my environment. It is not the only possible cause of a Sitecore CM → Identity Server redirect problem.
+Run `iisreset` in the terminal to restart IIS and apply the changes. Then open `https://sc104cm.dev.local/sitecore` in your browser and try logging in again.
 
 - - -
 
