@@ -7,6 +7,8 @@ export interface BlogHeaderProps {
   date: Date;
   readingTime: string;
   featureImage: string;
+  /** Accessible description of the banner image; falls back to title. */
+  featureImageAlt?: string;
   /** Historical publication source label (e.g. Perficient Blogs Archive). */
   source?: string;
   /** URL where the post was originally published. */
@@ -19,6 +21,7 @@ const BlogHeader: FC<BlogHeaderProps> = ({
   date,
   readingTime,
   featureImage,
+  featureImageAlt,
   source,
   originalUrl,
 }) => {
@@ -29,7 +32,7 @@ const BlogHeader: FC<BlogHeaderProps> = ({
       <img
         className="blog-header-image"
         src={featureImage}
-        alt={title}
+        alt={featureImageAlt || title}
         width={1200}
         height={630}
         decoding="async"

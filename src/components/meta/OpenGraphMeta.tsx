@@ -9,6 +9,8 @@ export interface OpenGraphMetaProps {
   title?: string;
   description?: string;
   image?: string;
+  /** Accessible description for og:image:alt; falls back to title. */
+  imageAlt?: string;
   /** Use `article` for blog posts; `website` for listings and static pages. */
   ogType?: "website" | "article";
   /** ISO 8601 — include with `ogType="article"` for richer previews. */
@@ -25,12 +27,15 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
   title,
   description,
   image,
+  imageAlt,
   ogType = "website",
   articlePublishedTime,
   articleModifiedTime,
   articleAuthor,
   articleTags,
 }) => {
+  const resolvedImageAlt = imageAlt || title || config.site_title;
+
   return (
     <Head>
       <meta property="og:site_name" content={config.site_title} />
@@ -39,7 +44,7 @@ const OpenGraphMeta: FC<OpenGraphMetaProps> = ({
       <meta property="og:description" content={description ? description : config.site_description} />
       <meta property="og:image" content={absoluteFromSiteRoot(image)} />
       {image ? (
-        <meta property="og:image:alt" content={title ? title : config.site_title} />
+        <meta property="og:image:alt" content={resolvedImageAlt} />
       ) : null}
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content="en_US" />

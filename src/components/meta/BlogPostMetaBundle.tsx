@@ -29,6 +29,8 @@ export interface BlogPostMetaBundleProps {
   /** Primary snippet for search and social. */
   metaDescription: string;
   featuredImage: string;
+  /** Accessible description for banner / social image alt text. */
+  featuredImageAlt?: string;
   /** Comma-separated keywords from front matter. */
   keywords: string;
   date: Date;
@@ -53,6 +55,7 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
   description,
   metaDescription,
   featuredImage,
+  featuredImageAlt,
   keywords,
   date,
   modifiedDate,
@@ -93,6 +96,7 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
         title={title}
         description={metaDescription || description}
         image={featuredImage}
+        imageAlt={featuredImageAlt}
         ogType="article"
         articlePublishedTime={publishedISO}
         articleModifiedTime={modifiedISO}
@@ -104,6 +108,7 @@ const BlogPostMetaBundle: FC<BlogPostMetaBundleProps> = ({
         title={title}
         description={metaDescription || description}
         image={featuredImage}
+        imageAlt={featuredImageAlt}
       />
       <JsonLdBreadcrumbList path={path} title={title} />
       <JsonLdMetaBlog

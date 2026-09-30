@@ -30,6 +30,7 @@ interface Frontmatter {
   description: string;
   metaDescription: string;
   featuredImage: string;
+  featuredImageAlt?: string;
   keywords: string;
   date: Date;
   modifiedDate?: Date | string;
@@ -94,6 +95,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         description={frontmatter.description}
         metaDescription={frontmatter.metaDescription}
         featuredImage={frontmatter.featuredImage}
+        featuredImageAlt={frontmatter.featuredImageAlt}
         keywords={frontmatter.keywords}
         date={postDate}
         modifiedDate={postModified}
@@ -112,6 +114,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
           className="blog-page"
           readingTime={readingTime}
           featureImage={frontmatter.featuredImage}
+          featureImageAlt={frontmatter.featuredImageAlt}
           source={frontmatter.source}
           originalUrl={frontmatter.originalUrl}
         />

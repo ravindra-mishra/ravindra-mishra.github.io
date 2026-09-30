@@ -61,6 +61,11 @@ collections:
         widget: "image"
         required: true
         hint: "Used for blog thumbnail, meta image, and social sharing (og:image)"
+      - label: "Featured Image Alt Text"
+        name: "featuredImageAlt"
+        widget: "string"
+        required: false
+        hint: "Accessible description of the banner/thumbnail. Used for img alt and og:image:alt; falls back to the post title when empty."
       - label: "Slug"
         name: "slug"
         widget: "string"
