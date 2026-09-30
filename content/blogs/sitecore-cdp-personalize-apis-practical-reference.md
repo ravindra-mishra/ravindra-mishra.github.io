@@ -278,7 +278,10 @@ Interactive OpenAPI catalog: [api-docs.sitecore.com](https://api-docs.sitecore.c
 
 **Official documentation:** [Guest REST API v2.1 – Sitecore](https://doc.sitecore.com/cdp/en/developers/api/rest-apis/guest-rest-api-v2-1.html)
 
-The Guest API is one of the main CDP APIs I used—start here when you need a profile to hang orders, extensions, and identity data on.
+- **Use:** Create, search, update, and delete guest profiles—the core CDP identity record that orders, extensions, and sessions hang off.
+- **Prerequisites:** Regional `BASE_URL`, Client Key + API Token (Basic Auth), and a 2.1 data-model tenant if you call `/v2.1/guests`.
+- **Input:** Query params for search (for example `email`), or a JSON body with `guestType`, identifiers, name, and email fields for create/update.
+- **Output:** Guest JSON including a system `ref` (UUID) you reuse for later Guest, Extension, and Order work.
 
 A guest is the core profile entity in CDP. Related transactional and behavioral information is associated with that profile.
 
@@ -367,6 +370,11 @@ With a guest `ref` in hand, the next step is often attaching custom attributes v
 
 **Official documentation:** [Guest data extension REST API v2.1 – Sitecore](https://doc.sitecore.com/cdp/en/developers/api/rest-apis/guest-data-extension-rest-api-v2-1.html)
 
+- **Use:** Store custom attributes on an existing guest (loyalty tier, membership fields, and other org-specific key/value data) without changing the core guest schema.
+- **Prerequisites:** Same Basic Auth as Guest APIs, plus an existing guest `ref` from a prior Guest search/create.
+- **Input:** Path includes `{guestRef}`; JSON body with extension `name` (`ext` … `ext5`) and camelCase attribute keys.
+- **Output:** The created/updated extension resource under that guest (readable again via nested guest extension endpoints).
+
 Once you have a guest `ref` from the Guest API above, Guest Data Extensions hold additional guest attributes nested under that profile:
 
 - Guest
@@ -411,7 +419,12 @@ Next, sync purchases against those guests with the Order APIs.
 
 **Official documentation:** [Order REST API v2.1 – Sitecore](https://doc.sitecore.com/cdp/en/developers/api/rest-apis/order-rest-api-v2-1.html)
 
-After guest (and optional extension) data is in place, the Order API family covers commerce transactions and related resources so identity rules can link purchases back to a guest:
+- **Use:** Sync commerce purchases into CDP so identity rules can associate orders with guests for profiles, segmentation, and personalization context.
+- **Prerequisites:** Basic Auth (Client Key + API Token), regional base URL, and ideally guest/contact identifiers you can attach so the order links to a profile.
+- **Input:** Order JSON (`referenceId`, channel, status, price, currency, `orderedAt`, …) plus nested contact/items under `/v2.1/orders/{orderRef}/...`.
+- **Output:** Order (and nested) resources with an order `ref`; once linked, the purchase appears on the guest and can feed segments/exports.
+
+After guest (and optional extension) data is in place, the Order API family covers commerce transactions and related resources:
 
 - Order
   - Order Item
@@ -421,8 +434,6 @@ After guest (and optional extension) data is in place, the Order API family cove
   - Order Item Data Extension
 
 For tenants using the 2.1 data model, Sitecore provides v2.1 versions of these APIs. Authentication remains Client Key + API Token. v2.1 also adds partial update operations for supported resources.
-
-Typical use: sync commerce transactions and link contacts so identity rules can associate the order with a guest.
 
 ### Example request (full URL)
 
@@ -485,6 +496,11 @@ When you need the same guest/order shapes at volume instead of one REST call at 
 ## 4. Batch API
 
 **Official documentation:** [Upload a batch file – Sitecore](https://doc.sitecore.com/cdp/en/developers/api/batch-api/upload-a-batch-file.html)
+
+- **Use:** Import or update large volumes of guests/orders asynchronously when one-by-one REST calls are too slow or noisy.
+- **Prerequisites:** Basic Auth for allocate/status, a gzip NDJSON file (≤ 50 MB compressed), MD5 checksum + byte size, and a caller-chosen `batchUuid`.
+- **Input:** Allocate body `{ checksum, size }`, then the gzip binary uploaded to the returned presigned URL (no Basic Auth on that upload).
+- **Output:** Presigned `location.href` from allocate, then batch status from poll (`GET`) until processing finishes or fails.
 
 When one-by-one Guest or Order REST calls are not enough, the Batch API is the bulk path—gzip many guest/order records and upload them asynchronously.
 
@@ -570,7 +586,12 @@ When you need segment membership as downloadable files instead of bulk upserts, 
 
 **Official documentation:** [Audience export REST API overview – Sitecore](https://doc.sitecore.com/cdp/en/developers/api/rest-apis.html) · [Interactive API catalog](https://api-docs.sitecore.com/)
 
-Guest, Order, and Batch use Basic Auth. Audience Export is the first area in this walkthrough that switches to **OAuth 2.0**—use it when you need downloadable membership output from a segment.
+- **Use:** Download segment/audience membership for use outside Sitecore CDP (ads platforms, CRM, BI, and other downstream systems).
+- **Prerequisites:** A Scheduled or Live segment with members, an Audience Export job configured in CDP, and an OAuth API key created specifically for the Audience Export feature (not Basic Auth).
+- **Input:** Bearer access token from `auth.sitecorecloud.io`, then list/retrieve calls (for example `GET /v2/audienceExports`)—confirm exact paths in the API catalog for your tenant.
+- **Output:** Export job metadata plus presigned file URLs; finished files are often JSONL lines wrapping guest JSON in a `data` string (available roughly ~35 days).
+
+Guest, Order, and Batch use Basic Auth. Audience Export is the first area in this walkthrough that switches to **OAuth 2.0**.
 
 Basic flow:
 
@@ -579,9 +600,7 @@ Basic flow:
 3. Call the Audience Export API
 4. Get export output (presigned URLs)
 
-Completed export output is typically available for about **35 days**. Confirm exact paths in the [API catalog](https://api-docs.sitecore.com/) for your tenant—paths can vary by version.
-
-The API key must be created for the Audience Export capability; the selected feature matters here as well.
+Confirm exact paths in the [API catalog](https://api-docs.sitecore.com/) for your tenant—paths can vary by version. The API key must be created for the Audience Export capability; the selected feature matters here as well.
 
 ### Example request (full URL)
 
@@ -612,6 +631,11 @@ The same OAuth Bearer token style continues into Personalize when you create or 
 ## 6. Personalize Flow Definition API
 
 **Official documentation:** [Flow Definition REST API – Sitecore Personalize](https://doc.sitecore.com/personalize/en/developers/api/rest-apis/flow-definition-rest-api/index.html) · [Request an access token](https://doc.sitecore.com/personalize/en/developers/api/request-an-access-token.html)
+
+- **Use:** Programmatically create and update Personalize experiences/experiments (who sees which variant, under which audience conditions).
+- **Prerequisites:** Personalize API Key + Secret, OAuth Bearer token, regional (or legacy) API host, and a clear `friendlyId` / flow payload (`type`, `subtype`, traffic/splits, schedule).
+- **Input:** Flow Definition JSON—name, `friendlyId`, channels, traffic splits/audiences, status, schedule—and `Authorization: Bearer <token>`.
+- **Output:** Flow Definition resource with a system `ref` (and friendly id) you use for later GET/PUT updates.
 
 CDP APIs above manage guests, orders, and exports. Personalize Flow Definitions use the same OAuth pattern as Audience Export, and are the main REST surface for experiences and experiments.
 
@@ -889,7 +913,12 @@ Flows decide *who sees what*. To feed live behavior into CDP for those decisions
 
 **Official documentation:** [Stream API – Sitecore](https://doc.sitecore.com/cdp/en/developers/api/stream-api.html) · [Engage SDK vs legacy Boxever JS library](https://doc.sitecore.com/personalize/en/developers/api/stream-api/bx-js-library-legacy-reference/bx-js-library-legacy-reference.html)
 
-REST and Flow Definition APIs manage resources. The Stream API is different: it sends real-time behavioral and transactional events into Sitecore CDP. Sitecore provides direct HTTP interfaces and recommends the **Engage SDK** for web integrations (instead of the legacy Boxever JavaScript Library).
+- **Use:** Send real-time behavioral/transactional events (page views, identity, cart, purchase) into CDP so profiles and Personalize decisions stay current.
+- **Prerequisites:** Regional Stream target URL, Client Key, and either Engage SDK (preferred for web) or direct HTTP calls; for events after browser create, you need a `browser_id`.
+- **Input:** Browser create with `client_key`; event create with `client_key` plus a `message` JSON (`browser_id`, channel, type, page, POS, …).
+- **Output:** Browser create returns a `browser_id`; event calls accept the event into CDP (visible later on the guest session/profile).
+
+REST and Flow Definition APIs manage resources. The Stream API is different: it sends events into Sitecore CDP. Sitecore provides direct HTTP interfaces and recommends the **Engage SDK** for web integrations (instead of the legacy Boxever JavaScript Library).
 
 Keep this distinction in mind:
 
