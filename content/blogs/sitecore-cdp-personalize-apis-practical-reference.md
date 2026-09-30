@@ -1,5 +1,5 @@
 ---
-title: "Sitecore CDP, Personalize & Engage SDK vs. Boxever (Legacy)"
+title: "Sitecore CDP and Personalize APIs Practical Reference"
 description: A hands-on developer reference for Sitecore CDP and Personalize APIs—and how Engage SDK relates to legacy Boxever—covering authentication (Basic Auth vs OAuth), regional endpoints, Guest, Order, Batch, Audience Export, Flow Definition, and Stream APIs with curl examples.
 keywords: Sitecore CDP API, Sitecore Personalize API, Engage SDK vs Boxever, Sitecore CDP Guest API v2.1, Sitecore Personalize Flow Definition API v3, Sitecore CDP Batch API, Audience Export OAuth, Sitecore Basic Auth Client Key API Token, Sitecore OAuth access token, api-engage regional endpoints, Boxever legacy, Engage SDK Stream API
 metaDescription: Sitecore CDP, Personalize & Engage SDK vs Boxever—API reference for Basic Auth vs OAuth, regional hosts, Guest/Order/Batch, Audience Export, Flow Definitions, and Stream.
