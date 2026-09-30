@@ -128,13 +128,27 @@ variantId   = a1b2c3d4-e5f6-7890-abcd-ef1234567890
 
 ### c) Terms you’ll see in the steps
 
-- **Audience** — Which visitors qualify (here: UTM source = `google`), expressed as `conditionGroups` on a traffic split
-- **Flow definition** — Personalize API object for an experience (`INTERACTIVE_API_FLOW` / `EXPERIENCE`) with name, `friendlyId`, status (`DRAFT` / `PRODUCTION`), and traffic splits
-- **Variant / traffic split** — One experience version (`fromGoogleMacbook`) with `variantName`, optional `audienceName`, `conditionGroups`, and a `template` embedding `variantId`
-- **Rendering vs rendering instance** — Definition vs a specific placement on a page (`uid` on `<r>` in layout XML). Personalization targets the **instance**
-- **Datasource** — Content item the rendering binds to (e.g. `MacBook Pro from Google` under the page `Data` folder)
-- **`__Final Renderings`** — Standard field storing final layout XML (including personalization rules). Authoring GraphQL `updateItem` is the write path — not Experience Edge
+- **Audience** — The visitors we want to target. In this example, it means visitors who came from Google, based on the UTM source.
 
+- **Flow / Experience** — The personalization experience we create in Sitecore Personalize. It contains the experience name, status, and the different versions we want to show.
+
+- **Variant** — A version of the experience shown to a particular audience.  
+  Example: `fromGoogleMacbook` means show the MacBook version to visitors coming from Google.
+
+- **Traffic split** — Defines who sees which variant. For example:
+  - Google visitors → `fromGoogleMacbook`
+  - Everyone else → default experience
+
+- **Rendering** — The Sitecore component itself, such as a Hero, Promo, or Product Card.
+
+- **Rendering instance** — A specific occurrence of that component on a page. For example, a page might contain two Promo components. Personalization is applied to the specific instance you want to change.
+
+- **Datasource** — The Sitecore content item used by the rendering.  
+  Example: the rendering could normally use a “MacBook Pro” content item, while the personalized version uses a different MacBook content item.
+
+- **`__Final Renderings`** — The Sitecore field that contains the page's final layout XML, including personalization settings. When we need to update the personalization configuration programmatically, we update this field through Sitecore's authoring API/GraphQL.
+
+- **Experience Edge** — Used for delivering published Sitecore content to the edge. It is not the place where we write the page's `__Final Renderings` personalization configuration.
 ### d) End-to-end pipeline
 
 1. **Input** — structured payload (page + variants + conditionGroups + component actions)
