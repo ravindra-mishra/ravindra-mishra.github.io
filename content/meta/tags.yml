@@ -29,3 +29,18 @@ tags:
     description: >-
       Next.js and React patterns used with Sitecore headless and full-stack
       apps—UI, routing, and frontend architecture for developers.
+  - slug: sitecore-cdp
+    name: Sitecore CDP
+    description: >-
+      Sitecore Customer Data Platform guides—audiences, decisioning context,
+      and how CDP connects with Personalize and XM Cloud experiences.
+  - slug: ai-automation
+    name: AI Automation
+    description: >-
+      AI-assisted authoring and automation patterns—recommend, confirm, and
+      apply workflows that keep humans in the loop for Sitecore delivery.
+  - slug: sitecore-personalization
+    name: Sitecore Personalization
+    description: >-
+      Component-level and audience-driven personalization in Sitecore—Personalize
+      flows, variant rules, datasources, and layout automation.

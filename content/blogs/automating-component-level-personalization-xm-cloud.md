@@ -11,6 +11,9 @@ author: "Ravindra Mishra"
 tags:
   - tag: sitecore
   - tag: sitecore-xm-cloud
+  - tag: sitecore-cdp
+  - tag: ai-automation
+  - tag: sitecore-personalization
 faq:
   - question: What does automating component-level personalization in Sitecore XM Cloud replace?
     answer: It replaces the manual chain of creating variant datasources, configuring a Sitecore Personalize experience with audience splits, and attaching personalization rules to specific rendering instances in __Final Renderings layout XML.
@@ -45,11 +48,11 @@ This article shows how to **automate that authoring chain** by programmatically:
 2. Creating or updating a Sitecore Personalize **flow definition** with audience-based traffic splits
 3. Injecting personalization rules into the page’s `__Final Renderings` field
 
-This is an **authoring / automation** guide (not runtime visitor decisioning). AI can optionally propose the same structured input — see [AI-assisted automation](#ai-assisted-automation) — but the steps below are the deterministic apply layer: recommend → confirm → automate.
+This is an **authoring / automation** guide (not runtime visitor decisioning). AI can optionally propose the same structured input — see [Where AI fits](#where-ai-fits) — but the steps below are the deterministic apply layer: recommend → confirm → automate.
 
 ---
 
-## What are we actually building?
+## The scenario: Google traffic on a product page
 
 Suppose a product page has a **Hero** and a **Promo** component.
 
@@ -63,7 +66,7 @@ Normally an author would:
 
 Automation does those steps for the **Google MacBook** example (`variantName = fromGoogleMacbook`).
 
-### Expected result
+### Before and after
 
 ```text
 BEFORE
@@ -83,7 +86,15 @@ AFTER
 
 ---
 
-## Manual process → what automation replaces
+## How the automation works
+
+Read this section once before the steps — it is the mental model the rest of the article builds on.
+
+![Block diagram of automating component-level personalization: natural language and page context flow into an AI assistant layer that requires human confirmation, then a deterministic automation pipeline that updates Sitecore XM Cloud via GraphQL and Sitecore Personalize via REST OAuth, with variantId linking the two systems](/uploads/blog-xm-cloud-personalization-automation-flow-diagram.png)
+
+*Figure: End-to-end flow — AI proposes (with human confirmation), automation applies, XM Cloud and Personalize stay in sync through `variantId`.*
+
+### a) What you stop doing by hand
 
 | Manual authoring | Automation |
 | ---------------- | ---------- |
@@ -96,11 +107,9 @@ AFTER
 | Repeat for another variant | Iterate `page.variants[]` |
 | Review result | Automated validation + logs |
 
----
+### b) The variantId bridge
 
-## How these objects connect
-
-The reusable bridge is a single identifier shared across systems:
+One identifier links Personalize and Sitecore:
 
 1. **Audience** — UTM source = `google` (`conditionGroups`)
 2. **Personalize flow** — `audienceTraffic` split named `fromGoogleMacbook`
@@ -117,9 +126,7 @@ variantName = fromGoogleMacbook
 variantId   = a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
----
-
-## Key concepts
+### c) Terms you’ll see in the steps
 
 - **Audience** — Which visitors qualify (here: UTM source = `google`), expressed as `conditionGroups` on a traffic split
 - **Flow definition** — Personalize API object for an experience (`INTERACTIVE_API_FLOW` / `EXPERIENCE`) with name, `friendlyId`, status (`DRAFT` / `PRODUCTION`), and traffic splits
@@ -128,11 +135,7 @@ variantId   = a1b2c3d4-e5f6-7890-abcd-ef1234567890
 - **Datasource** — Content item the rendering binds to (e.g. `MacBook Pro from Google` under the page `Data` folder)
 - **`__Final Renderings`** — Standard field storing final layout XML (including personalization rules). Authoring GraphQL `updateItem` is the write path — not Experience Edge
 
----
-
-## Architecture / end-to-end flow
-
-Pipeline:
+### d) End-to-end pipeline
 
 1. **Input** — structured payload (page + variants + conditionGroups + component actions)
 2. **Identify target** — page context + component instance UIDs from layout
@@ -149,7 +152,9 @@ Pipeline:
 
 ---
 
-## Prerequisites
+## Before you start
+
+### Prerequisites
 
 | Already exists (required) | Created / changed by automation | Out of scope |
 | ------------------------- | ------------------------------- | ------------ |
@@ -160,13 +165,11 @@ Pipeline:
 | OOTB Set Data Source / Hide Rendering / variant-match definitions | | Unrelated CDP, analytics, or commerce |
 | Personalize OAuth + XM Cloud Authoring GraphQL credentials (or Marketplace token) | | |
 
----
-
-## Available APIs and resources
+### APIs you’ll use
 
 Use these in order. Request bodies and mutation examples appear in the steps that first need them.
 
-### 1. Sitecore Personalize — OAuth
+#### 1. Sitecore Personalize — OAuth
 
 **Role:** Obtain a Bearer token for Flow Definition API calls.
 
@@ -176,7 +179,7 @@ Use these in order. Request bodies and mutation examples appear in the steps tha
   - [Request an access token](https://doc.sitecore.com/personalize/en/developers/api/request-an-access-token.html)
   - [Create an API key](https://doc.sitecore.com/personalize/en/developers/api/create-an-api-key.html)
 
-### 2. Sitecore Personalize — Flow Definition API
+#### 2. Sitecore Personalize — Flow Definition API
 
 **Role:** Create or update the experience that owns audience splits and produces `variantId`.
 
@@ -189,7 +192,7 @@ Use these in order. Request bodies and mutation examples appear in the steps tha
   - [Flow definition REST API](https://doc.sitecore.com/personalize/en/developers/api/rest-apis/flow-definition-rest-api/index.html)
   - [Base URL](https://doc.sitecore.com/personalize/en/developers/api/base-url.html)
 
-### 3. XM Cloud — Authoring and Management GraphQL
+#### 3. XM Cloud — Authoring and Management GraphQL
 
 **Role:** Create variant datasources and read/write `__Final Renderings`.
 
@@ -201,7 +204,7 @@ Use these in order. Request bodies and mutation examples appear in the steps tha
   - [Authoring GraphQL API](https://doc.sitecore.com/xp/en/developers/103/sitecore-experience-manager/sitecore-authoring-and-management-graphql-api.html)
   - [Query examples](https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecore-authoring-and-management-graphql-api/query-examples-for-authoring-operations.html)
 
-### Configuration you’ll need
+#### Configuration you’ll need
 
 - Personalize client id / secret
 - Personalize / CDP `clientKey`
@@ -457,7 +460,7 @@ When GET returns `404`, POST a payload shaped like:
 | `status: DRAFT` | Unpublished until reviewed |
 | `clientKey` | Tenant client key required by the API |
 
-**Update behavior:** see [What happens if I run it again?](#what-happens-if-i-run-it-again) — same `variantName` + conditions skips; changed conditions overwrite; new names append.
+**Update behavior:** see [What happens if you run it again?](#what-happens-if-you-run-it-again) — same `variantName` + conditions skips; changed conditions overwrite; new names append.
 
 ---
 
@@ -579,7 +582,9 @@ Create the Personalize flow **before** transforming layout so `variantId` values
 
 ---
 
-## What happens if I run it again?
+## After the steps: re-runs, AI, and guardrails
+
+### What happens if you run it again?
 
 Lightweight idempotency in this pattern:
 
@@ -590,9 +595,7 @@ Lightweight idempotency in this pattern:
 
 This is not full governance (no approval workflow, no automatic publish, limited concurrent-edit protection).
 
----
-
-## AI-assisted automation
+### Where AI fits
 
 AI is an optional **front door** to the same pipeline: page context → proposed personalization strategy → **human confirm** → map to the PersonalizationInput schema → deterministic automation (datasources → Personalize flow → `__Final Renderings`).
 
@@ -601,9 +604,7 @@ AI is an optional **front door** to the same pipeline: page context → proposed
 
 Only OOTB actions should be auto-applied. Default to recommend → confirm → automate — do not claim autonomous publish unless your implementation actually does it.
 
----
-
-## Governance / considerations
+### Governance notes
 
 **Recommended improvements**
 
