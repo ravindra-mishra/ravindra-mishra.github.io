@@ -7,7 +7,11 @@ interface BreadcrumbProps {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ className }) => {
   const router = useRouter();
-  const pathSegments = router.asPath.split("?")[0].split("/").filter(Boolean);
+  // Strip query + hash so SSR (no hash) matches client when TOC links add #fragment
+  const pathSegments = router.asPath
+    .split(/[?#]/)[0]
+    .split("/")
+    .filter(Boolean);
 
   const buildBreadcrumbs = () => {
     const breadcrumbs = pathSegments.map((segment, index) => {

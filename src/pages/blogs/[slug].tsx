@@ -21,6 +21,7 @@ import CommentBox from "@/components/CommentBox";
 import MarkdownLink from "@/components/blog/MarkdownLink";
 import CodeBlock from "@/components/blog/CodeBlock";
 import MarkdownHeading from "@/components/blog/MarkdownHeading";
+import MarkdownReviewNote from "@/components/blog/MarkdownReviewNote";
 import BlogTableOfContents from "@/components/blog/BlogTableOfContents";
 import BlogSideTags from "@/components/blog/BlogSideTags";
 import { extractTocFromMarkdown } from "@/lib/blogToc";
@@ -127,6 +128,7 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
                 remarkPlugins={[remarkGfm]}
                 components={{
                   a: MarkdownLink,
+                  blockquote: MarkdownReviewNote,
                   pre: ({ children, className }) => (
                     <CodeBlock className={className}>{children}</CodeBlock>
                   ),

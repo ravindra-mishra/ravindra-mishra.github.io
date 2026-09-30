@@ -152,6 +152,53 @@
     margin-top: 1.5rem;
     margin-bottom: 1.25rem;
   }
+
+  .blog-review-note {
+    margin: 1.25rem 0;
+    padding: 0.85rem 1rem;
+    border-left: 4px solid #c45c26;
+    background: var(--color-surface-muted);
+    color: var(--color-text);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+    scroll-margin-top: 5.5rem;
+
+    p {
+      margin: 0.35rem 0 0;
+      font-size: 0.95em;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    strong {
+      color: #c45c26;
+    }
+
+    &--remove {
+      border-left-color: #e5534b;
+    }
+
+    &--rephrase,
+    &--shorten {
+      border-left-color: #d97706;
+    }
+
+    &--format,
+    &--merge {
+      border-left-color: #3b82f6;
+    }
+
+    &--end {
+      opacity: 0.8;
+      font-size: 0.9em;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border-left-style: dashed;
+    }
+  }
 }
 
 .blog-side-container {
