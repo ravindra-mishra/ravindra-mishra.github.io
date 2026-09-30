@@ -76,6 +76,10 @@ const Blog: React.FC<BlogProps> = ({ frontmatter, markdown, slug }) => {
         await import("prismjs/components/prism-json");
         await import("prismjs/components/prism-csharp");
         await import("prismjs/components/prism-powershell");
+        await import("prismjs/components/prism-bash");
+        await import("prismjs/components/prism-http");
+        await import("prismjs/components/prism-javascript");
+        await import("prismjs/components/prism-markup");
         Prism.highlightAll();
       })();
     }
